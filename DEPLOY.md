@@ -81,7 +81,7 @@ npm start
 ## 🌐 배포 후 확인
 
 - Cloudflare Pages URL: `https://devhub-xxx.pages.dev`
-- 커스텀 도메인: `https://yourdomain.com`
+- 커스텀 도메인: `https://devhub.marvin-42.com`
 
 ## 📚 참고 문서
 
