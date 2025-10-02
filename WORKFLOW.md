@@ -238,8 +238,45 @@ gh pr merge --squash
 
 ```bash
 git checkout main
-git pull origin main
+git pull origin main --rebase
 ```
+
+#### Pull 전략: Merge vs Rebase
+
+**`git pull` (기본 - merge)**
+```bash
+git pull origin main
+# = git fetch + git merge
+# 결과: 병합 커밋 생성, 히스토리 복잡
+```
+
+**`git pull --rebase` (권장 - rebase)**
+```bash
+git pull origin main --rebase
+# = git fetch + git rebase
+# 결과: 선형적인 깔끔한 히스토리
+```
+
+**차이점:**
+```
+Merge 방식:
+A---B---C (local)
+     \
+      D---E (remote)
+→ A---B---C---M (merge commit)
+       \     /
+        D---E
+
+Rebase 방식:
+A---B---C (local)
+     \
+      D---E (remote)
+→ A---D---E---B'---C' (linear)
+```
+
+**언제 사용?**
+- ✅ **Rebase**: 로컬 커밋을 아직 push 안 했을 때 (권장)
+- ⚠️ **Merge**: 이미 push한 커밋이 있을 때
 
 ### 브랜치 목록 확인
 
