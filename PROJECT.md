@@ -62,11 +62,11 @@ devhub/
 - [x] 배포 가이드 작성
 
 ### Phase 2: 핵심 페이지 (진행 예정)
-- [ ] Navigation Bar 컴포넌트
-- [ ] Footer 컴포넌트
-- [ ] About (소개) 페이지
-- [ ] Projects (프로젝트) 페이지
-- [ ] Contact (연락처) 페이지
+- [ ] Navigation Bar 컴포넌트 [#1](https://github.com/devlikebear/devhub/issues/1)
+- [ ] Footer 컴포넌트 [#2](https://github.com/devlikebear/devhub/issues/2)
+- [ ] About (소개) 페이지 [#3](https://github.com/devlikebear/devhub/issues/3)
+- [ ] Projects (프로젝트) 페이지 [#4](https://github.com/devlikebear/devhub/issues/4)
+- [ ] Contact (연락처) 페이지 [#5](https://github.com/devlikebear/devhub/issues/5)
 
 ### Phase 3: 블로그 시스템
 - [ ] MDX 블로그 설정
@@ -202,5 +202,5 @@ chore: 빌드/설정 변경
 
 ---
 
-**마지막 업데이트**: 2025-10-01
-**프로젝트 상태**: Phase 1 완료, Phase 2 진행 예정
+**마지막 업데이트**: 2025-10-02
+**프로젝트 상태**: Phase 1 완료, Phase 2 진행 중 (이슈 #1-5 생성됨)
