@@ -68,12 +68,12 @@ devhub/
 - [x] Git 저장소 초기화
 - [x] 배포 가이드 작성
 
-### Phase 2: 핵심 페이지 (진행 중)
+### Phase 2: 핵심 페이지 ✅
 - [x] Navigation Bar 컴포넌트 [#1](https://github.com/devlikebear/devhub/issues/1)
 - [x] Footer 컴포넌트 [#2](https://github.com/devlikebear/devhub/issues/2)
-- [ ] About (소개) 페이지 [#3](https://github.com/devlikebear/devhub/issues/3)
-- [ ] Tools 목록 페이지 (재정의 필요)
-- [ ] Contact (연락처) 페이지 [#5](https://github.com/devlikebear/devhub/issues/5)
+- [x] About (소개) 페이지 [#3](https://github.com/devlikebear/devhub/issues/3)
+- [x] Tools 목록 페이지 (구현 완료, #4 대체)
+- [x] Contact (연락처) 페이지 [#5](https://github.com/devlikebear/devhub/issues/5)
 
 ### Phase 3: 유틸리티 도구 구현
 #### 우선순위 높음 (필수 도구)
@@ -250,4 +250,4 @@ chore: 빌드/설정 변경
 ---
 
 **마지막 업데이트**: 2025-10-02
-**프로젝트 상태**: Phase 2 진행 중 (#1-2 완료, 유틸리티 도구 개발 준비)
+**프로젝트 상태**: Phase 2 완료, Phase 3 (유틸리티 도구 구현) 준비 완료
