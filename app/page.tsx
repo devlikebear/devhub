@@ -42,10 +42,6 @@ export default function Home() {
           </div>
         </div>
       </main>
-
-      <footer className="fixed bottom-0 w-full py-6 text-center text-gray-500 text-sm">
-        <p>© 2025 DevHub. Built with Next.js & Cloudflare Pages</p>
-      </footer>
     </div>
   );
 }
