@@ -99,15 +99,15 @@ devhub/
 - [ ] Image Converter: 이미지 포맷 변환
 
 ### Phase 5: 개선 & 최적화
-- [ ] SEO 최적화 (메타 태그, sitemap)
-- [ ] Open Graph 이미지
-- [ ] 다국어 지원
-- [ ] 최신 유행하는 모던한 디자인 적용
-- [ ] 다크모드 토글
-- [ ] 애니메이션 효과
-- [ ] 성능 최적화 (이미지, 폰트)
-- [ ] 즐겨찾기/최근 사용 도구 기능
-- [ ] 도구별 사용 가이드
+- [ ] SEO 최적화 (메타 태그, sitemap) [#33](https://github.com/devlikebear/devhub/issues/33)
+- [ ] Open Graph 이미지 [#34](https://github.com/devlikebear/devhub/issues/34)
+- [ ] 다국어 지원 [#35](https://github.com/devlikebear/devhub/issues/35)
+- [ ] 최신 유행하는 모던한 디자인 적용 [#36](https://github.com/devlikebear/devhub/issues/36)
+- [ ] 다크모드 토글 [#37](https://github.com/devlikebear/devhub/issues/37)
+- [ ] 애니메이션 효과 [#38](https://github.com/devlikebear/devhub/issues/38)
+- [ ] 성능 최적화 (이미지, 폰트) [#39](https://github.com/devlikebear/devhub/issues/39)
+- [ ] 즐겨찾기/최근 사용 도구 기능 [#40](https://github.com/devlikebear/devhub/issues/40)
+- [ ] 도구별 사용 가이드 [#41](https://github.com/devlikebear/devhub/issues/41)
 
 ### Phase 6: 추가 기능
 - [ ] 도구 검색 기능
