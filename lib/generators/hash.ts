@@ -36,7 +36,12 @@ async function digestWithSubtle(
   }
 
   const normalized = algorithm === "sha1" ? "SHA-1" : "SHA-256";
-  const buffer = await subtle.digest({ name: normalized }, data);
+  const arrayBuffer = data.buffer.slice(
+    data.byteOffset,
+    data.byteOffset + data.byteLength
+  ) as ArrayBuffer;
+
+  const buffer = await subtle.digest({ name: normalized }, arrayBuffer);
   return new Uint8Array(buffer);
 }
 
