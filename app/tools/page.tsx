@@ -24,7 +24,7 @@ const tools: Tool[] = [
     description: '문자열을 Base64로 인코딩/디코딩',
     icon: '🔤',
     category: 'converter',
-    status: 'coming-soon',
+    status: 'available',
   },
   {
     id: 'json',

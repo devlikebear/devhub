@@ -77,11 +77,11 @@ devhub/
 
 ### Phase 3: 유틸리티 도구 구현
 #### 우선순위 높음 (필수 도구)
-- [ ] **Timestamp Converter**: Epoch ↔ 날짜/시간 변환
-- [ ] **Base64 Encoder/Decoder**: 문자열 ↔ Base64 변환
-- [ ] **JSON Formatter**: JSON 포맷팅, 검증, 압축
-- [ ] **Color Tool**: HEX ↔ RGB ↔ HSL 변환, 색상 팔레트 생성
-- [ ] **UUID Generator**: UUID v4 생성기
+- [x] **Timestamp Converter**: Epoch ↔ 날짜/시간 변환 [#11](https://github.com/devlikebear/devhub/issues/11)
+- [ ] **Base64 Encoder/Decoder**: 문자열 ↔ Base64 변환 [#12](https://github.com/devlikebear/devhub/issues/12)
+- [ ] **JSON Formatter**: JSON 포맷팅, 검증, 압축 [#13](https://github.com/devlikebear/devhub/issues/13)
+- [ ] **Color Tool**: HEX ↔ RGB ↔ HSL 변환, 색상 팔레트 생성 [#14](https://github.com/devlikebear/devhub/issues/14)
+- [ ] **UUID Generator**: UUID v4 생성기 [#15](https://github.com/devlikebear/devhub/issues/15)
 
 #### 우선순위 중간
 - [ ] **Hash Generator**: MD5, SHA-1, SHA-256 해시 생성
