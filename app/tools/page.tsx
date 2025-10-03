@@ -72,7 +72,7 @@ const tools: Tool[] = [
     description: '실시간 마크다운 미리보기',
     icon: '📝',
     category: 'formatter',
-    status: 'coming-soon',
+    status: 'available',
   },
   {
     id: 'url',
