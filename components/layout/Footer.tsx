@@ -1,21 +1,19 @@
+'use client';
+
 import Link from 'next/link';
+import { useI18n, useTranslation } from '@/components/i18n/I18nProvider';
+
+const socialLinks = [
+  { href: 'https://github.com', label: 'GitHub', icon: 'github' },
+  { href: 'https://linkedin.com', label: 'LinkedIn', icon: 'linkedin' },
+  { href: 'https://twitter.com', label: 'Twitter', icon: 'twitter' },
+];
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
-
-  const footerLinks = [
-    { href: '/', label: 'Home' },
-    { href: '/about', label: 'About' },
-    { href: '/projects', label: 'Projects' },
-    { href: '/blog', label: 'Blog' },
-    { href: '/contact', label: 'Contact' },
-  ];
-
-  const socialLinks = [
-    { href: 'https://github.com', label: 'GitHub', icon: 'github' },
-    { href: 'https://linkedin.com', label: 'LinkedIn', icon: 'linkedin' },
-    { href: 'https://twitter.com', label: 'Twitter', icon: 'twitter' },
-  ];
+  const { dictionary } = useI18n();
+  const tFooter = useTranslation('footer');
+  const links = dictionary.footer.links;
 
   return (
     <footer className="bg-gray-900 border-t border-gray-800">
@@ -23,17 +21,15 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* About Section */}
           <div>
-            <h3 className="text-xl font-bold text-white mb-4">DevHub</h3>
-            <p className="text-gray-400 text-sm">
-              개발자를 위한 포트폴리오 & 블로그 플랫폼
-            </p>
+            <h3 className="text-xl font-bold text-white mb-4">{tFooter('title')}</h3>
+            <p className="text-gray-400 text-sm">{tFooter('description')}</p>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-white font-semibold mb-4">Quick Links</h4>
+            <h4 className="text-white font-semibold mb-4">{tFooter('quickLinksTitle')}</h4>
             <ul className="space-y-2">
-              {footerLinks.map((link) => (
+              {links.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
@@ -48,7 +44,7 @@ export default function Footer() {
 
           {/* Social Links */}
           <div>
-            <h4 className="text-white font-semibold mb-4">Connect</h4>
+            <h4 className="text-white font-semibold mb-4">{tFooter('connectTitle')}</h4>
             <div className="flex space-x-4">
               {socialLinks.map((social) => (
                 <a
@@ -83,7 +79,7 @@ export default function Footer() {
         {/* Copyright */}
         <div className="mt-8 pt-8 border-t border-gray-800 text-center">
           <p className="text-gray-500 text-sm">
-            © {currentYear} DevHub. Built with Next.js & Cloudflare Pages
+            {tFooter('rights', { replacements: { year: currentYear } })}
           </p>
         </div>
       </div>

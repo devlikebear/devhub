@@ -2,15 +2,18 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { useTranslation } from '@/components/i18n/I18nProvider';
+import LanguageSwitcher from '@/components/i18n/LanguageSwitcher';
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const tNav = useTranslation('navbar');
 
   const navLinks = [
-    { href: '/', label: 'Home' },
-    { href: '/about', label: 'About' },
-    { href: '/tools', label: 'Tools' },
-    { href: '/contact', label: 'Contact' },
+    { href: '/', label: tNav('home') },
+    { href: '/about', label: tNav('about') },
+    { href: '/tools', label: tNav('tools') },
+    { href: '/contact', label: tNav('contact') },
   ];
 
   return (
@@ -33,6 +36,7 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
+            <LanguageSwitcher />
           </div>
 
           {/* Mobile Menu Button */}
@@ -72,6 +76,7 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
+            <LanguageSwitcher />
           </div>
         )}
       </div>

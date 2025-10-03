@@ -7,20 +7,30 @@ import {
   type HashResult,
   HASH_ALGORITHMS,
 } from '@/lib/generators/hash';
+import { useI18n } from '@/components/i18n/I18nProvider';
 
-const algorithmLabels: Record<HashAlgorithm, string> = {
-  md5: 'MD5',
-  sha1: 'SHA-1',
-  sha256: 'SHA-256',
-};
-
-const algorithmDescriptions: Record<HashAlgorithm, string> = {
-  md5: '32자 16진수 해시, 주로 체크섬 용도로 사용',
-  sha1: '160비트 해시, Git 객체 등 레거시 시스템 사용',
-  sha256: '256비트 해시, 현재 권장되는 보안 해시',
+type HashDictionary = {
+  title: string;
+  subtitle: string;
+  inputLabel: string;
+  placeholder: string;
+  hint: string;
+  algorithmLabel: string;
+  algorithms: Record<HashAlgorithm, { label: string; description: string }>;
+  resultTitle: string;
+  generating: string;
+  emptyMessage: string;
+  copySuccess: string;
+  copyFailed: string;
+  error: string;
+  buttons: { copy: string };
+  guide: { title: string; items: string[] };
 };
 
 export default function HashGeneratorPage() {
+  const { dictionary } = useI18n();
+  const text = (dictionary.tools?.hash ?? {}) as HashDictionary;
+
   const [input, setInput] = useState('');
   const [algorithm, setAlgorithm] = useState<HashAlgorithm>('md5');
   const [result, setResult] = useState<HashResult | null>(null);
@@ -46,11 +56,10 @@ export default function HashGeneratorPage() {
         if (!canceled) {
           setResult(hash);
         }
-      } catch (err) {
+      } catch {
         if (!canceled) {
           setResult(null);
-          setError('해시 생성 중 오류가 발생했습니다');
-          console.error(err);
+          setError(text.error || 'Error generating hash');
         }
       } finally {
         if (!canceled) {
@@ -64,7 +73,7 @@ export default function HashGeneratorPage() {
     return () => {
       canceled = true;
     };
-  }, [input, algorithm]);
+  }, [input, algorithm, text.error]);
 
   const handleCopy = async (value: string, label: string) => {
     setCopyMessage('');
@@ -82,11 +91,10 @@ export default function HashGeneratorPage() {
         document.execCommand('copy');
         document.body.removeChild(textarea);
       }
-      setCopyMessage(`${label} 복사 완료!`);
+      setCopyMessage(text.copySuccess?.replace('{{label}}', label) || `${label} copied!`);
       setTimeout(() => setCopyMessage(''), 2000);
-    } catch (err) {
-      console.error(err);
-      setCopyMessage('클립보드 복사에 실패했습니다');
+    } catch {
+      setCopyMessage(text.copyFailed || 'Failed to copy');
       setTimeout(() => setCopyMessage(''), 2000);
     }
   };
@@ -95,32 +103,28 @@ export default function HashGeneratorPage() {
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 pt-20">
       <main className="max-w-5xl mx-auto px-6 py-20">
         <header className="mb-12 text-center">
-          <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">Hash Generator</h1>
-          <p className="text-xl text-gray-300">
-            문자열을 다양한 해시 알고리즘으로 변환하고 결과를 비교하세요
-          </p>
+          <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">{text.title}</h1>
+          <p className="text-xl text-gray-300">{text.subtitle}</p>
         </header>
 
         <section className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-10">
           <div className="lg:col-span-2 p-6 bg-gray-800/50 rounded-lg border border-gray-700">
             <label className="block text-white font-semibold mb-3" htmlFor="hash-input">
-              입력 문자열
+              {text.inputLabel}
             </label>
             <textarea
               id="hash-input"
               value={input}
               onChange={(event) => setInput(event.target.value)}
-              placeholder="해시를 생성할 문자열을 입력하세요"
+              placeholder={text.placeholder}
               rows={8}
               className="w-full px-4 py-3 bg-gray-900 text-white rounded-lg border border-gray-600 focus:border-blue-500 focus:outline-none resize-none"
             />
-            <p className="text-sm text-gray-400 mt-2">
-              해시는 입력값에 민감합니다. 공백이나 줄바꿈도 결과에 영향을 줍니다.
-            </p>
+            <p className="text-sm text-gray-400 mt-2">{text.hint}</p>
           </div>
 
           <div className="p-6 bg-gray-800/50 rounded-lg border border-gray-700">
-            <h2 className="text-lg font-semibold text-white mb-4">알고리즘 선택</h2>
+            <h2 className="text-lg font-semibold text-white mb-4">{text.algorithmLabel}</h2>
             <div className="space-y-3">
               {HASH_ALGORITHMS.map((option) => (
                 <label
@@ -140,8 +144,8 @@ export default function HashGeneratorPage() {
                     className="mt-1"
                   />
                   <div>
-                    <p className="text-white font-medium">{algorithmLabels[option]}</p>
-                    <p className="text-sm text-gray-400">{algorithmDescriptions[option]}</p>
+                    <p className="text-white font-medium">{text.algorithms?.[option]?.label || option.toUpperCase()}</p>
+                    <p className="text-sm text-gray-400">{text.algorithms?.[option]?.description || ''}</p>
                   </div>
                 </label>
               ))}
@@ -163,47 +167,42 @@ export default function HashGeneratorPage() {
 
         <section className="p-6 bg-gray-800/50 rounded-lg border border-gray-700 mb-10">
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-2xl font-semibold text-white">결과</h2>
+            <h2 className="text-2xl font-semibold text-white">{text.resultTitle}</h2>
             {isGenerating && (
-              <span className="text-sm text-gray-400">해시 생성 중...</span>
+              <span className="text-sm text-gray-400">{text.generating}</span>
             )}
           </div>
 
           {result ? (
             <div className="space-y-4">
               <ResultRow
-                label={`${algorithmLabels[result.algorithm]} (Hex)`}
+                label={`${text.algorithms?.[result.algorithm]?.label || result.algorithm.toUpperCase()} (Hex)`}
                 value={result.hex}
-                onCopy={() => handleCopy(result.hex, 'Hex 값')}
+                onCopy={() => handleCopy(result.hex, 'Hex')}
+                copyLabel={text.buttons?.copy || 'Copy'}
               />
               <ResultRow
                 label="Base64"
                 value={result.base64}
-                onCopy={() => handleCopy(result.base64, 'Base64 값')}
+                onCopy={() => handleCopy(result.base64, 'Base64')}
+                copyLabel={text.buttons?.copy || 'Copy'}
               />
               <div className="p-4 bg-gray-900 rounded-lg border border-gray-700">
-                <p className="text-gray-400 text-sm">출력 바이트 길이</p>
+                <p className="text-gray-400 text-sm">Output byte length</p>
                 <p className="text-white font-mono text-lg">{result.byteLength} bytes</p>
               </div>
             </div>
           ) : (
-            <p className="text-gray-400 text-sm">
-              입력값을 작성하면 선택한 알고리즘으로 해시를 자동 생성합니다.
-            </p>
+            <p className="text-gray-400 text-sm">{text.emptyMessage}</p>
           )}
         </section>
 
         <section className="p-6 bg-gray-800/30 rounded-lg border border-gray-700">
-          <h2 className="text-xl font-semibold text-white mb-4">사용 가이드</h2>
+          <h2 className="text-xl font-semibold text-white mb-4">{text.guide?.title}</h2>
           <ul className="space-y-2 text-gray-300 text-sm">
-            <li>• 해시는 단방향 함수로, 결과값에서 원래 문자열을 복구할 수 없습니다.</li>
-            <li>
-              • MD5와 SHA-1은 충돌 가능성이 존재합니다. 보안용으로는 SHA-256 사용을 권장합니다.
-            </li>
-            <li>
-              • 해시 결과는 입력값이 한 글자만 달라도 완전히 다른 값이 됩니다 (Avalanche Effect).
-            </li>
-            <li>• 결과는 Hex와 Base64 두 가지 형식으로 제공합니다.</li>
+            {text.guide?.items?.map((item, index) => (
+              <li key={index}>{item}</li>
+            ))}
           </ul>
         </section>
       </main>
@@ -215,10 +214,12 @@ function ResultRow({
   label,
   value,
   onCopy,
+  copyLabel,
 }: {
   label: string;
   value: string;
   onCopy: () => void;
+  copyLabel: string;
 }) {
   return (
     <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-3 p-4 bg-gray-900 rounded-lg border border-gray-700">
@@ -230,7 +231,7 @@ function ResultRow({
         onClick={onCopy}
         className="self-start md:self-center px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg text-sm transition-colors"
       >
-        복사
+        {copyLabel}
       </button>
     </div>
   );

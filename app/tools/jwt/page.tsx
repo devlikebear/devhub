@@ -2,13 +2,61 @@
 
 import { useMemo, useState } from 'react';
 import { decodeJwt } from '@/lib/decoders/jwt';
+import { useI18n } from '@/components/i18n/I18nProvider';
 
 const SAMPLE_JWT =
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.' +
   'eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkRldkh1YiBVc2VyIiwiaWF0IjoxNTE2MjM5MDIyfQ.' +
   'SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c';
 
+type JwtDictionary = {
+  title: string;
+  subtitle: string;
+  tokenLabel: string;
+  loadSample: string;
+  clear: string;
+  placeholder: string;
+  copyToken: string;
+  warningNoSignature: string;
+  notice: string;
+  emptyValue: string;
+  noSignature: string;
+  metadata: {
+    algorithm: string;
+    type: string;
+    contentType: string;
+    keyId: string;
+    issuedAt: string;
+    notBefore: string;
+    expiresAt: string;
+  };
+  sections: {
+    header: string;
+    payload: string;
+    signature: string;
+  };
+  buttons: {
+    copyRaw: string;
+    copyJson: string;
+    copySignature: string;
+  };
+  copySuccess: string;
+  copyFailed: string;
+  claims: {
+    iss: string;
+    sub: string;
+    aud: string;
+    exp: string;
+    nbf: string;
+    iat: string;
+    jti: string;
+  };
+};
+
 export default function JwtDecoderPage() {
+  const { dictionary } = useI18n();
+  const text = (dictionary.tools?.jwt ?? {}) as JwtDictionary;
+
   const [token, setToken] = useState(SAMPLE_JWT);
   const [copyMessage, setCopyMessage] = useState('');
 
@@ -18,10 +66,10 @@ export default function JwtDecoderPage() {
     if (!value) return;
     try {
       await navigator.clipboard.writeText(value);
-      setCopyMessage(`${label}을(를) 복사했습니다`);
+      setCopyMessage(text.copySuccess.replace('{{label}}', label));
       setTimeout(() => setCopyMessage(''), 2000);
     } catch {
-      setCopyMessage('클립보드 복사에 실패했습니다');
+      setCopyMessage(text.copyFailed);
       setTimeout(() => setCopyMessage(''), 2000);
     }
   };
@@ -30,28 +78,26 @@ export default function JwtDecoderPage() {
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 pt-20">
       <main className="max-w-6xl mx-auto px-6 py-20">
         <header className="text-center mb-12">
-          <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">JWT Decoder</h1>
-          <p className="text-xl text-gray-300">
-            서명 검증 없이 JWT 헤더 · 페이로드 · 메타데이터를 빠르게 확인하세요
-          </p>
+          <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">{text.title}</h1>
+          <p className="text-xl text-gray-300">{text.subtitle}</p>
         </header>
 
         <section className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-10">
           <div className="lg:col-span-2 p-6 bg-gray-800/50 rounded-lg border border-gray-700">
             <div className="flex items-center justify-between mb-3">
-              <h2 className="text-lg font-semibold text-white">JWT 토큰</h2>
+              <h2 className="text-lg font-semibold text-white">{text.tokenLabel}</h2>
               <div className="flex gap-2 text-sm">
                 <button
                   onClick={() => setToken(SAMPLE_JWT)}
                   className="px-3 py-1.5 bg-gray-800 hover:bg-gray-700 text-gray-300 rounded-md transition-colors"
                 >
-                  샘플 불러오기
+                  {text.loadSample}
                 </button>
                 <button
                   onClick={() => setToken('')}
                   className="px-3 py-1.5 bg-gray-800 hover:bg-gray-700 text-gray-300 rounded-md transition-colors"
                 >
-                  지우기
+                  {text.clear}
                 </button>
               </div>
             </div>
@@ -59,34 +105,34 @@ export default function JwtDecoderPage() {
               value={token}
               onChange={(event) => setToken(event.target.value)}
               rows={6}
-              placeholder="header.payload.signature 형식의 JWT 토큰을 붙여넣으세요"
+              placeholder={text.placeholder}
               className="w-full px-4 py-3 bg-gray-900 text-white rounded-lg border border-gray-600 focus:border-blue-500 focus:outline-none font-mono"
             />
             <div className="flex flex-wrap gap-2 mt-4 text-sm">
               <button
-                onClick={() => handleCopy(token, 'JWT 토큰')}
+                onClick={() => handleCopy(token, text.tokenLabel)}
                 className="px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-colors"
               >
-                JWT 복사
+                {text.copyToken}
               </button>
             </div>
           </div>
 
           <aside className="p-6 bg-gray-800/50 rounded-lg border border-gray-700 text-sm text-gray-300 space-y-4">
-            <MetadataItem label="알고리즘" value={result.metadata.algorithm ?? '-'} />
-            <MetadataItem label="타입" value={result.metadata.type ?? '-'} />
-            <MetadataItem label="Content-Type" value={result.metadata.contentType ?? '-'} />
-            <MetadataItem label="Key ID" value={result.metadata.kid ?? '-'} />
-            <MetadataItem label="발급(iat)" value={result.metadata.issuedAt ?? '-'} />
-            <MetadataItem label="유효 시작(nbf)" value={result.metadata.notBefore ?? '-'} />
+            <MetadataItem label={text.metadata.algorithm} value={result.metadata.algorithm ?? '-'} />
+            <MetadataItem label={text.metadata.type} value={result.metadata.type ?? '-'} />
+            <MetadataItem label={text.metadata.contentType} value={result.metadata.contentType ?? '-'} />
+            <MetadataItem label={text.metadata.keyId} value={result.metadata.kid ?? '-'} />
+            <MetadataItem label={text.metadata.issuedAt} value={result.metadata.issuedAt ?? '-'} />
+            <MetadataItem label={text.metadata.notBefore} value={result.metadata.notBefore ?? '-'} />
             <MetadataItem
-              label="만료(exp)"
+              label={text.metadata.expiresAt}
               value={result.metadata.expiresAt ?? '-'}
               highlight={result.metadata.isExpired}
             />
             {!result.metadata.hasSignature && (
               <div className="p-3 bg-yellow-900/20 border border-yellow-700 text-yellow-300 rounded">
-                ⚠️ 서명 세그먼트가 비어 있습니다. 이 토큰은 검증되지 않았을 수 있습니다.
+                {text.warningNoSignature}
               </div>
             )}
             {result.warnings.length > 0 && (
@@ -96,10 +142,7 @@ export default function JwtDecoderPage() {
                 ))}
               </div>
             )}
-            <div className="text-xs text-gray-500">
-              • 이 도구는 클라이언트에서 실행되며 <strong className="text-gray-300">서명 검증을 수행하지 않습니다.</strong>
-              <br />• 민감한 토큰을 사용할 때는 브라우저 환경에 주의하세요.
-            </div>
+            <div className="text-xs text-gray-500" dangerouslySetInnerHTML={{ __html: text.notice }} />
           </aside>
         </section>
 
@@ -119,34 +162,38 @@ export default function JwtDecoderPage() {
 
         <section className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <DecodedSection
-            title="Header"
+            title={text.sections.header}
             value={result.headerJson ?? ''}
             raw={result.headerRaw}
-            onCopyJson={() => handleCopy(result.headerJson ?? '', 'Header JSON')}
-            onCopyRaw={() => handleCopy(result.headerRaw, 'Header 원본')}
+            emptyValue={text.emptyValue}
+            onCopyJson={() => handleCopy(result.headerJson ?? '', `${text.sections.header} JSON`)}
+            onCopyRaw={() => handleCopy(result.headerRaw, `${text.sections.header} ${text.buttons.copyRaw}`)}
+            buttonLabels={text.buttons}
           />
           <DecodedSection
-            title="Payload"
+            title={text.sections.payload}
             value={result.payloadJson ?? ''}
             raw={result.payloadRaw}
-            onCopyJson={() => handleCopy(result.payloadJson ?? '', 'Payload JSON')}
-            onCopyRaw={() => handleCopy(result.payloadRaw, 'Payload 원본')}
+            emptyValue={text.emptyValue}
+            onCopyJson={() => handleCopy(result.payloadJson ?? '', `${text.sections.payload} JSON`)}
+            onCopyRaw={() => handleCopy(result.payloadRaw, `${text.sections.payload} ${text.buttons.copyRaw}`)}
+            buttonLabels={text.buttons}
           />
         </section>
 
         <section className="mt-8 p-6 bg-gray-800/50 rounded-lg border border-gray-700">
           <div className="flex items-center justify-between mb-3">
-            <h2 className="text-lg font-semibold text-white">Signature</h2>
+            <h2 className="text-lg font-semibold text-white">{text.sections.signature}</h2>
             <button
-              onClick={() => handleCopy(result.signature, 'Signature')}
+              onClick={() => handleCopy(result.signature, text.sections.signature)}
               className="px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg text-sm transition-colors"
               disabled={!result.signature}
             >
-              서명 복사
+              {text.buttons.copySignature}
             </button>
           </div>
           <p className="font-mono text-sm text-gray-300 break-all bg-gray-900/70 px-4 py-3 rounded-lg border border-gray-700">
-            {result.signature || '서명값이 없습니다.'}
+            {result.signature || text.noSignature}
           </p>
         </section>
       </main>
@@ -175,12 +222,16 @@ function DecodedSection({
   title,
   value,
   raw,
+  emptyValue,
+  buttonLabels,
   onCopyJson,
   onCopyRaw,
 }: {
   title: string;
   value: string;
   raw: string;
+  emptyValue: string;
+  buttonLabels: { copyRaw: string; copyJson: string };
   onCopyJson: () => void;
   onCopyRaw: () => void;
 }) {
@@ -198,7 +249,7 @@ function DecodedSection({
               raw ? 'bg-gray-800 hover:bg-gray-700 text-gray-300' : 'bg-gray-800/40 text-gray-600 cursor-not-allowed'
             }`}
           >
-            원본 복사
+            {buttonLabels.copyRaw}
           </button>
           <button
             onClick={onCopyJson}
@@ -207,12 +258,12 @@ function DecodedSection({
               hasValue ? 'bg-blue-600 hover:bg-blue-700 text-white' : 'bg-blue-600/30 text-blue-100 cursor-not-allowed'
             }`}
           >
-            JSON 복사
+            {buttonLabels.copyJson}
           </button>
         </div>
       </div>
       <pre className="min-h-[180px] whitespace-pre-wrap break-words text-sm font-mono leading-relaxed bg-gray-900/70 px-4 py-4 rounded-lg border border-gray-700 text-gray-200">
-        {hasValue ? value : '유효한 JSON 데이터를 확인할 수 없습니다.'}
+        {hasValue ? value : emptyValue}
       </pre>
     </div>
   );

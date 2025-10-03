@@ -1,149 +1,70 @@
+'use client';
+
 import Link from 'next/link';
-import { buildPageMetadata } from '@/lib/seo/meta';
+import { useI18n } from '@/components/i18n/I18nProvider';
 
-export const metadata = buildPageMetadata({
-  title: 'DevHub 도구 모음',
-  description: 'Timestamp, Base64, JSON 등 다양한 개발자 유틸리티 도구를 한 곳에서 사용하세요.',
-  path: '/tools',
-});
+type ToolCategory = 'converter' | 'formatter' | 'generator' | 'tester';
 
-interface Tool {
+type ToolStatus = 'available' | 'comingSoon';
+
+type ToolItem = {
   id: string;
   name: string;
   description: string;
   icon: string;
-  category: 'converter' | 'formatter' | 'generator' | 'tester';
-  status: 'available' | 'coming-soon';
-}
+  category: ToolCategory;
+  status: ToolStatus;
+};
 
-const tools: Tool[] = [
-  {
-    id: 'timestamp',
-    name: 'Timestamp Converter',
-    description: 'Epoch 타임스탬프와 날짜/시간 간 변환',
-    icon: '🕐',
-    category: 'converter',
-    status: 'available',
-  },
-  {
-    id: 'base64',
-    name: 'Base64 Encoder/Decoder',
-    description: '문자열을 Base64로 인코딩/디코딩',
-    icon: '🔤',
-    category: 'converter',
-    status: 'available',
-  },
-  {
-    id: 'json',
-    name: 'JSON Formatter',
-    description: 'JSON 포맷팅, 검증, 압축',
-    icon: '📋',
-    category: 'formatter',
-    status: 'available',
-  },
-  {
-    id: 'color',
-    name: 'Color Tool',
-    description: 'HEX ↔ RGB ↔ HSL 변환 및 팔레트 생성',
-    icon: '🎨',
-    category: 'converter',
-    status: 'available',
-  },
-  {
-    id: 'uuid',
-    name: 'UUID Generator',
-    description: 'UUID v4 생성기',
-    icon: '🔑',
-    category: 'generator',
-    status: 'available',
-  },
-  {
-    id: 'hash',
-    name: 'Hash Generator',
-    description: 'MD5, SHA-1, SHA-256 해시 생성',
-    icon: '🔐',
-    category: 'generator',
-    status: 'available',
-  },
-  {
-    id: 'regex',
-    name: 'Regex Tester',
-    description: '정규표현식 테스트 및 매칭 결과',
-    icon: '🔍',
-    category: 'tester',
-    status: 'available',
-  },
-  {
-    id: 'markdown',
-    name: 'Markdown Preview',
-    description: '실시간 마크다운 미리보기',
-    icon: '📝',
-    category: 'formatter',
-    status: 'available',
-  },
-  {
-    id: 'url',
-    name: 'URL Encoder/Decoder',
-    description: 'URL 인코딩/디코딩',
-    icon: '🔗',
-    category: 'converter',
-    status: 'available',
-  },
-  {
-    id: 'jwt',
-    name: 'JWT Decoder',
-    description: 'JWT 토큰 디코딩 및 검증',
-    icon: '🎫',
-    category: 'tester',
-    status: 'available',
-  },
-];
-
-const categoryNames = {
-  converter: '변환 도구',
-  formatter: '포맷팅',
-  generator: '생성기',
-  tester: '테스터',
+type ToolsDictionary = {
+  heroTitle: string;
+  heroSubtitle: string;
+  categories: Record<ToolCategory, string>;
+  comingSoonNotice: string;
+  badges: {
+    comingSoon: string;
+  };
+  items: ToolItem[];
 };
 
 export default function ToolsPage() {
-  const categories = Array.from(new Set(tools.map(tool => tool.category)));
+  const { dictionary } = useI18n();
+  const toolsPage = dictionary.toolsPage as ToolsDictionary;
+
+  const categories = Array.from(
+    new Set<ToolCategory>(toolsPage.items.map((tool) => tool.category))
+  );
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 pt-20">
       <main className="max-w-6xl mx-auto px-6 py-20">
-        {/* Hero Section */}
         <div className="text-center mb-16">
           <h1 className="text-4xl sm:text-5xl font-bold text-white mb-6">
-            개발자 유틸리티 도구
+            {toolsPage.heroTitle}
           </h1>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            생산성 향상을 위한 다양한 온라인 도구를 무료로 이용하세요
+            {toolsPage.heroSubtitle}
           </p>
         </div>
 
-        {/* Tools Grid by Category */}
         {categories.map((category) => (
           <section key={category} className="mb-12">
             <h2 className="text-2xl font-bold text-white mb-6">
-              {categoryNames[category]}
+              {toolsPage.categories[category]}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {tools
-                .filter(tool => tool.category === category)
+              {toolsPage.items
+                .filter((tool) => tool.category === category)
                 .map((tool) => (
-                  <ToolCard key={tool.id} tool={tool} />
+                  <ToolCard key={tool.id} tool={tool} comingSoonLabel={toolsPage.badges.comingSoon} />
                 ))}
             </div>
           </section>
         ))}
 
-        {/* Coming Soon Notice */}
         <div className="mt-16 text-center">
           <div className="inline-block bg-blue-600/20 border border-blue-600/50 rounded-lg px-6 py-4">
-            <p className="text-blue-400">
-              💡 더 많은 도구가 곧 추가될 예정입니다!
-            </p>
+            <p className="text-blue-400">{toolsPage.comingSoonNotice}</p>
           </div>
         </div>
       </main>
@@ -151,12 +72,18 @@ export default function ToolsPage() {
   );
 }
 
-function ToolCard({ tool }: { tool: Tool }) {
+function ToolCard({
+  tool,
+  comingSoonLabel,
+}: {
+  tool: ToolItem;
+  comingSoonLabel: string;
+}) {
   const card = (
     <div className="relative p-6 bg-gray-800/50 rounded-lg border border-gray-700 hover:border-gray-600 transition-all group">
-      {tool.status === 'coming-soon' && (
+      {tool.status === 'comingSoon' && (
         <div className="absolute top-4 right-4 px-2 py-1 bg-gray-700 text-gray-400 text-xs rounded">
-          준비중
+          {comingSoonLabel}
         </div>
       )}
 
@@ -166,18 +93,12 @@ function ToolCard({ tool }: { tool: Tool }) {
         {tool.name}
       </h3>
 
-      <p className="text-gray-400 text-sm">
-        {tool.description}
-      </p>
+      <p className="text-gray-400 text-sm">{tool.description}</p>
     </div>
   );
 
   if (tool.status === 'available') {
-    return (
-      <Link href={`/tools/${tool.id}`}>
-        {card}
-      </Link>
-    );
+    return <Link href={`/tools/${tool.id}`}>{card}</Link>;
   }
 
   return card;

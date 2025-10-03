@@ -99,8 +99,8 @@ devhub/
 - [ ] Image Converter: 이미지 포맷 변환
 
 ### Phase 5: 개선 & 최적화
-- [ ] SEO 최적화 (메타 태그, sitemap) [#33](https://github.com/devlikebear/devhub/issues/33)
-- [ ] Open Graph 이미지 [#34](https://github.com/devlikebear/devhub/issues/34)
+- [x] SEO 최적화 (메타 태그, sitemap) [#33](https://github.com/devlikebear/devhub/issues/33)
+- [x] Open Graph 이미지 [#34](https://github.com/devlikebear/devhub/issues/34)
 - [ ] 다국어 지원 [#35](https://github.com/devlikebear/devhub/issues/35)
 - [ ] 최신 유행하는 모던한 디자인 적용 [#36](https://github.com/devlikebear/devhub/issues/36)
 - [ ] 다크모드 토글 [#37](https://github.com/devlikebear/devhub/issues/37)
