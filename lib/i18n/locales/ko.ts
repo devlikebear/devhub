@@ -26,7 +26,7 @@ export const ko = {
   },
   footer: {
     title: 'DevHub',
-    description: '개발자를 위한 포트폴리오 & 블로그 플랫폼',
+    description: '개발자 생산성을 위한 온라인 유틸리티 도구 모음',
     quickLinksTitle: '바로가기',
     connectTitle: 'Connect',
     rights: '© {{year}} DevHub. Next.js & Cloudflare Pages로 제작되었습니다.',
@@ -118,8 +118,8 @@ export const ko = {
       {
         icon: '📧',
         title: '이메일',
-        value: 'hello@devhub.dev',
-        link: 'mailto:hello@devhub.dev',
+        value: 'devlikebear@gmail.com',
+        link: 'mailto:devlikebear@gmail.com',
       },
       {
         icon: '💼',
@@ -129,9 +129,9 @@ export const ko = {
       },
       {
         icon: '💬',
-        title: 'Twitter',
-        value: '@devhub',
-        link: 'https://twitter.com/devhub',
+        title: 'X',
+        value: '@devlikebear',
+        link: 'https://x.com/devlikebear',
       },
     ],
     issues: {
