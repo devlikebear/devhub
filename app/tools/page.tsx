@@ -16,7 +16,7 @@ const tools: Tool[] = [
     description: 'Epoch 타임스탬프와 날짜/시간 간 변환',
     icon: '🕐',
     category: 'converter',
-    status: 'coming-soon',
+    status: 'available',
   },
   {
     id: 'base64',
