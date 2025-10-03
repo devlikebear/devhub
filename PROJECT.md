@@ -87,7 +87,7 @@ devhub/
 #### 우선순위 중간
 - [x] **Hash Generator**: MD5, SHA-1, SHA-256 해시 생성 [#23](https://github.com/devlikebear/devhub/issues/23)
 - [x] **Regex Tester**: 정규표현식 테스트 & 매칭 결과 [#24](https://github.com/devlikebear/devhub/issues/24)
-- [ ] **Markdown Preview**: 실시간 마크다운 미리보기 [#25](https://github.com/devlikebear/devhub/issues/25)
+- [x] **Markdown Preview**: 실시간 마크다운 미리보기 [#25](https://github.com/devlikebear/devhub/issues/25)
 - [ ] **URL Encoder/Decoder**: URL 인코딩/디코딩 [#26](https://github.com/devlikebear/devhub/issues/26)
 - [ ] **JWT Decoder**: JWT 토큰 디코딩 & 검증 [#27](https://github.com/devlikebear/devhub/issues/27)
 
