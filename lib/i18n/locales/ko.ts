@@ -9,6 +9,13 @@ export const ko = {
       viewTools: '도구 둘러보기',
       viewGithub: 'GitHub에서 보기',
       learnMore: '자세히 보기',
+      clear: '초기화',
+      copy: '복사',
+      swap: '입력 ↔ 출력 교체',
+    },
+    messages: {
+      copySuccess: '복사되었습니다!',
+      copyError: '복사 실패',
     },
   },
   navbar: {
@@ -248,6 +255,222 @@ export const ko = {
         status: 'available',
       },
     ],
+  },
+  tools: {
+    base64: {
+      title: 'Base64 Encoder/Decoder',
+      subtitle: '문자열 ↔ Base64 인코딩/디코딩',
+      modes: {
+        encode: '인코딩 (Text → Base64)',
+        decode: '디코딩 (Base64 → Text)',
+      },
+      labels: {
+        inputEncode: '원본 텍스트',
+        inputDecode: 'Base64 문자열',
+        outputEncode: 'Base64 결과',
+        outputDecode: '디코딩 결과',
+        size: '크기',
+      },
+      placeholders: {
+        encode: '인코딩할 텍스트를 입력하세요...',
+        decode: '디코딩할 Base64 문자열을 입력하세요...',
+      },
+      error: '변환 중 오류가 발생했습니다',
+    },
+    color: {
+      title: 'Color Tool',
+      subtitle: 'HEX ↔ RGB ↔ HSL 변환 및 팔레트 생성',
+      inputLabel: '색상 입력',
+      placeholder: '#3b82f6 또는 rgb(59, 130, 246)',
+      hint: 'HEX, RGB, HSL 형식 지원',
+      previewLabel: '미리보기',
+      errorInvalid: '유효하지 않은 색상 형식입니다',
+      formatSectionTitle: '색상 형식',
+      formatLabels: {
+        hex: 'HEX',
+        rgb: 'RGB',
+        hsl: 'HSL',
+      },
+      complementaryTitle: '보색 (Complementary)',
+      analogousTitle: '유사색 (Analogous)',
+      triadicTitle: '3색 조화 (Triadic)',
+      shadesTitle: '명도 단계 (Shades)',
+      originalLabel: '원본',
+      complementaryLabel: '보색',
+      analogousLabel: ['유사색 1', '유사색 2', '원본'],
+      triadicLabel: ['원본', '조화 2', '조화 3'],
+      shadeLabel: ['명도 1', '명도 2', '명도 3', '명도 4', '명도 5'],
+    },
+    timestamp: {
+      title: 'Timestamp Converter',
+      subtitle: 'Epoch 타임스탬프 ↔ 날짜/시간 변환',
+      epochLabel: 'Epoch Timestamp',
+      epochPlaceholder: '1609459200000',
+      epochHint: '초 또는 밀리초 단위 (자동 감지)',
+      dateLabel: '날짜/시간',
+      datePlaceholder: '2021-01-01T00:00:00Z',
+      dateHint: 'ISO 8601 또는 파싱 가능한 형식',
+      nowButton: '현재 시간',
+      resultTitle: '변환 결과',
+      rows: {
+        epochMs: 'Epoch (밀리초)',
+        epochSec: 'Epoch (초)',
+        iso: 'ISO 8601',
+        local: '로컬 시간 (한국)',
+        utc: 'UTC',
+      },
+      copyLabels: {
+        epoch: 'Epoch',
+        epochSec: 'Epoch (초)',
+        iso: 'ISO 8601',
+        local: '로컬 시간',
+        utc: 'UTC',
+      },
+      errors: {
+        invalidTimestamp: '유효하지 않은 타임스탬프입니다',
+        invalidDate: '유효하지 않은 날짜 형식입니다',
+        generic: '변환 중 오류가 발생했습니다',
+      },
+    },
+    url: {
+      title: 'URL Encoder / Decoder',
+      subtitle: 'URL 전체 또는 특정 파라미터를 안전하게 인코딩/디코딩하세요',
+      mode: {
+        encode: '인코딩',
+        decode: '디코딩',
+      },
+      target: {
+        full: '전체 URL',
+        component: '쿼리 파라미터',
+      },
+      infoLabels: {
+        mode: '모드',
+        target: '대상',
+      },
+      placeholder: {
+        encode: '인코딩할 URL 또는 파라미터를 입력하세요',
+        decode: '디코딩할 문자열을 입력하세요',
+      },
+      reservedTitle: '예약 문자',
+      reservedDescription:
+        '쿼리 파라미터 모드에서는 모든 예약 문자가 퍼센트 인코딩됩니다.',
+      encodeHint:
+        '• 전체 URL 모드에서는 encodeURI를 사용하여 경로 구분자(`/`, `:` 등)를 유지합니다.\n• 쿼리 파라미터 모드에서는 encodeURIComponent를 사용해 모든 예약 문자를 퍼센트 인코딩합니다.',
+      safetyWarning: '⚠️ 디코딩 결과에 안전하지 않은 프로토콜이 포함되어 있을 수 있습니다.',
+      resultTitle: '결과',
+      errors: {
+        generic: '변환 중 오류가 발생했습니다',
+      },
+    },
+    json: {
+      title: 'JSON Formatter',
+      subtitle: 'JSON 포맷팅, 검증, 압축',
+      buttons: {
+        format: '포맷팅',
+        minify: '압축',
+        sample: '샘플 JSON',
+        clear: '초기화',
+      },
+      indentLabel: '들여쓰기',
+      indentOptions: {
+        two: '2 spaces',
+        four: '4 spaces',
+        tab: 'Tab',
+      },
+      input: {
+        label: '입력',
+        placeholder: '{"key": "value"}',
+        errorTitle: '⚠️ JSON 오류',
+        validMessage: '✓ 유효한 JSON입니다',
+        analysis: {
+          summary: '타입: {{type}} | 키: {{keys}} | 깊이: {{depth}}',
+        },
+        lineColumn: '위치: 줄 {{line}}, 열 {{column}}',
+      },
+      output: {
+        label: '결과',
+        placeholder: '포맷팅 또는 압축 버튼을 클릭하세요',
+      },
+      guide: {
+        title: '사용 가이드',
+        items: [
+          '• 포맷팅: JSON을 읽기 쉽게 들여쓰기와 줄바꿈 추가',
+          '• 압축: 불필요한 공백을 제거하여 최소 크기로 압축',
+          '• 실시간 검증: 입력 즉시 JSON 유효성 검사',
+          '• 에러 위치: 오류 발생 시 정확한 줄과 열 번호 표시',
+          '• 분석 정보: 타입, 키 개수, 깊이 등 JSON 구조 분석',
+          '• 프라이버시: 모든 처리는 브라우저에서 진행, 서버 전송 없음',
+        ],
+        keyboardTitle: '키보드 단축키',
+        shortcuts: {
+          format: '• Ctrl/Cmd + Enter: 포맷팅',
+          minify: '• Ctrl/Cmd + M: 압축',
+        },
+      },
+      errors: {
+        generic: 'JSON 처리 중 오류가 발생했습니다',
+      },
+      sample: `{
+  "name": "DevHub",
+  "version": "1.0.0",
+  "tools": [
+    { "id": "timestamp", "name": "타임스탬프 변환기", "category": "변환" },
+    { "id": "base64", "name": "Base64 인코더/디코더", "category": "변환" }
+  ],
+  "features": {
+    "privacy": true,
+    "free": true,
+    "responsive": true
+  }
+}`,
+    },
+    markdown: {
+      title: 'Markdown Preview',
+      subtitle: '입력과 동시에 HTML 결과를 확인하며 마크다운 문서를 작성하세요',
+      inputTitle: '마크다운 입력',
+      previewTitle: '라이브 미리보기',
+      buttons: {
+        loadSample: '샘플 불러오기',
+        clear: '지우기',
+        copyMarkdown: '마크다운 복사',
+        copyHtml: 'HTML 복사',
+      },
+      placeholder: '# 여기에 마크다운을 입력하세요',
+      emptyPreview: '미리볼 내용이 없습니다. 왼쪽 영역에 마크다운을 입력해보세요.',
+      copySuccess: '{{type}}을(를) 복사했습니다',
+      copyError: '클립보드 복사에 실패했습니다',
+      guide: {
+        title: '사용 가이드',
+        items: [
+          '• 입력한 텍스트는 브라우저에서만 처리되며 서버로 전송되지 않습니다.',
+          '• 기본적인 제목, 리스트, 코드 블록, 링크, 이미지, 인용구 등을 지원합니다.',
+          '• HTML 복사를 통해 블로그나 문서 편집기에 바로 붙여넣을 수 있습니다.',
+          '• 이미지 URL은 안전하지 않은 프로토콜이 포함되면 자동으로 차단됩니다.',
+        ],
+      },
+      sample: `# DevHub Markdown Preview
+
+실시간으로 작성 중인 마크다운을 확인해보세요.
+
+## 지원되는 문법
+- **굵게** 및 *기울임*
+- ~~취소선~~
+- 중첩 리스트 예시
+- [링크](https://devhub.marvin-42.com) 와 ![이미지](https://placehold.co/80x40)
+
+> 인용구는 이렇게 표시됩니다.
+
+\`\`\`
+def greet(name):
+    return f"Hello, {name}!"
+
+greet('DevHub')
+\`\`\`
+
+---
+
+DevHub에서 빠르게 마크다운 초안을 작성해보세요!`,
+    },
   },
 };
 

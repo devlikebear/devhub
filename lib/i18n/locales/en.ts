@@ -9,6 +9,13 @@ export const en = {
       viewTools: 'Explore Tools',
       viewGithub: 'View on GitHub',
       learnMore: 'Learn More',
+      clear: 'Clear',
+      copy: 'Copy',
+      swap: 'Swap Input/Output',
+    },
+    messages: {
+      copySuccess: 'Copied!',
+      copyError: 'Failed to copy',
     },
   },
   navbar: {
@@ -247,6 +254,222 @@ export const en = {
         status: 'available',
       },
     ],
+  },
+  tools: {
+    base64: {
+      title: 'Base64 Encoder/Decoder',
+      subtitle: 'Convert plain text to and from Base64 instantly.',
+      modes: {
+        encode: 'Encoding (Text → Base64)',
+        decode: 'Decoding (Base64 → Text)',
+      },
+      labels: {
+        inputEncode: 'Original Text',
+        inputDecode: 'Base64 String',
+        outputEncode: 'Base64 Result',
+        outputDecode: 'Decoded Result',
+        size: 'Size',
+      },
+      placeholders: {
+        encode: 'Type text to encode...',
+        decode: 'Paste a Base64 encoded string...',
+      },
+      error: 'An error occurred while converting.',
+    },
+    color: {
+      title: 'Color Tool',
+      subtitle: 'Convert between HEX, RGB, HSL and generate color palettes.',
+      inputLabel: 'Color Input',
+      placeholder: '#3b82f6 or rgb(59, 130, 246)',
+      hint: 'Supports HEX, RGB, and HSL formats',
+      previewLabel: 'Preview',
+      errorInvalid: 'The provided value is not a valid color.',
+      formatSectionTitle: 'Color Formats',
+      formatLabels: {
+        hex: 'HEX',
+        rgb: 'RGB',
+        hsl: 'HSL',
+      },
+      complementaryTitle: 'Complementary',
+      analogousTitle: 'Analogous',
+      triadicTitle: 'Triadic',
+      shadesTitle: 'Shades',
+      originalLabel: 'Original',
+      complementaryLabel: 'Complementary',
+      analogousLabel: ['Analogous 1', 'Analogous 2', 'Original'],
+      triadicLabel: ['Original', 'Triad 2', 'Triad 3'],
+      shadeLabel: ['Shade 1', 'Shade 2', 'Shade 3', 'Shade 4', 'Shade 5'],
+    },
+    timestamp: {
+      title: 'Timestamp Converter',
+      subtitle: 'Convert between epoch timestamps and human-readable time.',
+      epochLabel: 'Epoch Timestamp',
+      epochPlaceholder: '1609459200000',
+      epochHint: 'Automatically detects seconds or milliseconds',
+      dateLabel: 'Date & Time',
+      datePlaceholder: '2021-01-01T00:00:00Z',
+      dateHint: 'Supports ISO 8601 and other parseable formats',
+      nowButton: 'Set to Now',
+      resultTitle: 'Conversion Result',
+      rows: {
+        epochMs: 'Epoch (milliseconds)',
+        epochSec: 'Epoch (seconds)',
+        iso: 'ISO 8601',
+        local: 'Local Time (Korea)',
+        utc: 'UTC',
+      },
+      copyLabels: {
+        epoch: 'Epoch (ms)',
+        epochSec: 'Epoch (s)',
+        iso: 'ISO 8601',
+        local: 'Local Time',
+        utc: 'UTC',
+      },
+      errors: {
+        invalidTimestamp: 'The provided value is not a valid timestamp.',
+        invalidDate: 'The provided value is not a valid date string.',
+        generic: 'An error occurred while converting.',
+      },
+    },
+    url: {
+      title: 'URL Encoder / Decoder',
+      subtitle: 'Encode or decode full URLs and query parameters safely.',
+      mode: {
+        encode: 'Encoding',
+        decode: 'Decoding',
+      },
+      target: {
+        full: 'Full URL',
+        component: 'Query Parameter',
+      },
+      infoLabels: {
+        mode: 'Mode',
+        target: 'Target',
+      },
+      placeholder: {
+        encode: 'Enter a URL or parameter to encode',
+        decode: 'Paste a string to decode',
+      },
+      reservedTitle: 'Reserved Characters',
+      reservedDescription:
+        'In query parameter mode all reserved characters are percent-encoded.',
+      encodeHint:
+        '• Full URL mode keeps separators such as `/` or `:` by using encodeURI.\n• Query parameter mode uses encodeURIComponent so every reserved character is escaped.',
+      safetyWarning: '⚠️ Decoded result may include an unsafe protocol.',
+      resultTitle: 'Result',
+      errors: {
+        generic: 'An error occurred while converting.',
+      },
+    },
+    json: {
+      title: 'JSON Formatter',
+      subtitle: 'Format, validate, and minify JSON payloads.',
+      buttons: {
+        format: 'Format',
+        minify: 'Minify',
+        sample: 'Sample JSON',
+        clear: 'Clear',
+      },
+      indentLabel: 'Indentation',
+      indentOptions: {
+        two: '2 spaces',
+        four: '4 spaces',
+        tab: 'Tab',
+      },
+      input: {
+        label: 'Input',
+        placeholder: '{"key": "value"}',
+        errorTitle: '⚠️ JSON Error',
+        validMessage: '✓ This is valid JSON.',
+        analysis: {
+          summary: 'Type: {{type}} | Keys: {{keys}} | Depth: {{depth}}',
+        },
+        lineColumn: 'Line {{line}}, Column {{column}}',
+      },
+      output: {
+        label: 'Output',
+        placeholder: 'Click the format or minify button to get started.',
+      },
+      guide: {
+        title: 'Usage Guide',
+        items: [
+          '• Format: Adds indentation and line breaks for readability.',
+          '• Minify: Removes whitespace to reduce payload size.',
+          '• Live Validation: JSON is validated as you type.',
+          '• Error Location: Exact line and column are displayed on failure.',
+          '• Analysis: Inspect type, key count, and nesting depth.',
+          '• Privacy: Everything runs in your browser, nothing is uploaded.',
+        ],
+        keyboardTitle: 'Keyboard Shortcuts',
+        shortcuts: {
+          format: '• Ctrl/Cmd + Enter: Format',
+          minify: '• Ctrl/Cmd + M: Minify',
+        },
+      },
+      errors: {
+        generic: 'An error occurred while processing the JSON.',
+      },
+      sample: `{
+  "name": "DevHub",
+  "version": "1.0.0",
+  "tools": [
+    { "id": "timestamp", "name": "Timestamp Converter", "category": "converter" },
+    { "id": "base64", "name": "Base64 Encoder/Decoder", "category": "converter" }
+  ],
+  "features": {
+    "privacy": true,
+    "free": true,
+    "responsive": true
+  }
+}`,
+    },
+    markdown: {
+      title: 'Markdown Preview',
+      subtitle: 'Write and preview Markdown in real time.',
+      inputTitle: 'Markdown Input',
+      previewTitle: 'Live Preview',
+      buttons: {
+        loadSample: 'Load Sample',
+        clear: 'Clear',
+        copyMarkdown: 'Copy Markdown',
+        copyHtml: 'Copy HTML',
+      },
+      placeholder: '# Start typing your Markdown here',
+      emptyPreview: 'Nothing to preview. Type Markdown in the left pane.',
+      copySuccess: '{{type}} copied!',
+      copyError: 'Failed to copy to clipboard',
+      guide: {
+        title: 'Usage Guide',
+        items: [
+          '• All text is processed locally in your browser and is never sent to a server.',
+          '• Supports headings, lists, code blocks, links, images, blockquotes, and more.',
+          '• Copy HTML to paste directly into blogs or document editors.',
+          '• Image URLs with unsafe protocols are automatically blocked.',
+        ],
+      },
+      sample: `# DevHub Markdown Preview
+
+See your Markdown rendered in real time.
+
+## Supported Syntax
+- **Bold** and *italic*
+- ~~Strikethrough~~
+- Nested lists
+- [Links](https://devhub.marvin-42.com) and ![images](https://placehold.co/80x40)
+
+> Blockquotes look like this.
+
+\`\`\`
+def greet(name):
+    return f"Hello, {name}!"
+
+greet('DevHub')
+\`\`\`
+
+---
+
+Quickly draft your Markdown with DevHub!`,
+    },
   },
 };
 
