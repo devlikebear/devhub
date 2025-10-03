@@ -89,7 +89,7 @@ devhub/
 - [x] **Regex Tester**: 정규표현식 테스트 & 매칭 결과 [#24](https://github.com/devlikebear/devhub/issues/24)
 - [x] **Markdown Preview**: 실시간 마크다운 미리보기 [#25](https://github.com/devlikebear/devhub/issues/25)
 - [x] **URL Encoder/Decoder**: URL 인코딩/디코딩 [#26](https://github.com/devlikebear/devhub/issues/26)
-- [ ] **JWT Decoder**: JWT 토큰 디코딩 & 검증 [#27](https://github.com/devlikebear/devhub/issues/27)
+- [x] **JWT Decoder**: JWT 토큰 디코딩 & 검증 [#27](https://github.com/devlikebear/devhub/issues/27)
 
 #### 추가 도구 (향후 확장)
 - [ ] Diff Checker: 텍스트 비교
