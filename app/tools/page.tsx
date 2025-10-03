@@ -80,7 +80,7 @@ const tools: Tool[] = [
     description: 'URL 인코딩/디코딩',
     icon: '🔗',
     category: 'converter',
-    status: 'coming-soon',
+    status: 'available',
   },
   {
     id: 'jwt',
