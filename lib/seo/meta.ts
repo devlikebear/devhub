@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 export const SITE_NAME = 'DevHub';
-export const SITE_URL = 'https://devhub.dev';
+export const SITE_URL = 'https://devhub.marvin-42.com';
 export const SITE_DESCRIPTION = '개발자 생산성을 위한 온라인 유틸리티 도구 모음 DevHub';
 export const DEFAULT_OG_IMAGE = '/og/default.svg';
 

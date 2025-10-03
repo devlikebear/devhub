@@ -11,7 +11,7 @@ const SAMPLE_MARKDOWN = `# DevHub Markdown Preview
 - **굵게** 및 *기울임*
 - ~~취소선~~
 - 중첩 리스트 예시
-- [링크](https://devhub.dev) 와 ![이미지](https://placehold.co/80x40)
+- [링크](https://devhub.marvin-42.com) 와 ![이미지](https://placehold.co/80x40)
 
 > 인용구는 이렇게 표시됩니다.
 

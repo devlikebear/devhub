@@ -11,8 +11,8 @@ export default function ContactPage() {
     {
       icon: '📧',
       title: 'Email',
-      value: 'hello@devhub.dev',
-      link: 'mailto:hello@devhub.dev',
+      value: 'devlikebear@gmail.com',
+      link: 'mailto:devlikebear@gmail.com',
     },
     {
       icon: '💼',
@@ -22,9 +22,9 @@ export default function ContactPage() {
     },
     {
       icon: '💬',
-      title: 'Twitter',
-      value: '@devhub',
-      link: 'https://twitter.com/devhub',
+      title: 'X',
+      value: '@devlikebear',
+      link: 'https://x.com/devlikebear',
     },
   ];
 

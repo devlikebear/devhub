@@ -16,13 +16,13 @@ type Target = 'full' | 'component';
 export default function UrlToolPage() {
   const [mode, setMode] = useState<Mode>('encode');
   const [target, setTarget] = useState<Target>('full');
-  const [input, setInput] = useState('https://devhub.dev/tools?query=hello world&lang=ko-KR');
+  const [input, setInput] = useState('https://devhub.marvin-42.com/tools?query=hello world&lang=ko-KR');
   const [output, setOutput] = useState('');
   const [error, setError] = useState('');
   const [copyMessage, setCopyMessage] = useState('');
 
   useEffect(() => {
-    handleConvert('https://devhub.dev/tools?query=hello world&lang=ko-KR', 'encode', 'full');
+    handleConvert('https://devhub.marvin-42.com/tools?query=hello world&lang=ko-KR', 'encode', 'full');
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
