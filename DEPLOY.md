@@ -24,11 +24,13 @@ git push -u origin main
 
 4. **빌드 설정**
    ```yaml
-   프레임워크 프리셋: Next.js
+   프레임워크 프리셋: Next.js (Static HTML Export)
    빌드 명령어: npm run build
-   빌드 출력 디렉토리: .next
+   빌드 출력 디렉토리: out
    Node 버전: 20
    ```
+
+   ⚠️ **중요**: `next.config.ts`에 `output: 'export'` 설정 필요
 
 5. **환경 변수 설정** (필요시)
    ```
