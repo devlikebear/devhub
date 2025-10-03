@@ -1,3 +1,10 @@
+import { buildPageMetadata } from "@/lib/seo/meta";
+
+export const metadata = buildPageMetadata({
+  title: "DevHub | 개발자 유틸리티 플랫폼",
+  path: "/",
+});
+
 export default function Home() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 pt-20">
