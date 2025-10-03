@@ -1,6 +1,7 @@
 'use client';
 
 import { useI18n, useTranslation } from '@/components/i18n/I18nProvider';
+import { GlassCard, GlassButton } from '@/components/ui/glass';
 
 export default function AboutPage() {
   const tButtons = useTranslation('common.buttons');
@@ -17,30 +18,30 @@ export default function AboutPage() {
 
         <section className="mb-16">
           <h2 className="text-2xl font-bold text-white mb-6">{about.mission.title}</h2>
-          <div className="bg-gray-800/50 rounded-lg border border-gray-700 p-8">
+          <GlassCard className="p-8">
             {about.mission.paragraphs.map((paragraph) => (
               <p key={paragraph} className="text-gray-300 leading-relaxed mb-4 last:mb-0">
                 {paragraph}
               </p>
             ))}
-          </div>
+          </GlassCard>
         </section>
 
         <section className="mb-16">
           <h2 className="text-2xl font-bold text-white mb-6">{about.featuresTitle}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {about.features.map((feature) => (
-              <div key={feature.title} className="bg-gray-800/50 rounded-lg border border-gray-700 p-6">
+              <GlassCard key={feature.title} className="p-6">
                 <h3 className="text-lg font-semibold text-white mb-3">{feature.title}</h3>
                 <p className="text-gray-400 text-sm">{feature.description}</p>
-              </div>
+              </GlassCard>
             ))}
           </div>
         </section>
 
         <section className="mb-16">
           <h2 className="text-2xl font-bold text-white mb-6">{about.techStack.title}</h2>
-          <div className="bg-gray-800/50 rounded-lg border border-gray-700 p-8">
+          <GlassCard className="p-8">
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
               {about.techStack.columns.map((column) => (
                 <div key={column.title}>
@@ -53,19 +54,19 @@ export default function AboutPage() {
                 </div>
               ))}
             </div>
-          </div>
+          </GlassCard>
         </section>
 
         <section>
           <h2 className="text-2xl font-bold text-white mb-6">{about.openSource.title}</h2>
-          <div className="bg-gray-800/50 rounded-lg border border-gray-700 p-8 text-center">
+          <GlassCard className="p-8 text-center">
             <p className="text-gray-300 mb-6">{about.openSource.description}</p>
             <a
               href="https://github.com/devlikebear/devhub"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-colors"
             >
+              <GlassButton variant="primary" className="inline-flex items-center px-6 py-3">
               <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
                 <path
                   fillRule="evenodd"
@@ -74,8 +75,9 @@ export default function AboutPage() {
                 />
               </svg>
               {tButtons('viewGithub')}
+              </GlassButton>
             </a>
-          </div>
+          </GlassCard>
         </section>
       </main>
     </div>

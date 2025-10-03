@@ -17,11 +17,11 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="fixed top-0 w-full bg-gray-900/95 backdrop-blur-sm border-b border-gray-800 z-50">
+    <nav className="fixed top-0 w-full backdrop-blur-xl bg-gray-900/80 border-b border-white/10 z-50 shadow-lg shadow-black/20">
       <div className="max-w-6xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="text-2xl font-bold text-white hover:text-blue-400 transition-colors">
+          <Link href="/" className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 hover:from-blue-300 hover:to-purple-300 transition-all">
             DevHub
           </Link>
 
@@ -31,7 +31,7 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-gray-300 hover:text-white transition-colors"
+                className="text-gray-300 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-blue-400 hover:to-purple-400 transition-all duration-300"
               >
                 {link.label}
               </Link>

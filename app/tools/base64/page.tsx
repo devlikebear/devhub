@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { encodeToBase64, decodeFromBase64, formatFileSize } from "@/lib/converters/base64";
 import { useI18n, useTranslation } from "@/components/i18n/I18nProvider";
+import { GlassCard, GlassButton, GlassTextarea } from '@/components/ui/glass';
 
 type ConversionMode = "encode" | "decode";
 
@@ -149,97 +150,94 @@ export default function Base64EncoderDecoder() {
         </div>
 
         <div className="flex gap-4 mb-8">
-          <button
+          <GlassButton
             onClick={() => handleModeChange("encode")}
-            className={`flex-1 px-6 py-3 rounded-lg font-semibold transition-colors ${
-              mode === "encode"
-                ? "bg-blue-600 text-white"
-                : "bg-gray-800 text-gray-400 hover:bg-gray-700"
-            }`}
+            variant={mode === "encode" ? "primary" : "secondary"}
+            className="flex-1 px-6 py-3"
           >
             {text.modes.encode}
-          </button>
-          <button
+          </GlassButton>
+          <GlassButton
             onClick={() => handleModeChange("decode")}
-            className={`flex-1 px-6 py-3 rounded-lg font-semibold transition-colors ${
-              mode === "decode"
-                ? "bg-blue-600 text-white"
-                : "bg-gray-800 text-gray-400 hover:bg-gray-700"
-            }`}
+            variant={mode === "decode" ? "primary" : "secondary"}
+            className="flex-1 px-6 py-3"
           >
             {text.modes.decode}
-          </button>
+          </GlassButton>
         </div>
 
-        <div className="mb-6">
-          <div className="flex items-center justify-between mb-2">
+        <GlassCard className="p-6 mb-6">
+          <div className="flex items-center justify-between mb-4">
             <label className="block text-white font-semibold">
               {mode === "encode" ? text.labels.inputEncode : text.labels.inputDecode}
             </label>
-            <button
+            <GlassButton
               onClick={handleClear}
-              className="text-sm text-gray-400 hover:text-white transition-colors"
+              variant="secondary"
+              className="text-sm px-3 py-1"
             >
               {tButtons("clear")}
-            </button>
+            </GlassButton>
           </div>
-          <textarea
+          <GlassTextarea
             value={input}
             onChange={(e) => handleConvert(e.target.value, mode)}
             placeholder={mode === "encode" ? text.placeholders.encode : text.placeholders.decode}
             rows={8}
-            className="w-full px-4 py-3 bg-gray-900 text-white rounded-lg border border-gray-600 focus:border-blue-500 focus:outline-none resize-none font-mono"
+            className="font-mono"
           />
           {input && (
             <p className="text-sm text-gray-400 mt-2">
               {text.labels.size}: {formatFileSize(new Blob([input]).size)}
             </p>
           )}
-        </div>
+        </GlassCard>
 
         {error && (
-          <div className="mb-6 p-4 bg-red-900/20 border border-red-700 rounded-lg">
+          <GlassCard hover={false} className="mb-6 p-4 bg-red-500/10 border-red-500/30">
             <p className="text-red-400">⚠️ {error}</p>
-          </div>
+          </GlassCard>
         )}
 
         {copyMessage && (
-          <div className="mb-6 p-4 bg-green-900/20 border border-green-700 rounded-lg">
+          <GlassCard hover={false} className="mb-6 p-4 bg-green-500/10 border-green-500/30">
             <p className="text-green-400">✓ {copyMessage}</p>
-          </div>
+          </GlassCard>
         )}
 
         {output && !error && (
-          <div className="mb-6">
-            <div className="flex items-center justify-between mb-2">
+          <GlassCard className="p-6 mb-6">
+            <div className="flex items-center justify-between mb-4">
               <label className="block text-white font-semibold">
                 {mode === "encode" ? text.labels.outputEncode : text.labels.outputDecode}
               </label>
               <div className="flex gap-2">
-                <button
+                <GlassButton
                   onClick={handleSwap}
-                  className="px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg text-sm font-semibold transition-colors"
+                  variant="secondary"
+                  className="px-4 py-2 text-sm"
                 >
                   {tButtons("swap")}
-                </button>
-                <button
+                </GlassButton>
+                <GlassButton
                   onClick={() => copyToClipboard(output)}
-                  className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-semibold transition-colors"
+                  variant="primary"
+                  className="px-4 py-2 text-sm"
                 >
                   {tButtons("copy")}
-                </button>
+                </GlassButton>
               </div>
             </div>
-            <textarea
+            <GlassTextarea
               value={output}
               readOnly
               rows={8}
-              className="w-full px-4 py-3 bg-gray-900 text-white rounded-lg border border-gray-600 resize-none font-mono"
+              className="font-mono"
             />
             <p className="text-sm text-gray-400 mt-2">
               {text.labels.size}: {formatFileSize(new Blob([output]).size)}
             </p>
-          </div>
+          </GlassCard>
         )}
       </main>
     </div>

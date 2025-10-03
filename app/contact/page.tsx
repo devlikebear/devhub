@@ -1,6 +1,7 @@
 'use client';
 
 import { useI18n } from '@/components/i18n/I18nProvider';
+import { GlassCard, GlassButton } from '@/components/ui/glass';
 
 export default function ContactPage() {
   const { dictionary } = useI18n();
@@ -21,25 +22,26 @@ export default function ContactPage() {
               href={method.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-6 bg-gray-800/50 rounded-lg border border-gray-700 hover:border-blue-600 transition-all group text-center"
             >
-              <div className="text-4xl mb-4">{method.icon}</div>
-              <h3 className="text-lg font-semibold text-white mb-2">{method.title}</h3>
-              <p className="text-gray-400 group-hover:text-blue-400 transition-colors">{method.value}</p>
+              <GlassCard className="p-6 text-center hover:border-blue-400/50 group">
+                <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">{method.icon}</div>
+                <h3 className="text-lg font-semibold text-white mb-2">{method.title}</h3>
+                <p className="text-gray-400 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 transition-all">{method.value}</p>
+              </GlassCard>
             </a>
           ))}
         </div>
 
         <section className="mb-16">
-          <div className="bg-gray-800/50 rounded-lg border border-gray-700 p-8">
+          <GlassCard className="p-8">
             <h2 className="text-2xl font-bold text-white mb-4">{contact.issues.title}</h2>
             <p className="text-gray-300 mb-6">{contact.issues.description}</p>
             <a
               href="https://github.com/devlikebear/devhub/issues"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-colors"
             >
+              <GlassButton variant="primary" className="inline-flex items-center px-6 py-3">
               <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
                 <path
                   fillRule="evenodd"
@@ -48,18 +50,19 @@ export default function ContactPage() {
                 />
               </svg>
               {contact.issues.button}
+              </GlassButton>
             </a>
-          </div>
+          </GlassCard>
         </section>
 
         <section>
           <h2 className="text-2xl font-bold text-white mb-6">{contact.faqTitle}</h2>
           <div className="space-y-4">
             {contact.faq.map((item) => (
-              <div key={item.question} className="bg-gray-800/50 rounded-lg border border-gray-700 p-6">
+              <GlassCard key={item.question} className="p-6">
                 <h3 className="text-lg font-semibold text-white mb-2">{item.question}</h3>
                 <p className="text-gray-400">{item.answer}</p>
-              </div>
+              </GlassCard>
             ))}
           </div>
         </section>

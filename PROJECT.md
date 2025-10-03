@@ -103,6 +103,11 @@ devhub/
 - [x] Open Graph 이미지 [#34](https://github.com/devlikebear/devhub/issues/34)
 - [x] 다국어 지원 (한국어/영어) [#35](https://github.com/devlikebear/devhub/issues/35)
 - [ ] 최신 유행하는 모던한 디자인 적용 [#36](https://github.com/devlikebear/devhub/issues/36)
+  - [ ] Glassmorphism UI 컴포넌트 구현 (카드, 버튼, 입력 필드)
+  - [ ] 인터랙티브 애니메이션 및 마이크로 인터랙션 추가
+  - [ ] 컬러 시스템 현대화 (Bold & Vibrant palette)
+  - [ ] 레이아웃 개선 및 반응형 최적화
+  - [ ] 전체 페이지 디자인 검증 및 테스트
 - [ ] 다크모드 토글 [#37](https://github.com/devlikebear/devhub/issues/37)
 - [ ] 애니메이션 효과 [#38](https://github.com/devlikebear/devhub/issues/38)
 - [ ] 성능 최적화 (이미지, 폰트) [#39](https://github.com/devlikebear/devhub/issues/39)
@@ -110,13 +115,79 @@ devhub/
 - [ ] 도구별 사용 가이드 [#41](https://github.com/devlikebear/devhub/issues/41)
 
 ### Phase 6: 추가 기능
-- [ ] 도구 검색 기능
+- [x] 도구 검색 기능
 - [ ] 키보드 단축키 지원
 - [ ] 방문자 통계 (Cloudflare Analytics)
 - [ ] PWA 지원 (오프라인 사용)
 - [ ] 결과 공유 기능 (URL 파라미터)
 
 ## 🎨 디자인 시스템
+
+### 2025 모던 디자인 트렌드 적용 전략
+
+#### 핵심 트렌드
+1. **Glassmorphism** (최우선)
+   - 반투명 유리 효과 (frosted glass)
+   - `backdrop-blur`, `bg-opacity`, 미묘한 border
+   - SaaS 플랫폼에 최적화된 미래지향적 디자인
+
+2. **Bold & Vibrant Colors**
+   - 뮤트 톤 → 생동감 있는 컬러 전환
+   - 개성과 에너지를 표현하는 인터페이스
+
+3. **Interactive Elements**
+   - 마이크로 애니메이션 (hover, ripple, loading)
+   - 사용자 행동을 유도하는 인터랙션
+
+4. **Modern Layout**
+   - Bento Grid 스타일 (정돈된 레이아웃)
+   - 유연하고 반응형 디자인
+
+#### 구현 계획
+
+**Phase 1: Glassmorphism UI 컴포넌트**
+```tsx
+// 도구 카드
+backdrop-blur-xl bg-white/5 border-white/10
+
+// 입력 필드 & 결과 영역
+backdrop-blur-md bg-white/10
+shadow-[0_8px_32px_0_rgba(31,38,135,0.37)]
+border border-white/18
+
+// 버튼
+bg-gradient-to-r from-blue-500/90 to-purple-500/90
+backdrop-blur-md hover:shadow-lg
+```
+
+**Phase 2: 컬러 시스템 현대화**
+```css
+/* 기존 */
+- Background: gradient (gray-900 → gray-800 → gray-900)
+- Primary: blue-600
+- Secondary: gray-700
+- Text: white, gray-300, gray-400, gray-500
+- Border: gray-700
+
+/* 새로운 (Bold & Vibrant) */
+- Primary Gradient: blue-500 → purple-600
+- Accent Colors: pink-500, cyan-500 (도구별 구분)
+- Background: gradient with vibrant hints
+- Text: high contrast white + colorful highlights
+- Glass Effects: white/5, white/10, white/18
+```
+
+**Phase 3: 인터랙티브 애니메이션**
+- 카드 hover: scale + glow 효과
+- 버튼 클릭: ripple 애니메이션
+- 페이지 전환: fade 효과
+- 입력 필드 focus: border glow
+- 결과 복사: 성공 피드백 애니메이션
+
+**Phase 4: 레이아웃 개선**
+- Tools 페이지: Bento Grid 스타일
+- 다양한 카드 크기 (주요 도구 강조)
+- 반응형 그리드 (mobile: 1열, tablet: 2열, desktop: 3열)
 
 ### 컬러 팔레트
 ```css

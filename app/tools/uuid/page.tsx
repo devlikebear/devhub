@@ -7,6 +7,7 @@ import {
   formatUUIDHyphens,
 } from '@/lib/converters/uuid';
 import { useI18n } from '@/components/i18n/I18nProvider';
+import { GlassCard, GlassButton } from '@/components/ui/glass';
 
 type UuidDictionary = {
   title: string;
@@ -105,7 +106,7 @@ export default function UUIDGenerator() {
         </div>
 
         {/* Controls */}
-        <div className="p-6 bg-gray-800/50 rounded-lg border border-gray-700 mb-8">
+        <GlassCard className="p-6 mb-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
             {/* Count */}
             <div>
@@ -152,36 +153,39 @@ export default function UUIDGenerator() {
 
           {/* Actions */}
           <div className="flex flex-wrap gap-4">
-            <button
+            <GlassButton
               onClick={handleGenerate}
-              className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-colors"
+              variant="primary"
+              className="px-6 py-3"
             >
               {text.buttons.generate}
-            </button>
+            </GlassButton>
             {uuids.length > 0 && (
               <>
-                <button
+                <GlassButton
                   onClick={copyAllToClipboard}
-                  className="px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg font-semibold transition-colors"
+                  variant="primary"
+                  className="px-6 py-3 bg-gradient-to-r from-green-500/90 to-emerald-500/90 hover:from-green-600/90 hover:to-emerald-600/90"
                 >
                   {text.buttons.copyAll}
-                </button>
-                <button
+                </GlassButton>
+                <GlassButton
                   onClick={handleClear}
-                  className="px-6 py-3 bg-gray-700 hover:bg-gray-600 text-white rounded-lg font-semibold transition-colors"
+                  variant="secondary"
+                  className="px-6 py-3"
                 >
                   {text.buttons.clear}
-                </button>
+                </GlassButton>
               </>
             )}
           </div>
-        </div>
+        </GlassCard>
 
         {/* Copy Message */}
         {copyMessage && (
-          <div className="mb-6 p-4 bg-green-900/20 border border-green-700 rounded-lg">
+          <GlassCard hover={false} className="mb-6 p-4 bg-green-500/10 border-green-500/30">
             <p className="text-green-400">✓ {copyMessage}</p>
-          </div>
+          </GlassCard>
         )}
 
         {/* Results */}
@@ -195,9 +199,9 @@ export default function UUIDGenerator() {
 
             <div className="space-y-2">
               {uuids.map((uuid, index) => (
-                <div
+                <GlassCard
                   key={index}
-                  className="flex items-center justify-between p-4 bg-gray-800/50 rounded-lg border border-gray-700 hover:border-gray-600 transition-colors group"
+                  className="flex items-center justify-between p-4 group"
                 >
                   <div className="flex items-center space-x-4 flex-1">
                     <span className="text-gray-500 font-mono text-sm w-12">
@@ -207,20 +211,21 @@ export default function UUIDGenerator() {
                       {uuid}
                     </code>
                   </div>
-                  <button
+                  <GlassButton
                     onClick={() => copyToClipboard(uuid)}
-                    className="ml-4 px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg text-sm font-semibold transition-colors opacity-0 group-hover:opacity-100"
+                    variant="secondary"
+                    className="ml-4 px-4 py-2 text-sm opacity-0 group-hover:opacity-100"
                   >
                     {text.buttons.copy}
-                  </button>
-                </div>
+                  </GlassButton>
+                </GlassCard>
               ))}
             </div>
           </div>
         )}
 
         {/* Guide Section */}
-        <div className="mt-12 p-6 bg-gray-800/30 rounded-lg border border-gray-700">
+        <GlassCard hover={false} className="mt-12 p-6 bg-white/5">
           <h3 className="text-xl font-semibold text-white mb-4">{text.guide.title}</h3>
           <div className="space-y-2 text-gray-300">
             {text.guide.items.map((item, index) => (
@@ -245,7 +250,7 @@ export default function UUIDGenerator() {
               </p>
             </div>
           </div>
-        </div>
+        </GlassCard>
       </main>
     </div>
   );

@@ -3,6 +3,7 @@
 import { useMemo, useState } from 'react';
 import { markdownToHtml } from '@/lib/formatters/markdown';
 import { useI18n } from '@/components/i18n/I18nProvider';
+import { GlassCard, GlassButton, GlassInput, GlassTextarea } from '@/components/ui/glass';
 
 type MarkdownDictionary = {
   title: string;
@@ -94,13 +95,13 @@ export default function MarkdownPreviewPage() {
             <div className="flex flex-wrap gap-2 mt-4 text-sm">
               <button
                 onClick={() => handleCopy(input, tMarkdown.buttons.copyMarkdown)}
-                className="px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-colors"
+                className="px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white rounded-lg transition-colors"
               >
                 {tMarkdown.buttons.copyMarkdown}
               </button>
               <button
                 onClick={() => handleCopy(html, 'HTML')}
-                className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
+                className="px-4 py-2 bg-gradient-to-r from-blue-500/90 to-purple-500/90 hover:from-blue-600/90 hover:to-purple-600/90 text-white rounded-lg transition-colors"
               >
                 {tMarkdown.buttons.copyHtml}
               </button>
@@ -121,7 +122,7 @@ export default function MarkdownPreviewPage() {
         </section>
 
         {copyMessage && (
-          <div className="mb-8 p-4 bg-green-900/20 border border-green-700 rounded-lg text-green-400 text-sm">
+          <div className="mb-8 p-4 bg-green-500/10 border-green-500/30 rounded-lg text-green-400 text-sm">
             ✓ {copyMessage}
           </div>
         )}
