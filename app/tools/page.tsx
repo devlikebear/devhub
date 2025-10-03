@@ -56,7 +56,7 @@ const tools: Tool[] = [
     description: 'MD5, SHA-1, SHA-256 해시 생성',
     icon: '🔐',
     category: 'generator',
-    status: 'coming-soon',
+    status: 'available',
   },
   {
     id: 'regex',
