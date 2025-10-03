@@ -40,7 +40,7 @@ const tools: Tool[] = [
     description: 'HEX ↔ RGB ↔ HSL 변환 및 팔레트 생성',
     icon: '🎨',
     category: 'converter',
-    status: 'coming-soon',
+    status: 'available',
   },
   {
     id: 'uuid',
