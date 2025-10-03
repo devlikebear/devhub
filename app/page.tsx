@@ -10,13 +10,13 @@ export default function Home() {
   const features = dictionary.home.features;
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 pt-20">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 bg-gray-50 pt-20">
       <main className="max-w-4xl mx-auto px-6 py-20 text-center">
-        <h1 className="text-5xl sm:text-7xl font-bold text-white mb-6 tracking-tight">
+        <h1 className="text-5xl sm:text-7xl font-bold text-gray-900 dark:text-white mb-6 tracking-tight">
           {tHome('heroTitle')}
         </h1>
 
-        <p className="text-xl sm:text-2xl text-gray-300 mb-12 max-w-2xl mx-auto">
+        <p className="text-xl sm:text-2xl text-gray-700 dark:text-gray-300 mb-12 max-w-2xl mx-auto">
           {tHome('heroSubtitle')}
         </p>
 
@@ -44,10 +44,10 @@ export default function Home() {
               className="p-6 hover:bg-gradient-to-br hover:from-blue-500/5 hover:to-purple-500/5"
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              <h3 className="text-xl font-semibold text-white mb-3 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3 bg-gradient-to-r from-blue-500 to-purple-500 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent">
                 {feature.title}
               </h3>
-              <p className="text-gray-400">{feature.description}</p>
+              <p className="text-gray-600 dark:text-gray-400">{feature.description}</p>
             </GlassCard>
           ))}
         </div>
