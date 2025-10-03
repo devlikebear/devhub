@@ -471,6 +471,52 @@ greet('DevHub')
 
 DevHub에서 빠르게 마크다운 초안을 작성해보세요!`,
     },
+    uuid: {
+      title: 'UUID Generator',
+      subtitle: 'UUID v4 생성기',
+      countLabel: '생성 개수',
+      countOptions: {
+        one: '1개',
+        five: '5개',
+        ten: '10개',
+        twentyFive: '25개',
+        fifty: '50개',
+        hundred: '100개',
+      },
+      uppercaseLabel: '대문자',
+      hyphensLabel: '하이픈 포함',
+      buttons: {
+        generate: '생성',
+        clear: '초기화',
+        copyAll: '전체 복사',
+        copy: '복사',
+      },
+      messages: {
+        copied: '복사됨: {{text}}',
+        copyFailed: '복사 실패',
+        allCopied: '{{count}}개 UUID 복사됨!',
+      },
+      resultTitle: '생성된 UUID ({{count}}개)',
+      guide: {
+        title: '사용 가이드',
+        items: [
+          '• <strong>UUID</strong>: Universally Unique Identifier, 범용 고유 식별자',
+          '• <strong>버전</strong>: 이 도구는 UUID v4 (난수 기반)를 생성합니다',
+          '• <strong>UUID v4</strong>: 난수 기반 UUID (충돌 확률 극히 낮음)',
+          '• <strong>용도</strong>: 데이터베이스 기본키, 세션 ID, 파일명 등',
+          '• <strong>형식</strong>: 8-4-4-4-12 (총 36자, 하이픈 포함)',
+          '• <strong>옵션</strong>: 대소문자 변환, 하이픈 포함/제거 선택 가능',
+          '• <strong>보안</strong>: Web Crypto API 사용으로 안전한 난수 생성',
+          '• <strong>프라이버시</strong>: 모든 생성은 브라우저에서 처리, 서버 전송 없음',
+        ],
+        examples: {
+          title: '예시',
+          lowercase: '소문자 + 하이픈:',
+          uppercase: '대문자 + 하이픈:',
+          noHyphens: '소문자 하이픈 제거:',
+        },
+      },
+    },
   },
 };
 

@@ -6,15 +6,56 @@ import {
   formatUUIDCase,
   formatUUIDHyphens,
 } from '@/lib/converters/uuid';
+import { useI18n } from '@/components/i18n/I18nProvider';
+
+type UuidDictionary = {
+  title: string;
+  subtitle: string;
+  countLabel: string;
+  countOptions: {
+    one: string;
+    five: string;
+    ten: string;
+    twentyFive: string;
+    fifty: string;
+    hundred: string;
+  };
+  uppercaseLabel: string;
+  hyphensLabel: string;
+  buttons: {
+    generate: string;
+    clear: string;
+    copyAll: string;
+    copy: string;
+  };
+  messages: {
+    copied: string;
+    copyFailed: string;
+    allCopied: string;
+  };
+  resultTitle: string;
+  guide: {
+    title: string;
+    items: string[];
+    examples: {
+      title: string;
+      lowercase: string;
+      uppercase: string;
+      noHyphens: string;
+    };
+  };
+};
 
 export default function UUIDGenerator() {
+  const { dictionary } = useI18n();
+  const text = (dictionary.tools?.uuid ?? {}) as UuidDictionary;
+
   const [uuids, setUuids] = useState<string[]>([]);
   const [count, setCount] = useState(1);
   const [uppercase, setUppercase] = useState(false);
   const [withHyphens, setWithHyphens] = useState(true);
   const [copyMessage, setCopyMessage] = useState('');
 
-  // UUID 생성
   const handleGenerate = () => {
     const newUuids = generateMultipleUUIDs(count);
     const formatted = newUuids.map(uuid =>
@@ -24,30 +65,27 @@ export default function UUIDGenerator() {
     setCopyMessage('');
   };
 
-  // 클립보드 복사 (개별)
-  const copyToClipboard = async (text: string) => {
+  const copyToClipboard = async (uuid: string) => {
     try {
-      await navigator.clipboard.writeText(text);
-      setCopyMessage(`복사됨: ${text}`);
+      await navigator.clipboard.writeText(uuid);
+      setCopyMessage(text.messages.copied.replace('{{text}}', uuid));
       setTimeout(() => setCopyMessage(''), 2000);
     } catch {
-      setCopyMessage('복사 실패');
+      setCopyMessage(text.messages.copyFailed);
     }
   };
 
-  // 클립보드 복사 (전체)
   const copyAllToClipboard = async () => {
     try {
-      const text = uuids.join('\n');
-      await navigator.clipboard.writeText(text);
-      setCopyMessage(`${uuids.length}개 UUID 복사됨!`);
+      const allText = uuids.join('\n');
+      await navigator.clipboard.writeText(allText);
+      setCopyMessage(text.messages.allCopied.replace('{{count}}', String(uuids.length)));
       setTimeout(() => setCopyMessage(''), 2000);
     } catch {
-      setCopyMessage('복사 실패');
+      setCopyMessage(text.messages.copyFailed);
     }
   };
 
-  // 초기화
   const handleClear = () => {
     setUuids([]);
     setCopyMessage('');
@@ -59,10 +97,10 @@ export default function UUIDGenerator() {
         {/* Header */}
         <div className="mb-12">
           <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">
-            UUID Generator
+            {text.title}
           </h1>
           <p className="text-xl text-gray-300">
-            UUID v4 생성기
+            {text.subtitle}
           </p>
         </div>
 
@@ -71,24 +109,24 @@ export default function UUIDGenerator() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
             {/* Count */}
             <div>
-              <label className="block text-white font-semibold mb-2">생성 개수</label>
+              <label className="block text-white font-semibold mb-2">{text.countLabel}</label>
               <select
                 value={count}
                 onChange={(e) => setCount(Number(e.target.value))}
                 className="w-full px-4 py-3 bg-gray-900 text-white rounded-lg border border-gray-600 focus:border-blue-500 focus:outline-none"
               >
-                <option value={1}>1개</option>
-                <option value={5}>5개</option>
-                <option value={10}>10개</option>
-                <option value={25}>25개</option>
-                <option value={50}>50개</option>
-                <option value={100}>100개</option>
+                <option value={1}>{text.countOptions.one}</option>
+                <option value={5}>{text.countOptions.five}</option>
+                <option value={10}>{text.countOptions.ten}</option>
+                <option value={25}>{text.countOptions.twentyFive}</option>
+                <option value={50}>{text.countOptions.fifty}</option>
+                <option value={100}>{text.countOptions.hundred}</option>
               </select>
             </div>
 
             {/* Options */}
             <div>
-              <label className="block text-white font-semibold mb-2">옵션</label>
+              <label className="block text-white font-semibold mb-2">Options</label>
               <div className="space-y-2">
                 <label className="flex items-center space-x-2 text-gray-300 cursor-pointer">
                   <input
@@ -97,7 +135,7 @@ export default function UUIDGenerator() {
                     onChange={(e) => setUppercase(e.target.checked)}
                     className="w-4 h-4 rounded bg-gray-900 border-gray-600"
                   />
-                  <span>대문자</span>
+                  <span>{text.uppercaseLabel}</span>
                 </label>
                 <label className="flex items-center space-x-2 text-gray-300 cursor-pointer">
                   <input
@@ -106,7 +144,7 @@ export default function UUIDGenerator() {
                     onChange={(e) => setWithHyphens(e.target.checked)}
                     className="w-4 h-4 rounded bg-gray-900 border-gray-600"
                   />
-                  <span>하이픈 포함</span>
+                  <span>{text.hyphensLabel}</span>
                 </label>
               </div>
             </div>
@@ -118,7 +156,7 @@ export default function UUIDGenerator() {
               onClick={handleGenerate}
               className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-colors"
             >
-              생성
+              {text.buttons.generate}
             </button>
             {uuids.length > 0 && (
               <>
@@ -126,13 +164,13 @@ export default function UUIDGenerator() {
                   onClick={copyAllToClipboard}
                   className="px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg font-semibold transition-colors"
                 >
-                  전체 복사
+                  {text.buttons.copyAll}
                 </button>
                 <button
                   onClick={handleClear}
                   className="px-6 py-3 bg-gray-700 hover:bg-gray-600 text-white rounded-lg font-semibold transition-colors"
                 >
-                  초기화
+                  {text.buttons.clear}
                 </button>
               </>
             )}
@@ -151,7 +189,7 @@ export default function UUIDGenerator() {
           <div>
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-2xl font-semibold text-white">
-                생성된 UUID ({uuids.length}개)
+                {text.resultTitle.replace('{{count}}', String(uuids.length))}
               </h2>
             </div>
 
@@ -173,7 +211,7 @@ export default function UUIDGenerator() {
                     onClick={() => copyToClipboard(uuid)}
                     className="ml-4 px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg text-sm font-semibold transition-colors opacity-0 group-hover:opacity-100"
                   >
-                    복사
+                    {text.buttons.copy}
                   </button>
                 </div>
               ))}
@@ -183,41 +221,26 @@ export default function UUIDGenerator() {
 
         {/* Guide Section */}
         <div className="mt-12 p-6 bg-gray-800/30 rounded-lg border border-gray-700">
-          <h3 className="text-xl font-semibold text-white mb-4">사용 가이드</h3>
+          <h3 className="text-xl font-semibold text-white mb-4">{text.guide.title}</h3>
           <div className="space-y-2 text-gray-300">
-            <p>
-              • <strong>UUID</strong>: Universally Unique Identifier, 범용 고유 식별자
-            </p>
-            <p>
-              • <strong>UUID v4</strong>: 난수 기반 UUID (충돌 확률 극히 낮음)
-            </p>
-            <p>
-              • <strong>형식</strong>: 8-4-4-4-12 (총 36자, 하이픈 포함)
-            </p>
-            <p>
-              • <strong>사용 사례</strong>: 데이터베이스 키, 세션 ID, 파일명, 추적 ID
-            </p>
-            <p>
-              • <strong>보안</strong>: Web Crypto API 사용으로 안전한 난수 생성
-            </p>
-            <p>
-              • <strong>프라이버시</strong>: 모든 생성은 브라우저에서 처리, 서버 전송 없음
-            </p>
+            {text.guide.items.map((item, index) => (
+              <p key={index} dangerouslySetInnerHTML={{ __html: item }} />
+            ))}
           </div>
 
           <div className="mt-4 p-4 bg-gray-900/50 rounded-lg">
-            <p className="text-sm text-gray-400 mb-2">예시:</p>
+            <p className="text-sm text-gray-400 mb-2">{text.guide.examples.title}:</p>
             <div className="space-y-1 text-sm font-mono">
               <p className="text-gray-300">
-                <span className="text-blue-400">소문자 + 하이픈:</span>{' '}
+                <span className="text-blue-400">{text.guide.examples.lowercase}</span>{' '}
                 550e8400-e29b-41d4-a716-446655440000
               </p>
               <p className="text-gray-300">
-                <span className="text-green-400">대문자 + 하이픈:</span>{' '}
+                <span className="text-green-400">{text.guide.examples.uppercase}</span>{' '}
                 550E8400-E29B-41D4-A716-446655440000
               </p>
               <p className="text-gray-300">
-                <span className="text-yellow-400">소문자 하이픈 제거:</span>{' '}
+                <span className="text-yellow-400">{text.guide.examples.noHyphens}</span>{' '}
                 550e8400e29b41d4a716446655440000
               </p>
             </div>

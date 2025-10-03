@@ -470,6 +470,52 @@ greet('DevHub')
 
 Quickly draft your Markdown with DevHub!`,
     },
+    uuid: {
+      title: 'UUID Generator',
+      subtitle: 'Generate UUIDs (v4) instantly',
+      countLabel: 'Count',
+      countOptions: {
+        one: '1',
+        five: '5',
+        ten: '10',
+        twentyFive: '25',
+        fifty: '50',
+        hundred: '100',
+      },
+      uppercaseLabel: 'Uppercase',
+      hyphensLabel: 'Include hyphens',
+      buttons: {
+        generate: 'Generate',
+        clear: 'Clear',
+        copyAll: 'Copy All',
+        copy: 'Copy',
+      },
+      messages: {
+        copied: 'Copied: {{text}}',
+        copyFailed: 'Failed to copy',
+        allCopied: '{{count}} UUIDs copied!',
+      },
+      resultTitle: 'Generated UUIDs ({{count}})',
+      guide: {
+        title: 'Usage Guide',
+        items: [
+          '• <strong>UUID</strong>: Universally Unique Identifier',
+          '• <strong>Version</strong>: This tool generates UUID v4 (random-based)',
+          '• <strong>UUID v4</strong>: Random-based UUID with extremely low collision probability',
+          '• <strong>Use cases</strong>: Database primary keys, session IDs, file names, etc.',
+          '• <strong>Format</strong>: 8-4-4-4-12 (36 characters total with hyphens)',
+          '• <strong>Options</strong>: Toggle case and hyphen formatting',
+          '• <strong>Security</strong>: Uses Web Crypto API for secure random generation',
+          '• <strong>Privacy</strong>: All generation happens in your browser, nothing is sent to a server',
+        ],
+        examples: {
+          title: 'Examples',
+          lowercase: 'Lowercase + hyphens:',
+          uppercase: 'Uppercase + hyphens:',
+          noHyphens: 'Lowercase without hyphens:',
+        },
+      },
+    },
   },
 };
 
