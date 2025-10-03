@@ -3,9 +3,9 @@ import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { DEFAULT_OG_IMAGE, SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/seo/meta";
-import { I18nProvider } from "@/components/i18n/I18nProvider";
 import { getCurrentLocale } from "@/lib/i18n/locale";
 import { getDictionary } from "@/lib/i18n/dictionaries";
+import ClientProviders from "@/components/ClientProviders";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -52,11 +52,11 @@ export default function RootLayout({
   return (
     <html lang={locale}>
       <body className="antialiased">
-        <I18nProvider locale={locale} dictionary={serializableDictionary}>
+        <ClientProviders locale={locale} dictionary={serializableDictionary}>
           <Navbar />
           {children}
           <Footer />
-        </I18nProvider>
+        </ClientProviders>
       </body>
     </html>
   );

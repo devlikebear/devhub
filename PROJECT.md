@@ -102,12 +102,12 @@ devhub/
 - [x] SEO 최적화 (메타 태그, sitemap) [#33](https://github.com/devlikebear/devhub/issues/33)
 - [x] Open Graph 이미지 [#34](https://github.com/devlikebear/devhub/issues/34)
 - [x] 다국어 지원 (한국어/영어) [#35](https://github.com/devlikebear/devhub/issues/35)
-- [ ] 최신 유행하는 모던한 디자인 적용 [#36](https://github.com/devlikebear/devhub/issues/36)
-  - [ ] Glassmorphism UI 컴포넌트 구현 (카드, 버튼, 입력 필드)
-  - [ ] 인터랙티브 애니메이션 및 마이크로 인터랙션 추가
-  - [ ] 컬러 시스템 현대화 (Bold & Vibrant palette)
-  - [ ] 레이아웃 개선 및 반응형 최적화
-  - [ ] 전체 페이지 디자인 검증 및 테스트
+- [x] 최신 유행하는 모던한 디자인 적용 [#36](https://github.com/devlikebear/devhub/issues/36)
+  - [x] Glassmorphism UI 컴포넌트 구현 (카드, 버튼, 입력 필드)
+  - [x] 인터랙티브 애니메이션 및 마이크로 인터랙션 추가
+  - [x] 컬러 시스템 현대화 (Bold & Vibrant palette)
+  - [x] 레이아웃 개선 및 반응형 최적화
+  - [x] 전체 페이지 디자인 검증 및 테스트
 - [ ] 다크모드 토글 [#37](https://github.com/devlikebear/devhub/issues/37)
 - [ ] 애니메이션 효과 [#38](https://github.com/devlikebear/devhub/issues/38)
 - [ ] 성능 최적화 (이미지, 폰트) [#39](https://github.com/devlikebear/devhub/issues/39)
