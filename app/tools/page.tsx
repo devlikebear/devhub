@@ -32,7 +32,7 @@ const tools: Tool[] = [
     description: 'JSON 포맷팅, 검증, 압축',
     icon: '📋',
     category: 'formatter',
-    status: 'coming-soon',
+    status: 'available',
   },
   {
     id: 'color',
