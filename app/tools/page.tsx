@@ -88,7 +88,7 @@ const tools: Tool[] = [
     description: 'JWT 토큰 디코딩 및 검증',
     icon: '🎫',
     category: 'tester',
-    status: 'coming-soon',
+    status: 'available',
   },
 ];
 
