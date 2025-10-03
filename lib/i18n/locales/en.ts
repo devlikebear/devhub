@@ -162,6 +162,12 @@ export const en = {
   toolsPage: {
     heroTitle: 'Developer Utility Tools',
     heroSubtitle: 'Use a growing set of online utilities to streamline your workflow.',
+    search: {
+      placeholder: 'Search tools... (Press / to focus)',
+      noResults: 'No tools found',
+      noResultsHint: 'Try a different search term',
+      resultsCount: 'Found {{count}} tools',
+    },
     categories: {
       converter: 'Converters',
       formatter: 'Formatters',

@@ -163,6 +163,12 @@ export const ko = {
   toolsPage: {
     heroTitle: '개발자 유틸리티 도구',
     heroSubtitle: '생산성 향상을 위한 다양한 온라인 도구를 무료로 이용하세요',
+    search: {
+      placeholder: '도구 검색... (/ 키를 눌러 포커스)',
+      noResults: '검색 결과가 없습니다',
+      noResultsHint: '다른 검색어를 시도해보세요',
+      resultsCount: '{{count}}개의 도구를 찾았습니다',
+    },
     categories: {
       converter: '변환 도구',
       formatter: '포맷팅',
