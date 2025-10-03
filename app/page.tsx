@@ -1,6 +1,7 @@
 'use client';
 
 import { useTranslation, useI18n } from '@/components/i18n/I18nProvider';
+import { GlassCard, GlassButton } from '@/components/ui/glass';
 
 export default function Home() {
   const tHome = useTranslation('home');
@@ -20,28 +21,34 @@ export default function Home() {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-          <a
-            href="/tools"
-            className="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-colors"
-          >
-            {tButtons('viewTools')}
+          <a href="/tools">
+            <GlassButton variant="primary" className="px-8 py-4 w-full sm:w-auto">
+              {tButtons('viewTools')}
+            </GlassButton>
           </a>
           <a
             href="https://github.com/devlikebear/devhub"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-8 py-4 bg-gray-700 hover:bg-gray-600 text-white rounded-lg font-semibold transition-colors"
           >
-            {tButtons('viewGithub')}
+            <GlassButton variant="secondary" className="px-8 py-4 w-full sm:w-auto">
+              {tButtons('viewGithub')}
+            </GlassButton>
           </a>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-left">
-          {features.map((feature) => (
-            <div key={feature.title} className="p-6 bg-gray-800/50 rounded-lg border border-gray-700">
-              <h3 className="text-xl font-semibold text-white mb-3">{feature.title}</h3>
+          {features.map((feature, index) => (
+            <GlassCard
+              key={feature.title}
+              className="p-6 hover:bg-gradient-to-br hover:from-blue-500/5 hover:to-purple-500/5"
+              style={{ animationDelay: `${index * 100}ms` }}
+            >
+              <h3 className="text-xl font-semibold text-white mb-3 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                {feature.title}
+              </h3>
               <p className="text-gray-400">{feature.description}</p>
-            </div>
+            </GlassCard>
           ))}
         </div>
       </main>

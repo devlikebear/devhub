@@ -9,6 +9,7 @@ import {
   type JSONValidationResult,
 } from "@/lib/converters/json";
 import { useI18n, useTranslation } from "@/components/i18n/I18nProvider";
+import { GlassCard, GlassButton, GlassTextarea } from '@/components/ui/glass';
 
 type AnalysisInfo = {
   keys: number;
@@ -169,14 +170,14 @@ export default function JSONFormatter() {
           <button
             onClick={handleFormat}
             disabled={!validation.isValid || !input.trim()}
-            className="px-6 py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-700 disabled:cursor-not-allowed text-white rounded-lg font-semibold transition-colors"
+            className="px-6 py-3 bg-gradient-to-r from-blue-500/90 to-purple-500/90 hover:from-blue-600/90 hover:to-purple-600/90 disabled:bg-gray-700 disabled:cursor-not-allowed text-white rounded-lg font-semibold transition-colors"
           >
             {text.buttons.format}
           </button>
           <button
             onClick={handleMinify}
             disabled={!validation.isValid || !input.trim()}
-            className="px-6 py-3 bg-green-600 hover:bg-green-700 disabled:bg-gray-700 disabled:cursor-not-allowed text-white rounded-lg font-semibold transition-colors"
+            className="px-6 py-3 bg-gradient-to-r from-green-500/90 to-emerald-500/90 hover:from-green-600/90 hover:to-emerald-600/90 disabled:bg-gray-700 disabled:cursor-not-allowed text-white rounded-lg font-semibold transition-colors"
           >
             {text.buttons.minify}
           </button>
@@ -194,13 +195,13 @@ export default function JSONFormatter() {
           </div>
           <button
             onClick={loadSample}
-            className="px-6 py-3 bg-gray-700 hover:bg-gray-600 text-white rounded-lg font-semibold transition-colors"
+            className="px-6 py-3 bg-white/10 hover:bg-white/20 border border-white/20 text-white rounded-lg font-semibold transition-colors"
           >
             {text.buttons.sample}
           </button>
           <button
             onClick={handleClear}
-            className="px-6 py-3 bg-gray-700 hover:bg-gray-600 text-white rounded-lg font-semibold transition-colors"
+            className="px-6 py-3 bg-white/10 hover:bg-white/20 border border-white/20 text-white rounded-lg font-semibold transition-colors"
           >
             {text.buttons.clear}
           </button>
@@ -223,7 +224,7 @@ export default function JSONFormatter() {
             />
 
             {!validation.isValid && (
-              <div className="mt-4 p-4 bg-red-900/20 border border-red-700 rounded-lg">
+              <div className="mt-4 p-4 bg-red-500/10 border-red-500/30 rounded-lg">
                 <p className="text-red-400 font-semibold mb-1">{text.input.errorTitle}</p>
                 <p className="text-red-300 text-sm">{validation.error}</p>
                 {validation.errorLine && validation.errorColumn && (
@@ -235,7 +236,7 @@ export default function JSONFormatter() {
             )}
 
             {validation.isValid && input.trim() && (
-              <div className="mt-4 p-3 bg-green-900/20 border border-green-700 rounded-lg">
+              <div className="mt-4 p-3 bg-green-500/10 border-green-500/30 rounded-lg">
                 <p className="text-green-400 text-sm">{text.input.validMessage}</p>
               </div>
             )}
@@ -247,7 +248,7 @@ export default function JSONFormatter() {
               {output && (
                 <button
                   onClick={() => copyToClipboard(output)}
-                  className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-semibold transition-colors"
+                  className="px-4 py-2 bg-gradient-to-r from-blue-500/90 to-purple-500/90 hover:from-blue-600/90 hover:to-purple-600/90 text-white rounded-lg text-sm font-semibold transition-colors"
                 >
                   {tButtons('copy')}
                 </button>
@@ -262,7 +263,7 @@ export default function JSONFormatter() {
             />
 
             {copyMessage && (
-              <div className="mt-4 p-3 bg-green-900/20 border border-green-700 rounded-lg">
+              <div className="mt-4 p-3 bg-green-500/10 border-green-500/30 rounded-lg">
                 <p className="text-green-400 text-sm">✓ {copyMessage}</p>
               </div>
             )}

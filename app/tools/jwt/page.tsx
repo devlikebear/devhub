@@ -3,6 +3,7 @@
 import { useMemo, useState } from 'react';
 import { decodeJwt } from '@/lib/decoders/jwt';
 import { useI18n } from '@/components/i18n/I18nProvider';
+import { GlassCard, GlassButton, GlassInput, GlassTextarea } from '@/components/ui/glass';
 
 const SAMPLE_JWT =
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.' +
@@ -111,7 +112,7 @@ export default function JwtDecoderPage() {
             <div className="flex flex-wrap gap-2 mt-4 text-sm">
               <button
                 onClick={() => handleCopy(token, text.tokenLabel)}
-                className="px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-colors"
+                className="px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white rounded-lg transition-colors"
               >
                 {text.copyToken}
               </button>
@@ -147,7 +148,7 @@ export default function JwtDecoderPage() {
         </section>
 
         {result.errors.length > 0 && (
-          <div className="mb-6 p-4 bg-red-900/20 border border-red-700 rounded-lg text-red-400 text-sm space-y-2">
+          <div className="mb-6 p-4 bg-red-500/10 border-red-500/30 rounded-lg text-red-400 text-sm space-y-2">
             {result.errors.map((error) => (
               <p key={error}>⚠️ {error}</p>
             ))}
@@ -155,7 +156,7 @@ export default function JwtDecoderPage() {
         )}
 
         {copyMessage && (
-          <div className="mb-6 p-4 bg-green-900/20 border border-green-700 rounded-lg text-green-400 text-sm">
+          <div className="mb-6 p-4 bg-green-500/10 border-green-500/30 rounded-lg text-green-400 text-sm">
             ✓ {copyMessage}
           </div>
         )}
@@ -186,7 +187,7 @@ export default function JwtDecoderPage() {
             <h2 className="text-lg font-semibold text-white">{text.sections.signature}</h2>
             <button
               onClick={() => handleCopy(result.signature, text.sections.signature)}
-              className="px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg text-sm transition-colors"
+              className="px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white rounded-lg text-sm transition-colors"
               disabled={!result.signature}
             >
               {text.buttons.copySignature}

@@ -9,6 +9,7 @@ import {
   type TimestampResult,
 } from "@/lib/converters/timestamp";
 import { useI18n, useTranslation } from "@/components/i18n/I18nProvider";
+import { GlassCard, GlassButton, GlassInput } from '@/components/ui/glass';
 
 type TimestampDictionary = {
   title: string;
@@ -126,51 +127,50 @@ export default function TimestampConverter() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-          <div className="p-6 bg-gray-800/50 rounded-lg border border-gray-700">
-            <label className="block text-white font-semibold mb-2">{text.epochLabel}</label>
-            <input
+          <GlassCard className="p-6">
+            <GlassInput
+              label={text.epochLabel}
               type="text"
               value={epochInput}
               onChange={(e) => handleEpochToDate(e.target.value)}
               placeholder={text.epochPlaceholder}
-              className="w-full px-4 py-3 bg-gray-900 text-white rounded-lg border border-gray-600 focus:border-blue-500 focus:outline-none"
             />
             <p className="text-sm text-gray-400 mt-2">{text.epochHint}</p>
-            <button
+            <GlassButton
               onClick={handleSetNow}
-              className="mt-3 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-semibold transition-colors"
+              variant="primary"
+              className="mt-3 px-4 py-2 text-sm"
             >
               {text.nowButton}
-            </button>
-          </div>
+            </GlassButton>
+          </GlassCard>
 
-          <div className="p-6 bg-gray-800/50 rounded-lg border border-gray-700">
-            <label className="block text-white font-semibold mb-2">{text.dateLabel}</label>
-            <input
+          <GlassCard className="p-6">
+            <GlassInput
+              label={text.dateLabel}
               type="text"
               value={dateInput}
               onChange={(e) => handleDateToEpoch(e.target.value)}
               placeholder={text.datePlaceholder}
-              className="w-full px-4 py-3 bg-gray-900 text-white rounded-lg border border-gray-600 focus:border-blue-500 focus:outline-none"
             />
             <p className="text-sm text-gray-400 mt-2">{text.dateHint}</p>
-          </div>
+          </GlassCard>
         </div>
 
         {error && (
-          <div className="mb-6 p-4 bg-red-900/20 border border-red-700 rounded-lg">
+          <GlassCard hover={false} className="mb-6 p-4 bg-red-500/10 border-red-500/30">
             <p className="text-red-400">⚠️ {error}</p>
-          </div>
+          </GlassCard>
         )}
 
         {copyMessage && (
-          <div className="mb-6 p-4 bg-green-900/20 border border-green-700 rounded-lg">
+          <GlassCard hover={false} className="mb-6 p-4 bg-green-500/10 border-green-500/30">
             <p className="text-green-400">✓ {copyMessage}</p>
-          </div>
+          </GlassCard>
         )}
 
         {result && !error && (
-          <div className="p-6 bg-gray-800/50 rounded-lg border border-gray-700">
+          <GlassCard className="p-6">
             <h2 className="text-2xl font-semibold text-white mb-4">{text.resultTitle}</h2>
 
             <div className="space-y-4">
@@ -211,7 +211,7 @@ export default function TimestampConverter() {
                 tButtons={tButtons}
               />
             </div>
-          </div>
+          </GlassCard>
         )}
       </main>
     </div>
@@ -230,17 +230,18 @@ function ResultRow({
   tButtons: ReturnType<typeof useTranslation>;
 }) {
   return (
-    <div className="flex items-center justify-between p-4 bg-gray-900 rounded-lg">
+    <div className="flex items-center justify-between p-4 backdrop-blur-md bg-white/5 border border-white/10 rounded-lg hover:bg-white/10 transition-all">
       <div>
         <p className="text-sm text-gray-400 mb-1">{label}</p>
         <p className="text-white font-mono break-all">{value}</p>
       </div>
-      <button
+      <GlassButton
         onClick={onCopy}
-        className="px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg text-sm transition-colors"
+        variant="secondary"
+        className="px-4 py-2 text-sm"
       >
         {tButtons('copy')}
-      </button>
+      </GlassButton>
     </div>
   );
 }

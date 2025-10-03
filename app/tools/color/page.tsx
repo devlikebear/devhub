@@ -10,6 +10,7 @@ import {
   type ColorFormats,
 } from "@/lib/converters/color";
 import { useI18n, useTranslation } from "@/components/i18n/I18nProvider";
+import { GlassCard, GlassButton, GlassInput, GlassTextarea } from '@/components/ui/glass';
 
 type PaletteSwatch = { color: string; label: string };
 
@@ -122,13 +123,13 @@ export default function ColorTool() {
         </div>
 
         {error && (
-          <div className="mb-6 p-4 bg-red-900/20 border border-red-700 rounded-lg">
+          <div className="mb-6 p-4 bg-red-500/10 border-red-500/30 rounded-lg">
             <p className="text-red-400">⚠️ {error}</p>
           </div>
         )}
 
         {copyMessage && (
-          <div className="mb-6 p-4 bg-green-900/20 border border-green-700 rounded-lg">
+          <div className="mb-6 p-4 bg-green-500/10 border-green-500/30 rounded-lg">
             <p className="text-green-400">✓ {copyMessage}</p>
           </div>
         )}
@@ -222,7 +223,7 @@ function FormatCard({
         <p className="text-sm text-gray-400">{label}</p>
         <button
           onClick={onCopy}
-          className="px-3 py-1 bg-gray-700 hover:bg-gray-600 text-white rounded text-xs transition-colors"
+          className="px-3 py-1 bg-white/10 hover:bg-white/20 border border-white/20 text-white rounded text-xs transition-colors"
         >
           {tButtons('copy')}
         </button>
@@ -274,7 +275,7 @@ function ColorSwatch({
       <p className="text-sm text-gray-300 mb-2">{label}</p>
       <button
         onClick={() => onCopy(color, label)}
-        className="px-3 py-1 bg-gray-700 hover:bg-gray-600 text-white rounded text-xs transition-colors"
+        className="px-3 py-1 bg-white/10 hover:bg-white/20 border border-white/20 text-white rounded text-xs transition-colors"
       >
         {tButtons('copy')}
       </button>

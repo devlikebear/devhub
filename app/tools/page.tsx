@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useI18n } from '@/components/i18n/I18nProvider';
 import { useState, useEffect, useMemo } from 'react';
+import { GlassCard, GlassInput } from '@/components/ui/glass';
 
 type ToolCategory = 'converter' | 'formatter' | 'generator' | 'tester';
 
@@ -85,13 +86,13 @@ export default function ToolsPage() {
           {/* Search Input */}
           <div className="max-w-2xl mx-auto mb-6">
             <div className="relative">
-              <input
+              <GlassInput
                 id="tool-search"
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder={toolsPage.search.placeholder}
-                className="w-full px-5 py-4 bg-gray-800/50 text-white rounded-lg border border-gray-700 focus:border-blue-500 focus:outline-none placeholder-gray-500 text-lg"
+                className="text-lg py-4"
               />
               {searchQuery && (
                 <button
@@ -145,9 +146,9 @@ export default function ToolsPage() {
 
         {!searchQuery && (
           <div className="mt-16 text-center">
-            <div className="inline-block bg-blue-600/20 border border-blue-600/50 rounded-lg px-6 py-4">
-              <p className="text-blue-400">{toolsPage.comingSoonNotice}</p>
-            </div>
+            <GlassCard hover={false} className="inline-block px-6 py-4 bg-gradient-to-r from-blue-500/10 to-purple-500/10 border-blue-400/30">
+              <p className="text-blue-300">{toolsPage.comingSoonNotice}</p>
+            </GlassCard>
           </div>
         )}
       </main>
@@ -187,21 +188,21 @@ function ToolCard({
   };
 
   const card = (
-    <div className="relative p-6 bg-gray-800/50 rounded-lg border border-gray-700 hover:border-gray-600 transition-all group">
+    <GlassCard className="relative p-6 group">
       {tool.status === 'comingSoon' && (
-        <div className="absolute top-4 right-4 px-2 py-1 bg-gray-700 text-gray-400 text-xs rounded">
+        <div className="absolute top-4 right-4 px-2 py-1 backdrop-blur-md bg-white/10 border border-white/20 text-gray-300 text-xs rounded">
           {comingSoonLabel}
         </div>
       )}
 
-      <div className="text-4xl mb-4">{tool.icon}</div>
+      <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">{tool.icon}</div>
 
-      <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-blue-400 transition-colors">
+      <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 transition-all duration-300">
         {highlightText(tool.name, searchQuery)}
       </h3>
 
       <p className="text-gray-400 text-sm">{highlightText(tool.description, searchQuery)}</p>
-    </div>
+    </GlassCard>
   );
 
   if (tool.status === 'available') {

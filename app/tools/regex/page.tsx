@@ -9,6 +9,7 @@ import {
   type RegexTestResult,
 } from '@/lib/testers/regex';
 import { useI18n } from '@/components/i18n/I18nProvider';
+import { GlassCard, GlassButton, GlassInput, GlassTextarea } from '@/components/ui/glass';
 
 type RegexDictionary = {
   title: string;
@@ -235,7 +236,7 @@ export default function RegexTesterPage() {
             <div className="flex gap-2">
               <button
                 onClick={() => handleCopy(input, text.testStringLabel)}
-                className="px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg text-sm transition-colors"
+                className="px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white rounded-lg text-sm transition-colors"
               >
                 {text.buttons.copyInput}
               </button>
@@ -258,13 +259,13 @@ export default function RegexTesterPage() {
         </section>
 
         {error && (
-          <div className="mb-6 p-4 bg-red-900/20 border border-red-700 rounded-lg text-red-400">
+          <div className="mb-6 p-4 bg-red-500/10 border-red-500/30 rounded-lg text-red-400">
             ⚠️ {error}
           </div>
         )}
 
         {copyMessage && (
-          <div className="mb-6 p-4 bg-green-900/20 border border-green-700 rounded-lg text-green-400">
+          <div className="mb-6 p-4 bg-green-500/10 border-green-500/30 rounded-lg text-green-400">
             ✓ {copyMessage}
           </div>
         )}
@@ -351,7 +352,7 @@ function MatchCard({
         </div>
         <button
           onClick={onCopy}
-          className="px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg text-sm transition-colors"
+          className="px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white rounded-lg text-sm transition-colors"
         >
           {text.buttons.copyMatch}
         </button>

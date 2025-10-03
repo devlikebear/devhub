@@ -10,6 +10,7 @@ import {
   isSafeUrl,
 } from "@/lib/converters/url";
 import { useI18n, useTranslation } from "@/components/i18n/I18nProvider";
+import { GlassCard, GlassButton, GlassInput, GlassTextarea } from '@/components/ui/glass';
 
 type Mode = "encode" | "decode";
 type Target = "full" | "component";
@@ -182,7 +183,7 @@ export default function UrlToolPage() {
               {output && (
                 <button
                   onClick={handleSwap}
-                  className="px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-colors"
+                  className="px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white rounded-lg transition-colors"
                 >
                   {tButtons('swap')}
                 </button>
@@ -214,13 +215,13 @@ export default function UrlToolPage() {
         </section>
 
         {error && (
-          <div className="mb-6 p-4 bg-red-900/20 border border-red-700 rounded-lg text-red-400">
+          <div className="mb-6 p-4 bg-red-500/10 border-red-500/30 rounded-lg text-red-400">
             ⚠️ {error}
           </div>
         )}
 
         {copyMessage && (
-          <div className="mb-6 p-4 bg-green-900/20 border border-green-700 rounded-lg text-green-400">
+          <div className="mb-6 p-4 bg-green-500/10 border-green-500/30 rounded-lg text-green-400">
             ✓ {copyMessage}
           </div>
         )}
@@ -232,7 +233,7 @@ export default function UrlToolPage() {
               <div className="flex gap-2 text-sm">
                 <button
                   onClick={() => handleCopy(output, text.resultTitle)}
-                  className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
+                  className="px-4 py-2 bg-gradient-to-r from-blue-500/90 to-purple-500/90 hover:from-blue-600/90 hover:to-purple-600/90 text-white rounded-lg transition-colors"
                 >
                   {tButtons('copy')}
                 </button>
