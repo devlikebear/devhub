@@ -48,7 +48,7 @@ const tools: Tool[] = [
     description: 'UUID v4 생성기',
     icon: '🔑',
     category: 'generator',
-    status: 'coming-soon',
+    status: 'available',
   },
   {
     id: 'hash',
