@@ -83,21 +83,22 @@ devhub/
 - [x] **Color Tool**: HEX ↔ RGB ↔ HSL 변환, 색상 팔레트 생성 [#14](https://github.com/devlikebear/devhub/issues/14)
 - [x] **UUID Generator**: UUID v4 생성기 [#15](https://github.com/devlikebear/devhub/issues/15)
 
+### Phase 4: 추가 유틸리티 도구
 #### 우선순위 중간
-- [ ] **Hash Generator**: MD5, SHA-1, SHA-256 해시 생성
-- [ ] **Regex Tester**: 정규표현식 테스트 & 매칭 결과
-- [ ] **Markdown Preview**: 실시간 마크다운 미리보기
-- [ ] **URL Encoder/Decoder**: URL 인코딩/디코딩
-- [ ] **JWT Decoder**: JWT 토큰 디코딩 & 검증
+- [ ] **Hash Generator**: MD5, SHA-1, SHA-256 해시 생성 [#23](https://github.com/devlikebear/devhub/issues/23)
+- [ ] **Regex Tester**: 정규표현식 테스트 & 매칭 결과 [#24](https://github.com/devlikebear/devhub/issues/24)
+- [ ] **Markdown Preview**: 실시간 마크다운 미리보기 [#25](https://github.com/devlikebear/devhub/issues/25)
+- [ ] **URL Encoder/Decoder**: URL 인코딩/디코딩 [#26](https://github.com/devlikebear/devhub/issues/26)
+- [ ] **JWT Decoder**: JWT 토큰 디코딩 & 검증 [#27](https://github.com/devlikebear/devhub/issues/27)
 
-#### 추가 도구 (Phase 4)
+#### 추가 도구 (향후 확장)
 - [ ] Diff Checker: 텍스트 비교
 - [ ] QR Code Generator: QR 코드 생성
 - [ ] Cron Expression Helper: Cron 표현식 생성/해석
 - [ ] Lorem Ipsum Generator: 더미 텍스트 생성
 - [ ] Image Converter: 이미지 포맷 변환
 
-### Phase 4: 개선 & 최적화
+### Phase 5: 개선 & 최적화
 - [ ] SEO 최적화 (메타 태그, sitemap)
 - [ ] Open Graph 이미지
 - [ ] 다크모드 토글
@@ -106,7 +107,7 @@ devhub/
 - [ ] 즐겨찾기/최근 사용 도구 기능
 - [ ] 도구별 사용 가이드
 
-### Phase 5: 추가 기능
+### Phase 6: 추가 기능
 - [ ] 도구 검색 기능
 - [ ] 키보드 단축키 지원
 - [ ] 방문자 통계 (Cloudflare Analytics)
