@@ -110,7 +110,7 @@ devhub/
 - [ ] 도구별 사용 가이드 [#41](https://github.com/devlikebear/devhub/issues/41)
 
 ### Phase 6: 추가 기능
-- [ ] 도구 검색 기능
+- [x] 도구 검색 기능
 - [ ] 키보드 단축키 지원
 - [ ] 방문자 통계 (Cloudflare Analytics)
 - [ ] PWA 지원 (오프라인 사용)
