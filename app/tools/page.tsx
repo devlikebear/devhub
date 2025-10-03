@@ -64,7 +64,7 @@ const tools: Tool[] = [
     description: '정규표현식 테스트 및 매칭 결과',
     icon: '🔍',
     category: 'tester',
-    status: 'coming-soon',
+    status: 'available',
   },
   {
     id: 'markdown',
