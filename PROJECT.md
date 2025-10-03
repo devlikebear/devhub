@@ -75,13 +75,13 @@ devhub/
 - [x] Tools 목록 페이지 (구현 완료, #4 대체)
 - [x] Contact (연락처) 페이지 [#5](https://github.com/devlikebear/devhub/issues/5)
 
-### Phase 3: 유틸리티 도구 구현
+### Phase 3: 유틸리티 도구 구현 ✅
 #### 우선순위 높음 (필수 도구)
 - [x] **Timestamp Converter**: Epoch ↔ 날짜/시간 변환 [#11](https://github.com/devlikebear/devhub/issues/11)
-- [ ] **Base64 Encoder/Decoder**: 문자열 ↔ Base64 변환 [#12](https://github.com/devlikebear/devhub/issues/12)
-- [ ] **JSON Formatter**: JSON 포맷팅, 검증, 압축 [#13](https://github.com/devlikebear/devhub/issues/13)
-- [ ] **Color Tool**: HEX ↔ RGB ↔ HSL 변환, 색상 팔레트 생성 [#14](https://github.com/devlikebear/devhub/issues/14)
-- [ ] **UUID Generator**: UUID v4 생성기 [#15](https://github.com/devlikebear/devhub/issues/15)
+- [x] **Base64 Encoder/Decoder**: 문자열 ↔ Base64 변환 [#12](https://github.com/devlikebear/devhub/issues/12)
+- [x] **JSON Formatter**: JSON 포맷팅, 검증, 압축 [#13](https://github.com/devlikebear/devhub/issues/13)
+- [x] **Color Tool**: HEX ↔ RGB ↔ HSL 변환, 색상 팔레트 생성 [#14](https://github.com/devlikebear/devhub/issues/14)
+- [x] **UUID Generator**: UUID v4 생성기 [#15](https://github.com/devlikebear/devhub/issues/15)
 
 #### 우선순위 중간
 - [ ] **Hash Generator**: MD5, SHA-1, SHA-256 해시 생성
@@ -249,5 +249,5 @@ chore: 빌드/설정 변경
 
 ---
 
-**마지막 업데이트**: 2025-10-02
-**프로젝트 상태**: Phase 2 완료, Phase 3 (유틸리티 도구 구현) 준비 완료
+**마지막 업데이트**: 2025-10-03
+**프로젝트 상태**: Phase 3 완료 (5개 핵심 도구 구현), Phase 4 준비 중
