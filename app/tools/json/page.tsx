@@ -161,8 +161,8 @@ export default function JSONFormatter() {
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 pt-20">
       <main className="max-w-6xl mx-auto px-6 py-20">
         <div className="mb-12">
-          <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">{text.title}</h1>
-          <p className="text-xl text-gray-300">{text.subtitle}</p>
+          <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">{text.title}</h1>
+          <p className="text-xl text-gray-700 dark:text-gray-300">{text.subtitle}</p>
         </div>
 
         <div className="flex flex-wrap gap-4 mb-6">

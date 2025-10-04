@@ -97,10 +97,10 @@ export default function UUIDGenerator() {
       <main className="max-w-4xl mx-auto px-6 py-20">
         {/* Header */}
         <div className="mb-12">
-          <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">
+          <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">
             {text.title}
           </h1>
-          <p className="text-xl text-gray-300">
+          <p className="text-xl text-gray-700 dark:text-gray-300">
             {text.subtitle}
           </p>
         </div>
