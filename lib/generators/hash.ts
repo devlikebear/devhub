@@ -59,7 +59,7 @@ async function digestMd5(data: Uint8Array): Promise<Uint8Array> {
 
   words[originalLength >> 2] |= 0x80 << ((originalLength % 4) << 3);
   words[paddedLength - 2] = bitLength & 0xffffffff;
-  words[paddedLength - 1] = bitLength >>> 32;
+  words[paddedLength - 1] = Math.floor(bitLength / 0x100000000);
 
   let a = 0x67452301;
   let b = 0xefcdab89;
