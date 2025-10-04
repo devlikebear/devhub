@@ -3,7 +3,6 @@
 import { useMemo, useState } from 'react';
 import { decodeJwt } from '@/lib/decoders/jwt';
 import { useI18n } from '@/components/i18n/I18nProvider';
-import { GlassCard, GlassButton, GlassInput, GlassTextarea } from '@/components/ui/glass';
 
 const SAMPLE_JWT =
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.' +

@@ -8,7 +8,6 @@ import {
   HASH_ALGORITHMS,
 } from '@/lib/generators/hash';
 import { useI18n } from '@/components/i18n/I18nProvider';
-import { GlassCard, GlassButton, GlassInput, GlassTextarea } from '@/components/ui/glass';
 
 type HashDictionary = {
   title: string;

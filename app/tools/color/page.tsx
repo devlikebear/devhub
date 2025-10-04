@@ -10,7 +10,6 @@ import {
   type ColorFormats,
 } from "@/lib/converters/color";
 import { useI18n, useTranslation } from "@/components/i18n/I18nProvider";
-import { GlassCard, GlassButton, GlassInput, GlassTextarea } from '@/components/ui/glass';
 
 type PaletteSwatch = { color: string; label: string };
 

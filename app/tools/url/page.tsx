@@ -10,7 +10,6 @@ import {
   isSafeUrl,
 } from "@/lib/converters/url";
 import { useI18n, useTranslation } from "@/components/i18n/I18nProvider";
-import { GlassCard, GlassButton, GlassInput, GlassTextarea } from '@/components/ui/glass';
 
 type Mode = "encode" | "decode";
 type Target = "full" | "component";

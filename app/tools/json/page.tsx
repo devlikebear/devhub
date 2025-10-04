@@ -9,7 +9,6 @@ import {
   type JSONValidationResult,
 } from "@/lib/converters/json";
 import { useI18n, useTranslation } from "@/components/i18n/I18nProvider";
-import { GlassCard, GlassButton, GlassTextarea } from '@/components/ui/glass';
 
 type AnalysisInfo = {
   keys: number;

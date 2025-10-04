@@ -9,7 +9,6 @@ import {
   type RegexTestResult,
 } from '@/lib/testers/regex';
 import { useI18n } from '@/components/i18n/I18nProvider';
-import { GlassCard, GlassButton, GlassInput, GlassTextarea } from '@/components/ui/glass';
 
 type RegexDictionary = {
   title: string;
