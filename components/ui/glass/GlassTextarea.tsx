@@ -20,10 +20,11 @@ export default function GlassTextarea({ label, error, className = '', ...props }
           border border-gray-300 dark:border-white/20
           rounded-lg
           text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400
-          focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500/50
-          transition-all duration-300
+          focus:outline-none focus:ring-4 focus:ring-purple-500/30 focus:border-purple-500/50
+          focus:scale-[1.01] focus:shadow-lg focus:shadow-purple-500/10
+          transition-all duration-300 ease-out will-change-transform
           resize-none
-          ${error ? 'border-red-500/50 focus:ring-red-500/50' : ''}
+          ${error ? 'border-red-500/50 focus:ring-red-500/30 focus:shadow-red-500/10' : ''}
           ${className}
         `}
         {...props}
