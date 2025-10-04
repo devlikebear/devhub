@@ -109,7 +109,7 @@ devhub/
   - [x] 레이아웃 개선 및 반응형 최적화
   - [x] 전체 페이지 디자인 검증 및 테스트
 - [x] 다크모드 토글 [#37](https://github.com/devlikebear/devhub/issues/37)
-- [ ] 애니메이션 효과 [#38](https://github.com/devlikebear/devhub/issues/38)
+- [x] 애니메이션 효과 [#38](https://github.com/devlikebear/devhub/issues/38)
 - [ ] 성능 최적화 (이미지, 폰트) [#39](https://github.com/devlikebear/devhub/issues/39)
 - [ ] 즐겨찾기/최근 사용 도구 기능 [#40](https://github.com/devlikebear/devhub/issues/40)
 - [ ] 도구별 사용 가이드 [#41](https://github.com/devlikebear/devhub/issues/41)
