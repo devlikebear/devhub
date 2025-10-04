@@ -94,7 +94,22 @@ git checkout -b 23-navbar
 # 개발 진행...
 ```
 
-### 3. 커밋
+### 3. 단위 테스트 작성 및 실행
+
+- 변경한 기능과 버그 수정에 대해 단위 테스트를 추가하거나 보완합니다. 특히 `lib` 디렉토리의 유틸리티는 테스트 작성이 필수입니다.
+- 빠른 피드백이 필요하면 `npm run test:watch`로 감시 모드를 사용합니다.
+- PR 전에는 반드시 전체 테스트를 실행해 실패가 없는지 확인합니다.
+
+```bash
+# 새 테스트 작성/수정 후 실행
+npm run test
+# 필요 시 워치 모드
+npm run test:watch
+# 커버리지 리포트
+npm run test:coverage
+```
+
+### 4. 커밋
 
 ```bash
 # 변경사항 확인
@@ -108,7 +123,7 @@ git add .
 git commit -m "feat: Add responsive navigation bar"
 ```
 
-### 4. 푸시 및 PR 생성
+### 5. 푸시 및 PR 생성
 
 ```bash
 # 원격 저장소에 푸시
@@ -122,7 +137,7 @@ gh pr create
 # → Body에 "Closes #23" 포함하여 이슈 자동 종료
 ```
 
-### 5. 코드 리뷰 및 병합
+### 6. 코드 리뷰 및 병합
 
 ```bash
 # PR이 승인되면 GitHub에서 병합
@@ -190,6 +205,7 @@ Closes #15
 PR을 생성하기 전에 확인하세요:
 
 - [ ] 로컬에서 빌드 성공 (`npm run build`)
+- [ ] 단위 테스트 통과 (`npm run test`)
 - [ ] ESLint 통과 (`npm run lint`)
 - [ ] 로컬 개발 서버에서 정상 작동 확인
 - [ ] 모바일/데스크톱 반응형 확인
