@@ -8,11 +8,11 @@ export default function ContactPage() {
   const contact = dictionary.contact;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 pt-20">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 pt-20">
       <main className="max-w-4xl mx-auto px-6 py-20">
         <div className="text-center mb-16">
-          <h1 className="text-4xl sm:text-5xl font-bold text-white mb-6">{contact.heroTitle}</h1>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">{contact.heroSubtitle}</p>
+          <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-6">{contact.heroTitle}</h1>
+          <p className="text-xl text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">{contact.heroSubtitle}</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
@@ -25,8 +25,8 @@ export default function ContactPage() {
             >
               <GlassCard className="p-6 text-center hover:border-blue-400/50 group">
                 <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">{method.icon}</div>
-                <h3 className="text-lg font-semibold text-white mb-2">{method.title}</h3>
-                <p className="text-gray-400 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 transition-all">{method.value}</p>
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">{method.title}</h3>
+                <p className="text-gray-600 dark:text-gray-400 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-500 group-hover:to-purple-500 dark:group-hover:from-blue-400 dark:group-hover:to-purple-400 transition-all">{method.value}</p>
               </GlassCard>
             </a>
           ))}
@@ -34,8 +34,8 @@ export default function ContactPage() {
 
         <section className="mb-16">
           <GlassCard className="p-8">
-            <h2 className="text-2xl font-bold text-white mb-4">{contact.issues.title}</h2>
-            <p className="text-gray-300 mb-6">{contact.issues.description}</p>
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">{contact.issues.title}</h2>
+            <p className="text-gray-700 dark:text-gray-300 mb-6">{contact.issues.description}</p>
             <a
               href="https://github.com/devlikebear/devhub/issues"
               target="_blank"
@@ -56,12 +56,12 @@ export default function ContactPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-bold text-white mb-6">{contact.faqTitle}</h2>
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">{contact.faqTitle}</h2>
           <div className="space-y-4">
             {contact.faq.map((item) => (
               <GlassCard key={item.question} className="p-6">
-                <h3 className="text-lg font-semibold text-white mb-2">{item.question}</h3>
-                <p className="text-gray-400">{item.answer}</p>
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">{item.question}</h3>
+                <p className="text-gray-600 dark:text-gray-400">{item.answer}</p>
               </GlassCard>
             ))}
           </div>

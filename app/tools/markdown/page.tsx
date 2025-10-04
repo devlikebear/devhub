@@ -52,7 +52,7 @@ export default function MarkdownPreviewPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 pt-20">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 pt-20">
       <main className="max-w-6xl mx-auto px-6 py-20">
         <header className="text-center mb-12">
           <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">

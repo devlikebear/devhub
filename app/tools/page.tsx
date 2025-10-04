@@ -73,13 +73,13 @@ export default function ToolsPage() {
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 pt-20">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 pt-20">
       <main className="max-w-6xl mx-auto px-6 py-20">
         <div className="text-center mb-12">
-          <h1 className="text-4xl sm:text-5xl font-bold text-white mb-6">
+          <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-6">
             {toolsPage.heroTitle}
           </h1>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-8">
+          <p className="text-xl text-gray-700 dark:text-gray-300 max-w-2xl mx-auto mb-8">
             {toolsPage.heroSubtitle}
           </p>
 
@@ -97,7 +97,7 @@ export default function ToolsPage() {
               {searchQuery && (
                 <button
                   onClick={() => setSearchQuery('')}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white transition-colors"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
                   aria-label="Clear search"
                 >
                   ✕
@@ -107,7 +107,7 @@ export default function ToolsPage() {
 
             {/* Search Results Count */}
             {searchQuery && filteredTools.length > 0 && (
-              <p className="text-sm text-gray-400 mt-3">
+              <p className="text-sm text-gray-600 dark:text-gray-400 mt-3">
                 {toolsPage.search.resultsCount.replace('{{count}}', String(filteredTools.length))}
               </p>
             )}
@@ -118,15 +118,15 @@ export default function ToolsPage() {
         {searchQuery && filteredTools.length === 0 && (
           <div className="text-center py-20">
             <div className="text-6xl mb-6">🔍</div>
-            <h2 className="text-2xl font-bold text-white mb-2">{toolsPage.search.noResults}</h2>
-            <p className="text-gray-400">{toolsPage.search.noResultsHint}</p>
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">{toolsPage.search.noResults}</h2>
+            <p className="text-gray-600 dark:text-gray-400">{toolsPage.search.noResultsHint}</p>
           </div>
         )}
 
         {/* Tool Categories */}
         {filteredTools.length > 0 && categories.map((category) => (
           <section key={category} className="mb-12">
-            <h2 className="text-2xl font-bold text-white mb-6">
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
               {toolsPage.categories[category]}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -190,18 +190,18 @@ function ToolCard({
   const card = (
     <GlassCard className="relative p-6 group">
       {tool.status === 'comingSoon' && (
-        <div className="absolute top-4 right-4 px-2 py-1 backdrop-blur-md bg-white/10 border border-white/20 text-gray-300 text-xs rounded">
+        <div className="absolute top-4 right-4 px-2 py-1 backdrop-blur-md bg-white/10 dark:bg-white/10 border border-gray-300 dark:border-white/20 text-gray-700 dark:text-gray-300 text-xs rounded">
           {comingSoonLabel}
         </div>
       )}
 
       <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">{tool.icon}</div>
 
-      <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 transition-all duration-300">
+      <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-500 group-hover:to-purple-500 dark:group-hover:from-blue-400 dark:group-hover:to-purple-400 transition-all duration-300">
         {highlightText(tool.name, searchQuery)}
       </h3>
 
-      <p className="text-gray-400 text-sm">{highlightText(tool.description, searchQuery)}</p>
+      <p className="text-gray-600 dark:text-gray-400 text-sm">{highlightText(tool.description, searchQuery)}</p>
     </GlassCard>
   );
 

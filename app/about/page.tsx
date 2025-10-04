@@ -9,18 +9,18 @@ export default function AboutPage() {
   const about = dictionary.about;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 pt-20">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 pt-20">
       <main className="max-w-4xl mx-auto px-6 py-20">
         <div className="text-center mb-16">
-          <h1 className="text-4xl sm:text-5xl font-bold text-white mb-6">{about.heroTitle}</h1>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">{about.heroSubtitle}</p>
+          <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-6">{about.heroTitle}</h1>
+          <p className="text-xl text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">{about.heroSubtitle}</p>
         </div>
 
         <section className="mb-16">
-          <h2 className="text-2xl font-bold text-white mb-6">{about.mission.title}</h2>
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">{about.mission.title}</h2>
           <GlassCard className="p-8">
             {about.mission.paragraphs.map((paragraph) => (
-              <p key={paragraph} className="text-gray-300 leading-relaxed mb-4 last:mb-0">
+              <p key={paragraph} className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4 last:mb-0">
                 {paragraph}
               </p>
             ))}
@@ -28,25 +28,25 @@ export default function AboutPage() {
         </section>
 
         <section className="mb-16">
-          <h2 className="text-2xl font-bold text-white mb-6">{about.featuresTitle}</h2>
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">{about.featuresTitle}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {about.features.map((feature) => (
               <GlassCard key={feature.title} className="p-6">
-                <h3 className="text-lg font-semibold text-white mb-3">{feature.title}</h3>
-                <p className="text-gray-400 text-sm">{feature.description}</p>
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">{feature.title}</h3>
+                <p className="text-gray-600 dark:text-gray-400 text-sm">{feature.description}</p>
               </GlassCard>
             ))}
           </div>
         </section>
 
         <section className="mb-16">
-          <h2 className="text-2xl font-bold text-white mb-6">{about.techStack.title}</h2>
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">{about.techStack.title}</h2>
           <GlassCard className="p-8">
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
               {about.techStack.columns.map((column) => (
                 <div key={column.title}>
-                  <h3 className="text-white font-semibold mb-3">{column.title}</h3>
-                  <ul className="text-gray-400 text-sm space-y-2">
+                  <h3 className="text-gray-900 dark:text-white font-semibold mb-3">{column.title}</h3>
+                  <ul className="text-gray-600 dark:text-gray-400 text-sm space-y-2">
                     {column.items.map((item) => (
                       <li key={item}>• {item}</li>
                     ))}
@@ -58,9 +58,9 @@ export default function AboutPage() {
         </section>
 
         <section>
-          <h2 className="text-2xl font-bold text-white mb-6">{about.openSource.title}</h2>
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">{about.openSource.title}</h2>
           <GlassCard className="p-8 text-center">
-            <p className="text-gray-300 mb-6">{about.openSource.description}</p>
+            <p className="text-gray-700 dark:text-gray-300 mb-6">{about.openSource.description}</p>
             <a
               href="https://github.com/devlikebear/devhub"
               target="_blank"
