@@ -130,8 +130,8 @@ export const en = {
       {
         icon: '💬',
         title: 'X',
-        value: '@devlikebear',
-        link: 'https://x.com/devlikebear',
+        value: '@slartimark42',
+        link: 'https://x.com/slartimark42',
       },
     ],
     issues: {
