@@ -1,7 +1,26 @@
 {
   "name": "devhub",
   "version": "0.1.0",
-  "private": true,
+  "description": "A collection of online developer utilities to boost productivity",
+  "author": "devlikebear",
+  "license": "MIT",
+  "homepage": "https://github.com/devlikebear/devhub#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devlikebear/devhub.git"
+  },
+  "bugs": {
+    "url": "https://github.com/devlikebear/devhub/issues"
+  },
+  "keywords": [
+    "developer-tools",
+    "utilities",
+    "converter",
+    "formatter",
+    "nextjs",
+    "typescript",
+    "tailwindcss"
+  ],
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
