@@ -167,19 +167,19 @@ export default function RegexTesterPage() {
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 pt-20">
       <main className="max-w-5xl mx-auto px-6 py-20">
         <header className="mb-12 text-center">
-          <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">{text.title}</h1>
+          <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-gray-900 dark:text-white mb-4">{text.title}</h1>
           <p className="text-xl text-gray-700 dark:text-gray-300">{text.subtitle}</p>
         </header>
 
         <section className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-10">
-          <div className="lg:col-span-2 p-6 bg-gray-800/50 rounded-lg border border-gray-700">
+          <div className="lg:col-span-2 p-6 bg-white/80 dark:bg-gray-800/50 rounded-lg border border-gray-300 dark:border-gray-700">
             <div className="flex items-center justify-between mb-3">
-              <label className="block text-white font-semibold" htmlFor="regex-pattern">
+              <label className="block text-gray-900 dark:text-white font-semibold" htmlFor="regex-pattern">
                 {text.patternLabel}
               </label>
               <button
                 onClick={resetAll}
-                className="text-sm text-gray-400 hover:text-white transition-colors"
+                className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-white transition-colors"
               >
                 {text.buttons.reset}
               </button>
@@ -190,13 +190,13 @@ export default function RegexTesterPage() {
               value={pattern}
               onChange={(event) => setPattern(event.target.value)}
               placeholder={text.patternPlaceholder}
-              className="w-full px-4 py-3 bg-gray-900 text-white rounded-lg border border-gray-600 focus:border-blue-500 focus:outline-none font-mono"
+              className="w-full px-4 py-3 bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white rounded-lg border border-gray-300 dark:border-gray-600 focus:border-blue-500 focus:outline-none font-mono"
             />
-            <p className="text-sm text-gray-400 mt-2">{text.patternHint}</p>
+            <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">{text.patternHint}</p>
           </div>
 
-          <div className="p-6 bg-gray-800/50 rounded-lg border border-gray-700">
-            <h2 className="text-lg font-semibold text-white mb-3">{text.flagsLabel}</h2>
+          <div className="p-6 bg-white/80 dark:bg-gray-800/50 rounded-lg border border-gray-300 dark:border-gray-700">
+            <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">{text.flagsLabel}</h2>
             <div className="space-y-2">
               {FLAG_INFOS.map((info) => {
                 const active = flags.includes(info.flag);
@@ -204,7 +204,7 @@ export default function RegexTesterPage() {
                   <label
                     key={info.flag}
                     className={`flex items-start gap-3 p-3 rounded-lg border cursor-pointer transition-colors ${
-                      active ? 'border-blue-500 bg-blue-500/10' : 'border-gray-700 hover:border-gray-600'
+                      active ? 'border-blue-500 bg-blue-500/10' : 'border-gray-300 dark:border-gray-700 hover:border-gray-300 dark:border-gray-600'
                     }`}
                   >
                     <input
@@ -214,14 +214,14 @@ export default function RegexTesterPage() {
                       onChange={() => toggleFlag(info.flag)}
                     />
                     <div>
-                      <p className="text-white font-medium">{info.label}</p>
-                      <p className="text-sm text-gray-400">{info.description}</p>
+                      <p className="text-gray-900 dark:text-white font-medium">{info.label}</p>
+                      <p className="text-sm text-gray-600 dark:text-gray-400">{info.description}</p>
                     </div>
                   </label>
                 );
               })}
             </div>
-            <p className="text-sm text-gray-400 mt-4">
+            <p className="text-sm text-gray-600 dark:text-gray-400 mt-4">
               {text.currentFlags} <span className="font-mono text-blue-300">/{flags}/</span>
             </p>
           </div>
@@ -229,13 +229,13 @@ export default function RegexTesterPage() {
 
         <section className="mb-8">
           <div className="flex items-center justify-between mb-2">
-            <label className="block text-white font-semibold" htmlFor="regex-input">
+            <label className="block text-gray-900 dark:text-white font-semibold" htmlFor="regex-input">
               {text.testStringLabel}
             </label>
             <div className="flex gap-2">
               <button
                 onClick={() => handleCopy(input, text.testStringLabel)}
-                className="px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white rounded-lg text-sm transition-colors"
+                className="px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/20 text-gray-900 dark:text-white rounded-lg text-sm transition-colors"
               >
                 {text.buttons.copyInput}
               </button>
@@ -253,7 +253,7 @@ export default function RegexTesterPage() {
             onChange={(event) => setInput(event.target.value)}
             placeholder={text.testStringPlaceholder}
             rows={8}
-            className="w-full px-4 py-3 bg-gray-900 text-white rounded-lg border border-gray-600 focus:border-blue-500 focus:outline-none resize-none font-mono"
+            className="w-full px-4 py-3 bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white rounded-lg border border-gray-300 dark:border-gray-600 focus:border-blue-500 focus:outline-none resize-none font-mono"
           />
         </section>
 
@@ -270,10 +270,10 @@ export default function RegexTesterPage() {
         )}
 
         <section className="mb-10">
-          <h2 className="text-2xl font-semibold text-white mb-4">{text.matchResults.title}</h2>
+          <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">{text.matchResults.title}</h2>
 
           {input && highlighted.length > 0 && (
-            <div className="mb-6 p-4 bg-gray-800/40 rounded-lg border border-gray-700">
+            <div className="mb-6 p-4 bg-gray-800/40 rounded-lg border border-gray-300 dark:border-gray-700">
               <h3 className="text-sm font-semibold text-gray-300 mb-2">{text.matchResults.highlightTitle}</h3>
               <pre className="whitespace-pre-wrap break-words font-mono text-sm leading-relaxed">
                 {highlighted.map((segment, index) => (
@@ -289,7 +289,7 @@ export default function RegexTesterPage() {
           )}
 
           {!input && (
-            <p className="text-gray-400 text-sm">{text.matchResults.emptyInput}</p>
+            <p className="text-gray-600 dark:text-gray-400 text-sm">{text.matchResults.emptyInput}</p>
           )}
 
           {result && result.matches.length > 0 && (
@@ -307,14 +307,14 @@ export default function RegexTesterPage() {
           )}
 
           {result && result.matches.length === 0 && input && !error && (
-            <div className="p-4 bg-gray-800/50 border border-gray-700 rounded-lg text-gray-300 text-sm">
+            <div className="p-4 bg-white/80 dark:bg-gray-800/50 border border-gray-300 dark:border-gray-700 rounded-lg text-gray-300 text-sm">
               {text.matchResults.noMatches}
             </div>
           )}
         </section>
 
-        <section className="p-6 bg-gray-800/30 rounded-lg border border-gray-700">
-          <h2 className="text-xl font-semibold text-white mb-4">{text.guide.title}</h2>
+        <section className="p-6 bg-gray-800/30 rounded-lg border border-gray-300 dark:border-gray-700">
+          <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">{text.guide.title}</h2>
           <ul className="space-y-2 text-gray-300 text-sm">
             {text.guide.items.map((item, index) => (
               <li key={index}>{item}</li>
@@ -341,17 +341,17 @@ function MatchCard({
   const namedGroups = Object.entries(match.groups).filter(([, value]) => value !== undefined);
 
   return (
-    <div className="p-5 bg-gray-800/50 border border-gray-700 rounded-lg">
+    <div className="p-5 bg-white/80 dark:bg-gray-800/50 border border-gray-300 dark:border-gray-700 rounded-lg">
       <div className="flex flex-wrap items-center justify-between gap-3 mb-3">
         <div>
-          <p className="text-sm text-gray-400">{text.matchResults.matchNumber.replace('{{number}}', String(order))}</p>
-          <p className="text-lg font-semibold text-white font-mono break-all">
+          <p className="text-sm text-gray-600 dark:text-gray-400">{text.matchResults.matchNumber.replace('{{number}}', String(order))}</p>
+          <p className="text-lg font-semibold text-gray-900 dark:text-white font-mono break-all">
             {match.match || text.matchResults.emptyString}
           </p>
         </div>
         <button
           onClick={onCopy}
-          className="px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white rounded-lg text-sm transition-colors"
+          className="px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/20 text-gray-900 dark:text-white rounded-lg text-sm transition-colors"
         >
           {text.buttons.copyMatch}
         </button>
@@ -359,12 +359,12 @@ function MatchCard({
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-gray-300">
         <div>
-          <p><span className="text-gray-400">{text.matchResults.startPosition}</span> {match.index}</p>
-          <p><span className="text-gray-400">{text.matchResults.endPosition}</span> {match.endIndex}</p>
+          <p><span className="text-gray-600 dark:text-gray-400">{text.matchResults.startPosition}</span> {match.index}</p>
+          <p><span className="text-gray-600 dark:text-gray-400">{text.matchResults.endPosition}</span> {match.endIndex}</p>
         </div>
         <div>
-          <p><span className="text-gray-400">{text.matchResults.length}</span> {match.endIndex - match.index}</p>
-          <p><span className="text-gray-400">{text.matchResults.captureGroupCount}</span> {match.captures.length}</p>
+          <p><span className="text-gray-600 dark:text-gray-400">{text.matchResults.length}</span> {match.endIndex - match.index}</p>
+          <p><span className="text-gray-600 dark:text-gray-400">{text.matchResults.captureGroupCount}</span> {match.captures.length}</p>
         </div>
       </div>
 
@@ -373,8 +373,8 @@ function MatchCard({
           <h3 className="text-sm font-semibold text-gray-300 mb-2">{text.matchResults.captureGroups}</h3>
           <div className="space-y-1">
             {match.captures.map((capture, index) => (
-              <p key={index} className="text-sm text-gray-400">
-                #{index + 1}: <span className="text-white font-mono">{capture ?? '—'}</span>
+              <p key={index} className="text-sm text-gray-600 dark:text-gray-400">
+                #{index + 1}: <span className="text-gray-900 dark:text-white font-mono">{capture ?? '—'}</span>
               </p>
             ))}
           </div>
@@ -386,8 +386,8 @@ function MatchCard({
           <h3 className="text-sm font-semibold text-gray-300 mb-2">{text.matchResults.namedGroups}</h3>
           <div className="space-y-1">
             {namedGroups.map(([name, value]) => (
-              <p key={name} className="text-sm text-gray-400">
-                {name}: <span className="text-white font-mono">{value}</span>
+              <p key={name} className="text-sm text-gray-600 dark:text-gray-400">
+                {name}: <span className="text-gray-900 dark:text-white font-mono">{value}</span>
               </p>
             ))}
           </div>

@@ -78,14 +78,14 @@ export default function JwtDecoderPage() {
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 pt-20">
       <main className="max-w-6xl mx-auto px-6 py-20">
         <header className="text-center mb-12">
-          <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">{text.title}</h1>
+          <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-gray-900 dark:text-white mb-4">{text.title}</h1>
           <p className="text-xl text-gray-700 dark:text-gray-300">{text.subtitle}</p>
         </header>
 
         <section className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-10">
-          <div className="lg:col-span-2 p-6 bg-gray-800/50 rounded-lg border border-gray-700">
+          <div className="lg:col-span-2 p-6 bg-white/80 dark:bg-gray-800/50 rounded-lg border border-gray-300 dark:border-gray-700">
             <div className="flex items-center justify-between mb-3">
-              <h2 className="text-lg font-semibold text-white">{text.tokenLabel}</h2>
+              <h2 className="text-lg font-semibold text-gray-900 dark:text-white">{text.tokenLabel}</h2>
               <div className="flex gap-2 text-sm">
                 <button
                   onClick={() => setToken(SAMPLE_JWT)}
@@ -106,19 +106,19 @@ export default function JwtDecoderPage() {
               onChange={(event) => setToken(event.target.value)}
               rows={6}
               placeholder={text.placeholder}
-              className="w-full px-4 py-3 bg-gray-900 text-white rounded-lg border border-gray-600 focus:border-blue-500 focus:outline-none font-mono"
+              className="w-full px-4 py-3 bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white rounded-lg border border-gray-300 dark:border-gray-600 focus:border-blue-500 focus:outline-none font-mono"
             />
             <div className="flex flex-wrap gap-2 mt-4 text-sm">
               <button
                 onClick={() => handleCopy(token, text.tokenLabel)}
-                className="px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white rounded-lg transition-colors"
+                className="px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/20 text-gray-900 dark:text-white rounded-lg transition-colors"
               >
                 {text.copyToken}
               </button>
             </div>
           </div>
 
-          <aside className="p-6 bg-gray-800/50 rounded-lg border border-gray-700 text-sm text-gray-300 space-y-4">
+          <aside className="p-6 bg-white/80 dark:bg-gray-800/50 rounded-lg border border-gray-300 dark:border-gray-700 text-sm text-gray-300 space-y-4">
             <MetadataItem label={text.metadata.algorithm} value={result.metadata.algorithm ?? '-'} />
             <MetadataItem label={text.metadata.type} value={result.metadata.type ?? '-'} />
             <MetadataItem label={text.metadata.contentType} value={result.metadata.contentType ?? '-'} />
@@ -181,18 +181,18 @@ export default function JwtDecoderPage() {
           />
         </section>
 
-        <section className="mt-8 p-6 bg-gray-800/50 rounded-lg border border-gray-700">
+        <section className="mt-8 p-6 bg-white/80 dark:bg-gray-800/50 rounded-lg border border-gray-300 dark:border-gray-700">
           <div className="flex items-center justify-between mb-3">
-            <h2 className="text-lg font-semibold text-white">{text.sections.signature}</h2>
+            <h2 className="text-lg font-semibold text-gray-900 dark:text-white">{text.sections.signature}</h2>
             <button
               onClick={() => handleCopy(result.signature, text.sections.signature)}
-              className="px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white rounded-lg text-sm transition-colors"
+              className="px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/20 text-gray-900 dark:text-white rounded-lg text-sm transition-colors"
               disabled={!result.signature}
             >
               {text.buttons.copySignature}
             </button>
           </div>
-          <p className="font-mono text-sm text-gray-300 break-all bg-gray-900/70 px-4 py-3 rounded-lg border border-gray-700">
+          <p className="font-mono text-sm text-gray-300 break-all bg-gray-900/70 px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700">
             {result.signature || text.noSignature}
           </p>
         </section>
@@ -212,7 +212,7 @@ function MetadataItem({
 }) {
   return (
     <div className="flex items-center justify-between">
-      <span className="text-gray-400">{label}</span>
+      <span className="text-gray-600 dark:text-gray-400">{label}</span>
       <span className={`font-medium ${highlight ? 'text-red-400' : 'text-white'}`}>{value}</span>
     </div>
   );
@@ -238,9 +238,9 @@ function DecodedSection({
   const hasValue = Boolean(value);
 
   return (
-    <div className="p-6 bg-gray-800/50 rounded-lg border border-gray-700">
+    <div className="p-6 bg-white/80 dark:bg-gray-800/50 rounded-lg border border-gray-300 dark:border-gray-700">
       <div className="flex items-center justify-between mb-3">
-        <h2 className="text-lg font-semibold text-white">{title}</h2>
+        <h2 className="text-lg font-semibold text-gray-900 dark:text-white">{title}</h2>
         <div className="flex gap-2 text-sm">
           <button
             onClick={onCopyRaw}
@@ -262,7 +262,7 @@ function DecodedSection({
           </button>
         </div>
       </div>
-      <pre className="min-h-[180px] whitespace-pre-wrap break-words text-sm font-mono leading-relaxed bg-gray-900/70 px-4 py-4 rounded-lg border border-gray-700 text-gray-200">
+      <pre className="min-h-[180px] whitespace-pre-wrap break-words text-sm font-mono leading-relaxed bg-gray-900/70 px-4 py-4 rounded-lg border border-gray-300 dark:border-gray-700 text-gray-200">
         {hasValue ? value : emptyValue}
       </pre>
     </div>

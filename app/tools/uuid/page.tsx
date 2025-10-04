@@ -97,7 +97,7 @@ export default function UUIDGenerator() {
       <main className="max-w-4xl mx-auto px-6 py-20">
         {/* Header */}
         <div className="mb-12">
-          <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+          <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-gray-900 dark:text-white mb-4">
             {text.title}
           </h1>
           <p className="text-xl text-gray-700 dark:text-gray-300">
@@ -110,11 +110,11 @@ export default function UUIDGenerator() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
             {/* Count */}
             <div>
-              <label className="block text-white font-semibold mb-2">{text.countLabel}</label>
+              <label className="block text-gray-900 dark:text-white font-semibold mb-2">{text.countLabel}</label>
               <select
                 value={count}
                 onChange={(e) => setCount(Number(e.target.value))}
-                className="w-full px-4 py-3 bg-gray-900 text-white rounded-lg border border-gray-600 focus:border-blue-500 focus:outline-none"
+                className="w-full px-4 py-3 bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white rounded-lg border border-gray-300 dark:border-gray-600 focus:border-blue-500 focus:outline-none"
               >
                 <option value={1}>{text.countOptions.one}</option>
                 <option value={5}>{text.countOptions.five}</option>
@@ -127,14 +127,14 @@ export default function UUIDGenerator() {
 
             {/* Options */}
             <div>
-              <label className="block text-white font-semibold mb-2">Options</label>
+              <label className="block text-gray-900 dark:text-white font-semibold mb-2">Options</label>
               <div className="space-y-2">
                 <label className="flex items-center space-x-2 text-gray-300 cursor-pointer">
                   <input
                     type="checkbox"
                     checked={uppercase}
                     onChange={(e) => setUppercase(e.target.checked)}
-                    className="w-4 h-4 rounded bg-gray-900 border-gray-600"
+                    className="w-4 h-4 rounded bg-gray-100 dark:bg-gray-900 border-gray-300 dark:border-gray-600"
                   />
                   <span>{text.uppercaseLabel}</span>
                 </label>
@@ -143,7 +143,7 @@ export default function UUIDGenerator() {
                     type="checkbox"
                     checked={withHyphens}
                     onChange={(e) => setWithHyphens(e.target.checked)}
-                    className="w-4 h-4 rounded bg-gray-900 border-gray-600"
+                    className="w-4 h-4 rounded bg-gray-100 dark:bg-gray-900 border-gray-300 dark:border-gray-600"
                   />
                   <span>{text.hyphensLabel}</span>
                 </label>
@@ -192,7 +192,7 @@ export default function UUIDGenerator() {
         {uuids.length > 0 && (
           <div>
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-2xl font-semibold text-white">
+              <h2 className="text-2xl font-semibold text-gray-900 dark:text-white">
                 {text.resultTitle.replace('{{count}}', String(uuids.length))}
               </h2>
             </div>
@@ -207,7 +207,7 @@ export default function UUIDGenerator() {
                     <span className="text-gray-500 font-mono text-sm w-12">
                       {index + 1}.
                     </span>
-                    <code className="text-white font-mono text-sm md:text-base break-all">
+                    <code className="text-gray-900 dark:text-white font-mono text-sm md:text-base break-all">
                       {uuid}
                     </code>
                   </div>
@@ -226,7 +226,7 @@ export default function UUIDGenerator() {
 
         {/* Guide Section */}
         <GlassCard hover={false} className="mt-12 p-6 bg-white/5">
-          <h3 className="text-xl font-semibold text-white mb-4">{text.guide.title}</h3>
+          <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">{text.guide.title}</h3>
           <div className="space-y-2 text-gray-300">
             {text.guide.items.map((item, index) => (
               <p key={index} dangerouslySetInnerHTML={{ __html: item }} />
@@ -234,7 +234,7 @@ export default function UUIDGenerator() {
           </div>
 
           <div className="mt-4 p-4 bg-gray-900/50 rounded-lg">
-            <p className="text-sm text-gray-400 mb-2">{text.guide.examples.title}:</p>
+            <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">{text.guide.examples.title}:</p>
             <div className="space-y-1 text-sm font-mono">
               <p className="text-gray-300">
                 <span className="text-blue-400">{text.guide.examples.lowercase}</span>{' '}

@@ -55,7 +55,7 @@ export default function MarkdownPreviewPage() {
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 pt-20">
       <main className="max-w-6xl mx-auto px-6 py-20">
         <header className="text-center mb-12">
-          <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+          <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-gray-900 dark:text-white mb-4">
             {tMarkdown.title}
           </h1>
           <p className="text-xl text-gray-700 dark:text-gray-300">
@@ -64,9 +64,9 @@ export default function MarkdownPreviewPage() {
         </header>
 
         <section className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-10">
-          <div className="p-6 bg-gray-800/50 rounded-lg border border-gray-700 flex flex-col">
+          <div className="p-6 bg-white/80 dark:bg-gray-800/50 rounded-lg border border-gray-300 dark:border-gray-700 flex flex-col">
             <div className="flex items-center justify-between mb-3">
-              <h2 className="text-lg font-semibold text-white">
+              <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
                 {tMarkdown.inputTitle}
               </h2>
               <div className="flex gap-2">
@@ -88,28 +88,28 @@ export default function MarkdownPreviewPage() {
               value={input}
               onChange={(event) => setInput(event.target.value)}
               placeholder={tMarkdown.placeholder}
-              className="flex-1 w-full px-4 py-3 bg-gray-900 text-white rounded-lg border border-gray-700 focus:border-blue-500 focus:outline-none resize-none font-mono"
+              className="flex-1 w-full px-4 py-3 bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white rounded-lg border border-gray-300 dark:border-gray-700 focus:border-blue-500 focus:outline-none resize-none font-mono"
               rows={16}
             />
             <div className="flex flex-wrap gap-2 mt-4 text-sm">
               <button
                 onClick={() => handleCopy(input, tMarkdown.buttons.copyMarkdown)}
-                className="px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white rounded-lg transition-colors"
+                className="px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/20 text-gray-900 dark:text-white rounded-lg transition-colors"
               >
                 {tMarkdown.buttons.copyMarkdown}
               </button>
               <button
                 onClick={() => handleCopy(html, 'HTML')}
-                className="px-4 py-2 bg-gradient-to-r from-blue-500/90 to-purple-500/90 hover:from-blue-600/90 hover:to-purple-600/90 text-white rounded-lg transition-colors"
+                className="px-4 py-2 bg-gradient-to-r from-blue-500/90 to-purple-500/90 hover:from-blue-600/90 hover:to-purple-600/90 text-gray-900 dark:text-white rounded-lg transition-colors"
               >
                 {tMarkdown.buttons.copyHtml}
               </button>
             </div>
           </div>
 
-          <div className="p-6 bg-gray-800/50 rounded-lg border border-gray-700">
+          <div className="p-6 bg-white/80 dark:bg-gray-800/50 rounded-lg border border-gray-300 dark:border-gray-700">
             <div className="flex items-center justify-between mb-3">
-              <h2 className="text-lg font-semibold text-white">
+              <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
                 {tMarkdown.previewTitle}
               </h2>
             </div>
@@ -126,8 +126,8 @@ export default function MarkdownPreviewPage() {
           </div>
         )}
 
-        <section className="p-6 bg-gray-800/30 rounded-lg border border-gray-700">
-          <h2 className="text-xl font-semibold text-white mb-4">
+        <section className="p-6 bg-gray-800/30 rounded-lg border border-gray-300 dark:border-gray-700">
+          <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
             {tMarkdown.guide.title}
           </h2>
           <ul className="space-y-2 text-gray-300 text-sm">

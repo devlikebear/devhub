@@ -145,7 +145,7 @@ export default function Base64EncoderDecoder() {
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 pt-20">
       <main className="max-w-4xl mx-auto px-6 py-20">
         <div className="mb-12">
-          <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">{text.title}</h1>
+          <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-gray-900 dark:text-white mb-4">{text.title}</h1>
           <p className="text-xl text-gray-700 dark:text-gray-300">{text.subtitle}</p>
         </div>
 
@@ -168,7 +168,7 @@ export default function Base64EncoderDecoder() {
 
         <GlassCard className="p-6 mb-6">
           <div className="flex items-center justify-between mb-4">
-            <label className="block text-white font-semibold">
+            <label className="block text-gray-900 dark:text-white font-semibold">
               {mode === "encode" ? text.labels.inputEncode : text.labels.inputDecode}
             </label>
             <GlassButton
@@ -187,7 +187,7 @@ export default function Base64EncoderDecoder() {
             className="font-mono"
           />
           {input && (
-            <p className="text-sm text-gray-400 mt-2">
+            <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">
               {text.labels.size}: {formatFileSize(new Blob([input]).size)}
             </p>
           )}
@@ -208,7 +208,7 @@ export default function Base64EncoderDecoder() {
         {output && !error && (
           <GlassCard className="p-6 mb-6">
             <div className="flex items-center justify-between mb-4">
-              <label className="block text-white font-semibold">
+              <label className="block text-gray-900 dark:text-white font-semibold">
                 {mode === "encode" ? text.labels.outputEncode : text.labels.outputDecode}
               </label>
               <div className="flex gap-2">
@@ -234,7 +234,7 @@ export default function Base64EncoderDecoder() {
               rows={8}
               className="font-mono"
             />
-            <p className="text-sm text-gray-400 mt-2">
+            <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">
               {text.labels.size}: {formatFileSize(new Blob([output]).size)}
             </p>
           </GlassCard>

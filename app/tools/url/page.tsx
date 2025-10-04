@@ -132,12 +132,12 @@ export default function UrlToolPage() {
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 pt-20">
       <main className="max-w-5xl mx-auto px-6 py-20">
         <header className="mb-12 text-center">
-          <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">{text.title}</h1>
+          <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-gray-900 dark:text-white mb-4">{text.title}</h1>
           <p className="text-xl text-gray-700 dark:text-gray-300">{text.subtitle}</p>
         </header>
 
         <section className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-10">
-          <div className="lg:col-span-2 p-6 bg-gray-800/50 rounded-lg border border-gray-700">
+          <div className="lg:col-span-2 p-6 bg-white/80 dark:bg-gray-800/50 rounded-lg border border-gray-300 dark:border-gray-700">
             <div className="flex flex-wrap gap-3 mb-6">
               <ToggleButton
                 label={text.mode.encode}
@@ -169,7 +169,7 @@ export default function UrlToolPage() {
               onChange={(event) => handleConvert(event.target.value)}
               rows={8}
               placeholder={text.placeholder[mode]}
-              className="w-full px-4 py-3 bg-gray-900 text-white rounded-lg border border-gray-600 focus:border-blue-500 focus:outline-none resize-none font-mono"
+              className="w-full px-4 py-3 bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white rounded-lg border border-gray-300 dark:border-gray-600 focus:border-blue-500 focus:outline-none resize-none font-mono"
             />
 
             <div className="flex flex-wrap gap-3 mt-4 text-sm">
@@ -182,7 +182,7 @@ export default function UrlToolPage() {
               {output && (
                 <button
                   onClick={handleSwap}
-                  className="px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white rounded-lg transition-colors"
+                  className="px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/20 text-gray-900 dark:text-white rounded-lg transition-colors"
                 >
                   {tButtons('swap')}
                 </button>
@@ -190,18 +190,18 @@ export default function UrlToolPage() {
             </div>
           </div>
 
-          <aside className="p-6 bg-gray-800/50 rounded-lg border border-gray-700 space-y-4 text-sm text-gray-300">
+          <aside className="p-6 bg-white/80 dark:bg-gray-800/50 rounded-lg border border-gray-300 dark:border-gray-700 space-y-4 text-sm text-gray-300">
             <InfoRow label={text.infoLabels.mode} value={text.mode[mode]} />
             <InfoRow label={text.infoLabels.target} value={text.target[target]} />
             {mode === "encode" && (
-              <pre className="text-xs text-gray-400 whitespace-pre-wrap leading-normal">
+              <pre className="text-xs text-gray-600 dark:text-gray-400 whitespace-pre-wrap leading-normal">
                 {text.encodeHint}
               </pre>
             )}
             {reservedCharacters && (
-              <div className="p-3 bg-gray-900/60 rounded border border-gray-700">
-                <p className="text-xs text-gray-400 mb-1">{text.reservedTitle}</p>
-                <p className="text-white text-xs font-mono leading-relaxed">{reservedCharacters}</p>
+              <div className="p-3 bg-gray-900/60 rounded border border-gray-300 dark:border-gray-700">
+                <p className="text-xs text-gray-600 dark:text-gray-400 mb-1">{text.reservedTitle}</p>
+                <p className="text-gray-900 dark:text-white text-xs font-mono leading-relaxed">{reservedCharacters}</p>
                 <p className="text-xs text-gray-500 mt-2">{text.reservedDescription}</p>
               </div>
             )}
@@ -226,13 +226,13 @@ export default function UrlToolPage() {
         )}
 
         {output && !error && (
-          <section className="mb-10 p-6 bg-gray-800/50 rounded-lg border border-gray-700">
+          <section className="mb-10 p-6 bg-white/80 dark:bg-gray-800/50 rounded-lg border border-gray-300 dark:border-gray-700">
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-2xl font-semibold text-white">{text.resultTitle}</h2>
+              <h2 className="text-2xl font-semibold text-gray-900 dark:text-white">{text.resultTitle}</h2>
               <div className="flex gap-2 text-sm">
                 <button
                   onClick={() => handleCopy(output, text.resultTitle)}
-                  className="px-4 py-2 bg-gradient-to-r from-blue-500/90 to-purple-500/90 hover:from-blue-600/90 hover:to-purple-600/90 text-white rounded-lg transition-colors"
+                  className="px-4 py-2 bg-gradient-to-r from-blue-500/90 to-purple-500/90 hover:from-blue-600/90 hover:to-purple-600/90 text-gray-900 dark:text-white rounded-lg transition-colors"
                 >
                   {tButtons('copy')}
                 </button>
@@ -242,7 +242,7 @@ export default function UrlToolPage() {
               value={output}
               readOnly
               rows={6}
-              className="w-full px-4 py-3 bg-gray-900 text-white rounded-lg border border-gray-600 resize-none font-mono"
+              className="w-full px-4 py-3 bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white rounded-lg border border-gray-300 dark:border-gray-600 resize-none font-mono"
             />
           </section>
         )}
@@ -275,8 +275,8 @@ function ToggleButton({
 function InfoRow({ label, value }: { label: string; value: string }) {
   return (
     <div className="flex items-center justify-between">
-      <span className="text-gray-400">{label}</span>
-      <span className="text-white font-medium">{value}</span>
+      <span className="text-gray-600 dark:text-gray-400">{label}</span>
+      <span className="text-gray-900 dark:text-white font-medium">{value}</span>
     </div>
   );
 }

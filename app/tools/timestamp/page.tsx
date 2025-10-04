@@ -122,7 +122,7 @@ export default function TimestampConverter() {
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 pt-20">
       <main className="max-w-4xl mx-auto px-6 py-20">
         <div className="mb-12">
-          <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">{text.title}</h1>
+          <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-gray-900 dark:text-white mb-4">{text.title}</h1>
           <p className="text-xl text-gray-700 dark:text-gray-300">{text.subtitle}</p>
         </div>
 
@@ -135,7 +135,7 @@ export default function TimestampConverter() {
               onChange={(e) => handleEpochToDate(e.target.value)}
               placeholder={text.epochPlaceholder}
             />
-            <p className="text-sm text-gray-400 mt-2">{text.epochHint}</p>
+            <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">{text.epochHint}</p>
             <GlassButton
               onClick={handleSetNow}
               variant="primary"
@@ -153,7 +153,7 @@ export default function TimestampConverter() {
               onChange={(e) => handleDateToEpoch(e.target.value)}
               placeholder={text.datePlaceholder}
             />
-            <p className="text-sm text-gray-400 mt-2">{text.dateHint}</p>
+            <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">{text.dateHint}</p>
           </GlassCard>
         </div>
 
@@ -171,7 +171,7 @@ export default function TimestampConverter() {
 
         {result && !error && (
           <GlassCard className="p-6">
-            <h2 className="text-2xl font-semibold text-white mb-4">{text.resultTitle}</h2>
+            <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">{text.resultTitle}</h2>
 
             <div className="space-y-4">
               <ResultRow
@@ -232,8 +232,8 @@ function ResultRow({
   return (
     <div className="flex items-center justify-between p-4 backdrop-blur-md bg-white/5 border border-white/10 rounded-lg hover:bg-white/10 transition-all">
       <div>
-        <p className="text-sm text-gray-400 mb-1">{label}</p>
-        <p className="text-white font-mono break-all">{value}</p>
+        <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">{label}</p>
+        <p className="text-gray-900 dark:text-white font-mono break-all">{value}</p>
       </div>
       <GlassButton
         onClick={onCopy}

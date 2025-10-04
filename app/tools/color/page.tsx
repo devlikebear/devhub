@@ -92,8 +92,8 @@ export default function ColorTool() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-          <div className="p-6 bg-gray-800/50 rounded-lg border border-gray-700">
-            <label className="block text-white font-semibold mb-4">{text.inputLabel}</label>
+          <div className="p-6 bg-white/80 dark:bg-gray-800/50 rounded-lg border border-gray-300 dark:border-gray-700">
+            <label className="block text-gray-900 dark:text-white font-semibold mb-4">{text.inputLabel}</label>
             <div className="mb-4">
               <input
                 type="color"
@@ -107,15 +107,15 @@ export default function ColorTool() {
               value={input}
               onChange={(e) => handleColorChange(e.target.value)}
               placeholder={text.placeholder}
-              className="w-full px-4 py-3 bg-gray-900 text-white rounded-lg border border-gray-600 focus:border-blue-500 focus:outline-none font-mono"
+              className="w-full px-4 py-3 bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white rounded-lg border border-gray-300 dark:border-gray-600 focus:border-blue-500 focus:outline-none font-mono"
             />
-            <p className="text-sm text-gray-400 mt-2">{text.hint}</p>
+            <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">{text.hint}</p>
           </div>
 
-          <div className="p-6 bg-gray-800/50 rounded-lg border border-gray-700">
-            <label className="block text-white font-semibold mb-4">{text.previewLabel}</label>
+          <div className="p-6 bg-white/80 dark:bg-gray-800/50 rounded-lg border border-gray-300 dark:border-gray-700">
+            <label className="block text-gray-900 dark:text-white font-semibold mb-4">{text.previewLabel}</label>
             <div
-              className="w-full h-32 rounded-lg border border-gray-600"
+              className="w-full h-32 rounded-lg border border-gray-300 dark:border-gray-600"
               style={{ backgroundColor: currentHex }}
             ></div>
           </div>
@@ -135,7 +135,7 @@ export default function ColorTool() {
 
         {color && (
           <div className="mb-8">
-            <h2 className="text-2xl font-semibold text-white mb-4">{text.formatSectionTitle}</h2>
+            <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">{text.formatSectionTitle}</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <FormatCard
                 label={text.formatLabels.hex}
@@ -217,18 +217,18 @@ function FormatCard({
   const tButtons = useTranslation('common.buttons');
 
   return (
-    <div className="p-4 bg-gray-800/50 rounded-lg border border-gray-700">
+    <div className="p-4 bg-white/80 dark:bg-gray-800/50 rounded-lg border border-gray-300 dark:border-gray-700">
       <div className="flex items-center justify-between mb-2">
-        <p className="text-sm text-gray-400">{label}</p>
+        <p className="text-sm text-gray-600 dark:text-gray-400">{label}</p>
         <button
           onClick={onCopy}
-          className="px-3 py-1 bg-white/10 hover:bg-white/20 border border-white/20 text-white rounded text-xs transition-colors"
+          className="px-3 py-1 bg-gray-200 dark:bg-white/10 hover:bg-gray-300 dark:hover:bg-white/20 border border-gray-300 dark:border-white/20 text-gray-900 dark:text-white rounded text-xs transition-colors"
         >
           {tButtons('copy')}
         </button>
       </div>
-      <p className="text-white font-mono text-sm break-all">{value}</p>
-      {extra && <p className="text-gray-400 text-xs mt-1">{extra}</p>}
+      <p className="text-gray-900 dark:text-white font-mono text-sm break-all">{value}</p>
+      {extra && <p className="text-gray-600 dark:text-gray-400 text-xs mt-1">{extra}</p>}
     </div>
   );
 }
@@ -244,7 +244,7 @@ function PaletteSection({
 }) {
   return (
     <div>
-      <h3 className="text-xl font-semibold text-white mb-4">{title}</h3>
+      <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">{title}</h3>
       <div className="flex flex-wrap gap-4">
         {swatches.map((swatch) => (
           <ColorSwatch key={`${title}-${swatch.color}`} color={swatch.color} label={swatch.label} onCopy={onCopy} />
@@ -268,13 +268,13 @@ function ColorSwatch({
   return (
     <div className="flex flex-col items-center">
       <div
-        className="w-20 h-20 rounded-lg border border-gray-600 mb-2"
+        className="w-20 h-20 rounded-lg border border-gray-300 dark:border-gray-600 mb-2"
         style={{ backgroundColor: color }}
       ></div>
-      <p className="text-sm text-gray-300 mb-2">{label}</p>
+      <p className="text-sm text-gray-700 dark:text-gray-300 mb-2">{label}</p>
       <button
         onClick={() => onCopy(color, label)}
-        className="px-3 py-1 bg-white/10 hover:bg-white/20 border border-white/20 text-white rounded text-xs transition-colors"
+        className="px-3 py-1 bg-gray-200 dark:bg-white/10 hover:bg-gray-300 dark:hover:bg-white/20 border border-gray-300 dark:border-white/20 text-gray-900 dark:text-white rounded text-xs transition-colors"
       >
         {tButtons('copy')}
       </button>
