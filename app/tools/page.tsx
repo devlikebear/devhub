@@ -251,23 +251,12 @@ function ToolCard({
     );
   };
 
-  const card = (
-    <GlassCard className="relative p-6 group">
+  const cardContent = (
+    <>
       {tool.status === 'comingSoon' && (
         <div className="absolute top-4 right-4 px-2 py-1 backdrop-blur-md bg-white/10 dark:bg-white/10 border border-gray-300 dark:border-white/20 text-gray-700 dark:text-gray-300 text-xs rounded">
           {comingSoonLabel}
         </div>
-      )}
-
-      {showFavorite && tool.status === 'available' && (
-        <button
-          onClick={handleFavoriteClick}
-          className="absolute top-4 right-4 text-2xl hover:scale-125 transition-transform duration-200"
-          aria-label={isFav ? '즐겨찾기 해제' : '즐겨찾기 추가'}
-          title={isFav ? '즐겨찾기 해제' : '즐겨찾기 추가'}
-        >
-          {isFav ? '⭐' : '☆'}
-        </button>
       )}
 
       <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">{tool.icon}</div>
@@ -277,12 +266,32 @@ function ToolCard({
       </h3>
 
       <p className="text-gray-600 dark:text-gray-400 text-sm">{highlightText(tool.description, searchQuery)}</p>
-    </GlassCard>
+    </>
   );
 
   if (tool.status === 'available') {
-    return <Link href={`/tools/${tool.id}`}>{card}</Link>;
+    return (
+      <GlassCard className="relative p-6 group">
+        {showFavorite && (
+          <button
+            onClick={handleFavoriteClick}
+            className="absolute top-4 right-4 z-10 text-2xl hover:scale-125 transition-transform duration-200"
+            aria-label={isFav ? '즐겨찾기 해제' : '즐겨찾기 추가'}
+            title={isFav ? '즐겨찾기 해제' : '즐겨찾기 추가'}
+          >
+            {isFav ? '⭐' : '☆'}
+          </button>
+        )}
+        <Link href={`/tools/${tool.id}`} className="block">
+          {cardContent}
+        </Link>
+      </GlassCard>
+    );
   }
 
-  return card;
+  return (
+    <GlassCard className="relative p-6 group">
+      {cardContent}
+    </GlassCard>
+  );
 }
