@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useI18n } from '@/components/i18n/I18nProvider';
+import { useTools } from '@/components/tools/ToolsProvider';
 import { useState, useEffect, useMemo } from 'react';
 import { GlassCard, GlassInput } from '@/components/ui/glass';
 
@@ -38,6 +39,7 @@ type ToolsDictionary = {
 export default function ToolsPage() {
   const { dictionary } = useI18n();
   const toolsPage = dictionary.toolsPage as ToolsDictionary;
+  const { favorites, recentTools } = useTools();
   const [searchQuery, setSearchQuery] = useState('');
 
   // Keyboard shortcut: Focus search on "/" key
@@ -71,6 +73,17 @@ export default function ToolsPage() {
   const categories = Array.from(
     new Set<ToolCategory>(filteredTools.map((tool) => tool.category))
   );
+
+  // Get favorite and recent tools data
+  const favoriteTools = useMemo(() => {
+    return toolsPage.items.filter((tool) => favorites.includes(tool.id) && tool.status === 'available');
+  }, [favorites, toolsPage.items]);
+
+  const recentToolsData = useMemo(() => {
+    return recentTools
+      .map((id) => toolsPage.items.find((tool) => tool.id === id && tool.status === 'available'))
+      .filter((tool): tool is ToolItem => tool !== undefined);
+  }, [recentTools, toolsPage.items]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 pt-20">
@@ -123,6 +136,46 @@ export default function ToolsPage() {
           </div>
         )}
 
+        {/* Recent Tools */}
+        {!searchQuery && recentToolsData.length > 0 && (
+          <section className="mb-12">
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
+              ⏱️ 최근 사용한 도구
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {recentToolsData.map((tool) => (
+                <ToolCard
+                  key={tool.id}
+                  tool={tool}
+                  comingSoonLabel={toolsPage.badges.comingSoon}
+                  searchQuery=""
+                  showFavorite={true}
+                />
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* Favorite Tools */}
+        {!searchQuery && favoriteTools.length > 0 && (
+          <section className="mb-12">
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
+              ⭐ 즐겨찾기
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {favoriteTools.map((tool) => (
+                <ToolCard
+                  key={tool.id}
+                  tool={tool}
+                  comingSoonLabel={toolsPage.badges.comingSoon}
+                  searchQuery=""
+                  showFavorite={true}
+                />
+              ))}
+            </div>
+          </section>
+        )}
+
         {/* Tool Categories */}
         {filteredTools.length > 0 && categories.map((category) => (
           <section key={category} className="mb-12">
@@ -138,6 +191,7 @@ export default function ToolsPage() {
                     tool={tool}
                     comingSoonLabel={toolsPage.badges.comingSoon}
                     searchQuery={searchQuery}
+                    showFavorite={true}
                   />
                 ))}
             </div>
@@ -160,11 +214,21 @@ function ToolCard({
   tool,
   comingSoonLabel,
   searchQuery,
+  showFavorite = false,
 }: {
   tool: ToolItem;
   comingSoonLabel: string;
   searchQuery: string;
+  showFavorite?: boolean;
 }) {
+  const { toggleFavorite, isFavorite: checkIsFavorite } = useTools();
+  const isFav = checkIsFavorite(tool.id);
+
+  const handleFavoriteClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    toggleFavorite(tool.id);
+  };
   // Highlight search term in text
   const highlightText = (text: string, query: string) => {
     if (!query.trim()) return text;
@@ -193,6 +257,17 @@ function ToolCard({
         <div className="absolute top-4 right-4 px-2 py-1 backdrop-blur-md bg-white/10 dark:bg-white/10 border border-gray-300 dark:border-white/20 text-gray-700 dark:text-gray-300 text-xs rounded">
           {comingSoonLabel}
         </div>
+      )}
+
+      {showFavorite && tool.status === 'available' && (
+        <button
+          onClick={handleFavoriteClick}
+          className="absolute top-4 right-4 text-2xl hover:scale-125 transition-transform duration-200"
+          aria-label={isFav ? '즐겨찾기 해제' : '즐겨찾기 추가'}
+          title={isFav ? '즐겨찾기 해제' : '즐겨찾기 추가'}
+        >
+          {isFav ? '⭐' : '☆'}
+        </button>
       )}
 
       <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">{tool.icon}</div>
