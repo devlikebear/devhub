@@ -711,4 +711,83 @@ export const toolGuides: Record<string, ToolGuide> = {
       },
     ],
   },
+
+  cron: {
+    id: 'cron',
+    sections: [
+      {
+        title: '사용 방법',
+        content:
+          'Cron Expression Helper는 Linux/Unix 시스템에서 사용하는 Cron 표현식을 생성하고 해석합니다. 표현식을 입력하면 자연어로 해석된 내용과 다음 10번의 실행 시간을 확인할 수 있습니다.',
+      },
+      {
+        title: 'Cron 표현식이란?',
+        content:
+          'Cron은 정기적으로 작업을 실행하기 위한 스케줄러입니다. Cron 표현식은 5개 또는 6개의 필드로 구성되며, 각 필드는 분, 시, 일, 월, 요일을 나타냅니다.',
+      },
+      {
+        title: 'Cron 표현식 형식',
+        content:
+          '표준 형식: 분 시 일 월 요일\n예: 0 9 * * MON-FRI = 평일 오전 9시',
+      },
+    ],
+    examples: [
+      {
+        title: '매일 오전 9시',
+        input: '0 9 * * *',
+        output: '매일 오전 9시에 실행',
+        description: '일, 월, 요일은 모든 값(*) 허용',
+      },
+      {
+        title: '평일 점심시간',
+        input: '0 12 * * 1-5',
+        output: '월요일부터 금요일까지 정오에 실행',
+        description: '1-5는 월요일부터 금요일',
+      },
+      {
+        title: '15분마다',
+        input: '*/15 * * * *',
+        output: '15분마다 실행',
+        description: '*/15는 0, 15, 30, 45분에 실행',
+      },
+      {
+        title: '매월 1일과 15일',
+        input: '0 0 1,15 * *',
+        output: '매월 1일과 15일 자정에 실행',
+        description: '1,15는 값 목록',
+      },
+    ],
+    tips: [
+      'Cron 표현식은 5개 필드로 구성됩니다: 분 시 일 월 요일',
+      '*는 "모든 값"을 의미합니다 (예: * * * * * = 매 분마다)',
+      ',는 값 목록을 나타냅니다 (예: 0,30 = 0분과 30분)',
+      '-는 범위를 나타냅니다 (예: 1-5 = 월요일부터 금요일)',
+      '/는 간격을 나타냅니다 (예: */5 = 5분마다)',
+      '요일은 0(일요일)부터 6(토요일)까지, 또는 SUN, MON 등 영문 약자 사용 가능',
+    ],
+    faqs: [
+      {
+        question: 'Cron 표현식은 어디에 사용하나요?',
+        answer:
+          'Linux/Unix 시스템의 crontab, Jenkins, Kubernetes CronJob, AWS EventBridge, Azure Functions 등 다양한 스케줄링 시스템에서 사용됩니다.',
+      },
+      {
+        question: '매일 오전 9시부터 오후 6시까지 1시간마다 실행하려면?',
+        answer: '0 9-18 * * * 또는 0 9,10,11,12,13,14,15,16,17,18 * * *',
+      },
+      {
+        question: '평일에만 실행하려면?',
+        answer: '요일 필드에 1-5 (월-금) 또는 MON-FRI를 사용하세요. 예: 0 9 * * 1-5',
+      },
+      {
+        question: '매주 월요일과 금요일에만 실행하려면?',
+        answer: '요일 필드에 1,5 또는 MON,FRI를 사용하세요. 예: 0 9 * * 1,5',
+      },
+      {
+        question: '시간대(Timezone)는 어떻게 설정하나요?',
+        answer:
+          'Cron 표현식 자체에는 시간대 정보가 없습니다. 시스템의 시간대 설정을 따르므로, 서버의 시간대를 확인하고 필요시 조정해야 합니다.',
+      },
+    ],
+  },
 };
