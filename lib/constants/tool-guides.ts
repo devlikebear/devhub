@@ -641,4 +641,74 @@ export const toolGuides: Record<string, ToolGuide> = {
       },
     ],
   },
+
+  qr: {
+    id: 'qr',
+    sections: [
+      {
+        title: '사용 방법',
+        content:
+          'QR 코드 생성기는 텍스트나 URL을 QR 코드 이미지로 변환합니다. 크기, 색상, 에러 정정 레벨 등을 자유롭게 조정할 수 있으며, PNG 또는 SVG 형식으로 다운로드할 수 있습니다.',
+      },
+      {
+        title: 'QR 코드란?',
+        content:
+          'QR(Quick Response) 코드는 2차원 바코드로, URL, 연락처 정보, 텍스트 등을 스마트폰 카메라로 빠르게 스캔할 수 있는 이미지로 변환합니다.',
+      },
+      {
+        title: '에러 정정 레벨',
+        content:
+          '에러 정정 레벨이 높을수록 QR 코드가 손상되어도 복원 가능한 정도가 높아집니다. L(~7%), M(~15%), Q(~25%), H(~30%)의 4가지 레벨이 있으며, 레벨이 높을수록 QR 코드가 더 복잡해집니다.',
+      },
+    ],
+    examples: [
+      {
+        title: 'URL QR 코드',
+        input: 'https://github.com/devlikebear/devhub',
+        output: 'QR 코드 이미지',
+        description: '웹사이트 링크를 QR 코드로 변환',
+      },
+      {
+        title: 'Wi-Fi QR 코드',
+        input: 'WIFI:T:WPA;S:MyNetwork;P:password123;;',
+        output: 'QR 코드 이미지',
+        description: 'Wi-Fi 접속 정보를 QR 코드로 변환',
+      },
+      {
+        title: '연락처 QR 코드',
+        input: 'MECARD:N:Hong,Gildong;TEL:01012345678;EMAIL:hong@example.com;;',
+        output: 'QR 코드 이미지',
+        description: '명함 정보를 QR 코드로 변환',
+      },
+    ],
+    tips: [
+      '에러 정정 레벨이 높을수록 QR 코드가 손상되어도 읽힐 가능성이 높아집니다',
+      'PNG는 일반 용도에, SVG는 인쇄물이나 확대가 필요한 경우에 적합합니다',
+      'QR 코드는 실시간으로 생성되며, 모든 처리는 브라우저에서 이루어집니다',
+      '크기를 키우면 더 선명한 QR 코드를 얻을 수 있습니다 (권장: 256px 이상)',
+      '색상 대비가 충분해야 QR 코드가 잘 스캔됩니다 (어두운 전경색 + 밝은 배경색)',
+    ],
+    faqs: [
+      {
+        question: '어떤 경우에 QR 코드를 사용하나요?',
+        answer:
+          'URL 공유, Wi-Fi 접속 정보 공유, 명함, 제품 정보, 행사 초대장, 결제 정보 등 다양한 용도로 사용됩니다.',
+      },
+      {
+        question: 'QR 코드에 어떤 정보를 담을 수 있나요?',
+        answer:
+          'URL, 텍스트, 이메일, 전화번호, Wi-Fi 정보, 연락처(vCard), 지리적 위치, 이벤트(iCal) 등 다양한 형식을 지원합니다.',
+      },
+      {
+        question: 'PNG와 SVG 중 어떤 형식을 사용해야 하나요?',
+        answer:
+          'PNG는 일반 용도(웹, 화면)에 적합하고, SVG는 인쇄물이나 크기 조정이 필요한 경우에 적합합니다. SVG는 벡터 형식이라 확대해도 선명합니다.',
+      },
+      {
+        question: 'QR 코드의 크기는 어떻게 정하나요?',
+        answer:
+          '인쇄용은 최소 2cm x 2cm 이상, 웹/모바일은 256px 이상을 권장합니다. 스캔 거리가 멀수록 더 큰 QR 코드가 필요합니다.',
+      },
+    ],
+  },
 };
