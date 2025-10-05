@@ -118,8 +118,8 @@ devhub/
 - [x] 도구 검색 기능
 - [ ] 키보드 단축키 지원 [#52](https://github.com/devlikebear/devhub/issues/52)
 - [x] 방문자 통계 (Cloudflare Analytics) [#53](https://github.com/devlikebear/devhub/issues/53)
-- [ ] PWA 지원 (오프라인 사용) [#54](https://github.com/devlikebear/devhub/issues/54)
-- [ ] 결과 공유 기능 (URL 파라미터) [#55](https://github.com/devlikebear/devhub/issues/55)
+- [x] PWA 지원 (오프라인 사용) [#54](https://github.com/devlikebear/devhub/issues/54)
+- [x] 결과 공유 기능 (URL 파라미터) [#55](https://github.com/devlikebear/devhub/issues/55)
 
 ## 🎨 디자인 시스템
 
