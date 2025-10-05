@@ -6,6 +6,13 @@ import { DEFAULT_OG_IMAGE, SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/s
 import { getCurrentLocale } from "@/lib/i18n/locale";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import ClientProviders from "@/components/ClientProviders";
+import { Inter } from "next/font/google";
+
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -50,8 +57,8 @@ export default function RootLayout({
   const serializableDictionary = JSON.parse(JSON.stringify(dictionary));
 
   return (
-    <html lang={locale}>
-      <body className="antialiased">
+    <html lang={locale} className={inter.variable}>
+      <body className="antialiased font-sans">
         <ClientProviders locale={locale} dictionary={serializableDictionary}>
           <Navbar />
           {children}
