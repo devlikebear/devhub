@@ -114,9 +114,9 @@ devhub/
 - [x] 즐겨찾기/최근 사용 도구 기능 [#40](https://github.com/devlikebear/devhub/issues/40)
 - [ ] 도구별 사용 가이드 [#41](https://github.com/devlikebear/devhub/issues/41)
 
-### Phase 6: 추가 기능
+### Phase 6: 추가 기능 ✅
 - [x] 도구 검색 기능
-- [ ] 키보드 단축키 지원 [#52](https://github.com/devlikebear/devhub/issues/52)
+- [x] 키보드 단축키 지원 [#52](https://github.com/devlikebear/devhub/issues/52)
 - [x] 방문자 통계 (Cloudflare Analytics) [#53](https://github.com/devlikebear/devhub/issues/53)
 - [x] PWA 지원 (오프라인 사용) [#54](https://github.com/devlikebear/devhub/issues/54)
 - [x] 결과 공유 기능 (URL 파라미터) [#55](https://github.com/devlikebear/devhub/issues/55)
@@ -323,5 +323,5 @@ chore: 빌드/설정 변경
 
 ---
 
-**마지막 업데이트**: 2025-10-03
-**프로젝트 상태**: Phase 3 완료 (5개 핵심 도구 구현), Phase 4 준비 중
+**마지막 업데이트**: 2025-10-05
+**프로젝트 상태**: Phase 6 완료 (모든 핵심 기능 구현 완료)

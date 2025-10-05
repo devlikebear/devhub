@@ -10,6 +10,7 @@ import {
 } from "@/lib/converters/timestamp";
 import { useI18n, useTranslation } from "@/components/i18n/I18nProvider";
 import { GlassCard, GlassButton, GlassInput } from '@/components/ui/glass';
+import ToolGuideModal from '@/components/tools/ToolGuideModal';
 
 type TimestampDictionary = {
   title: string;
@@ -122,8 +123,13 @@ export default function TimestampConverter() {
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 pt-20">
       <main className="max-w-4xl mx-auto px-6 py-20">
         <div className="mb-12">
-          <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-gray-900 dark:text-white mb-4">{text.title}</h1>
-          <p className="text-xl text-gray-700 dark:text-gray-300">{text.subtitle}</p>
+          <div className="flex items-start justify-between gap-4 mb-4">
+            <div>
+              <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">{text.title}</h1>
+              <p className="text-xl text-gray-700 dark:text-gray-300">{text.subtitle}</p>
+            </div>
+            <ToolGuideModal toolId="timestamp" />
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
