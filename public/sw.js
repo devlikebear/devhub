@@ -1,8 +1,8 @@
 // DevHub Service Worker
-// Version 1.0.0
-
-const CACHE_NAME = 'devhub-v1';
-const RUNTIME_CACHE = 'devhub-runtime';
+// Version: Update this when deploying new version
+const VERSION = '1.0.1';
+const CACHE_NAME = `devhub-v${VERSION}`;
+const RUNTIME_CACHE = `devhub-runtime-v${VERSION}`;
 
 // Static assets to cache on install
 const STATIC_ASSETS = [
@@ -50,7 +50,7 @@ self.addEventListener('activate', (event) => {
   self.clients.claim();
 });
 
-// Fetch event - serve from cache, fallback to network
+// Fetch event - Network-First strategy for HTML, Cache-First for assets
 self.addEventListener('fetch', (event) => {
   const { request } = event;
   const url = new URL(request.url);
@@ -65,23 +65,54 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
+  // Network-First strategy for HTML pages
+  if (request.mode === 'navigate' || request.headers.get('accept')?.includes('text/html')) {
+    event.respondWith(
+      fetch(request)
+        .then((response) => {
+          // Cache the new version
+          if (response && response.status === 200) {
+            const responseToCache = response.clone();
+            caches.open(CACHE_NAME).then((cache) => {
+              cache.put(request, responseToCache);
+            });
+          }
+          return response;
+        })
+        .catch(() => {
+          // Fallback to cache if offline
+          return caches.match(request).then((cachedResponse) => {
+            return cachedResponse || caches.match('/offline.html') || new Response('Offline');
+          });
+        })
+    );
+    return;
+  }
+
+  // Cache-First strategy for assets (JS, CSS, images)
   event.respondWith(
     caches.match(request).then((cachedResponse) => {
       if (cachedResponse) {
+        // Return cached version but update in background
+        fetch(request)
+          .then((response) => {
+            if (response && response.status === 200) {
+              caches.open(RUNTIME_CACHE).then((cache) => {
+                cache.put(request, response);
+              });
+            }
+          })
+          .catch(() => {});
         return cachedResponse;
       }
 
       return fetch(request)
         .then((response) => {
-          // Don't cache non-successful responses
           if (!response || response.status !== 200 || response.type === 'error') {
             return response;
           }
 
-          // Clone the response
           const responseToCache = response.clone();
-
-          // Cache runtime assets
           caches.open(RUNTIME_CACHE).then((cache) => {
             cache.put(request, responseToCache);
           });
@@ -89,10 +120,6 @@ self.addEventListener('fetch', (event) => {
           return response;
         })
         .catch(() => {
-          // Return offline page for navigation requests
-          if (request.mode === 'navigate') {
-            return caches.match('/offline.html') || new Response('Offline');
-          }
           return new Response('Network error', {
             status: 408,
             headers: { 'Content-Type': 'text/plain' },
