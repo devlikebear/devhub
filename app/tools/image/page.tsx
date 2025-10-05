@@ -2,6 +2,7 @@
 
 import { useState, useRef } from 'react';
 import { useI18n } from '@/components/i18n/I18nProvider';
+import ToolGuideModal from "@/components/tools/ToolGuideModal";
 import { GlassCard, GlassButton } from '@/components/ui/glass';
 import {
   convertImage,
@@ -56,7 +57,6 @@ export default function ImageConverter() {
   const [maxWidth, setMaxWidth] = useState<string>('');
   const [maxHeight, setMaxHeight] = useState<string>('');
   const [result, setResult] = useState<ImageConversionResult | null>(null);
-  const [isConverting, setIsConverting] = useState(false);
 
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -77,8 +77,6 @@ export default function ImageConverter() {
     const targetFile = file || selectedFile;
     if (!targetFile) return;
 
-    setIsConverting(true);
-
     const conversionResult = await convertImage(targetFile, {
       format,
       quality: quality / 100,
@@ -87,7 +85,6 @@ export default function ImageConverter() {
     });
 
     setResult(conversionResult);
-    setIsConverting(false);
   };
 
   const handleDownload = () => {
@@ -127,11 +124,14 @@ export default function ImageConverter() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 pt-20">
       <main className="max-w-6xl mx-auto px-6 py-20">
-        <div className="text-center mb-16">
-          <h1 className="text-4xl sm:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-            {text.title}
-          </h1>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">{text.subtitle}</p>
+        <div className="mb-16">
+          <div className="flex items-start justify-between mb-6">
+            <h1 className="text-4xl sm:text-5xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+              {text.title}
+            </h1>
+            <ToolGuideModal toolId="imagePage" />
+          </div>
+          <p className="text-xl text-gray-300 max-w-2xl">{text.subtitle}</p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -251,6 +251,7 @@ export default function ImageConverter() {
             {selectedFile && (
               <GlassCard>
                 <h3 className="text-xl font-semibold mb-4">{text.labels.original}</h3>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={URL.createObjectURL(selectedFile)}
                   alt="Original"
@@ -268,6 +269,7 @@ export default function ImageConverter() {
             {result?.success && result.dataUrl && (
               <GlassCard>
                 <h3 className="text-xl font-semibold mb-4">{text.labels.converted}</h3>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={result.dataUrl} alt="Converted" className="w-full h-auto rounded-lg" />
 
                 <div className="mt-4 space-y-2 text-sm text-gray-400">

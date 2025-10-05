@@ -3,6 +3,7 @@
 import { useMemo, useState } from 'react';
 import { markdownToHtml } from '@/lib/formatters/markdown';
 import { useI18n } from '@/components/i18n/I18nProvider';
+import ToolGuideModal from "@/components/tools/ToolGuideModal";
 
 type MarkdownDictionary = {
   title: string;
@@ -54,10 +55,13 @@ export default function MarkdownPreviewPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 pt-20">
       <main className="max-w-6xl mx-auto px-6 py-20">
-        <header className="text-center mb-12">
-          <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-gray-900 dark:text-white mb-4">
-            {tMarkdown.title}
-          </h1>
+        <header className="mb-12">
+          <div className="flex items-start justify-between mb-4">
+            <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white">
+              {tMarkdown.title}
+            </h1>
+            <ToolGuideModal toolId="markdown" />
+          </div>
           <p className="text-xl text-gray-700 dark:text-gray-300">
             {tMarkdown.subtitle}
           </p>

@@ -292,6 +292,7 @@ export default function QRGenerator() {
               {qrDataUrl && !isGenerating && (
                 <div className="space-y-4">
                   <div className="flex items-center justify-center p-6 bg-white rounded-lg">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={qrDataUrl} alt="QR Code" className="max-w-full" />
                   </div>
 

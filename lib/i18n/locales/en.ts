@@ -346,6 +346,17 @@ export const en = {
       analogousLabel: ['Analogous 1', 'Analogous 2', 'Original'],
       triadicLabel: ['Original', 'Triad 2', 'Triad 3'],
       shadeLabel: ['Shade 1', 'Shade 2', 'Shade 3', 'Shade 4', 'Shade 5'],
+      guide: {
+        title: 'Usage Guide',
+        items: [
+          '• Supported formats: HEX (#3b82f6), RGB (rgb(59, 130, 246)), HSL (hsl(217, 91%, 60%))',
+          '• Auto-conversion: Enter any format to automatically convert to others',
+          '• Palette generation: Automatically generates complementary, analogous, triadic, and shade variations',
+          '• Click to copy: Click any color code to copy to clipboard',
+          '• Design use: Useful for UI/UX design and brand color selection',
+          '• Privacy: All processing happens in your browser, no server transmission',
+        ],
+      },
     },
     timestamp: {
       title: 'Timestamp Converter',
@@ -406,6 +417,17 @@ export const en = {
       resultTitle: 'Result',
       errors: {
         generic: 'An error occurred while converting.',
+      },
+      guide: {
+        title: 'Usage Guide',
+        items: [
+          '• Full URL mode: Uses encodeURI, preserves URL structure (/, :, ? etc.)',
+          '• Query parameter mode: Uses encodeURIComponent, encodes all special characters',
+          '• Reserved characters: ; , / ? : @ & = + $ # are converted to % format',
+          '• Decoding: Converts percent-encoded characters back to original',
+          '• Use cases: Essential for API requests, URL sharing, and query parameter transmission',
+          '• Privacy: All processing happens in your browser, no server transmission',
+        ],
       },
     },
     json: {
@@ -868,6 +890,17 @@ Quickly draft your Markdown with DevHub!`,
       errors: {
         uploadFailed: 'Only image files are allowed',
         conversionFailed: 'Conversion failed',
+      },
+      guide: {
+        title: 'Usage Guide',
+        items: [
+          '• Supported formats: PNG, JPEG, WebP, GIF → convert to PNG/JPEG/WebP',
+          '• Quality adjustment: Control file size and quality balance (1-100%)',
+          '• Resize: Specify width/height to resize image (aspect ratio automatically preserved)',
+          '• Auto-convert: View conversion results immediately upon image upload',
+          '• Download: Click converted image to download',
+          '• Privacy: All processing happens in your browser, no server upload',
+        ],
       },
     },
     loremPage: {

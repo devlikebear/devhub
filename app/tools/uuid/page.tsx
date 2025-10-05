@@ -7,6 +7,7 @@ import {
   formatUUIDHyphens,
 } from '@/lib/converters/uuid';
 import { useI18n } from '@/components/i18n/I18nProvider';
+import ToolGuideModal from "@/components/tools/ToolGuideModal";
 import { GlassCard, GlassButton } from '@/components/ui/glass';
 
 type UuidDictionary = {
@@ -97,9 +98,12 @@ export default function UUIDGenerator() {
       <main className="max-w-4xl mx-auto px-6 py-20">
         {/* Header */}
         <div className="mb-12">
-          <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-gray-900 dark:text-white mb-4">
-            {text.title}
-          </h1>
+          <div className="flex items-start justify-between mb-4">
+            <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white">
+              {text.title}
+            </h1>
+            <ToolGuideModal toolId="uuid" />
+          </div>
           <p className="text-xl text-gray-700 dark:text-gray-300">
             {text.subtitle}
           </p>

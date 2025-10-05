@@ -1,6 +1,5 @@
 import cronstrue from 'cronstrue/i18n';
-// eslint-disable-next-line @typescript-eslint/no-require-imports
-const parser = require('cron-parser');
+import parser from 'cron-parser';
 
 export interface CronParseResult {
   expression: string;
@@ -38,7 +37,7 @@ export function parseCronExpression(
     });
 
     // 다음 실행 시간 계산
-    const interval = parser.parseExpression(trimmedExpression);
+    const interval = parser.parse(trimmedExpression);
     const nextRuns: Date[] = [];
 
     for (let i = 0; i < count; i++) {
@@ -68,7 +67,7 @@ export function parseCronExpression(
  */
 export function validateCronExpression(expression: string): { valid: boolean; error?: string } {
   try {
-    parser.parseExpression(expression.trim());
+    parser.parse(expression.trim());
     return { valid: true };
   } catch (error) {
     return {
