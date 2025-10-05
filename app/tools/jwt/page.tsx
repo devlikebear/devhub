@@ -1,8 +1,10 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 import { decodeJwt } from '@/lib/decoders/jwt';
 import { useI18n } from '@/components/i18n/I18nProvider';
+import ShareButton from '@/components/tools/ShareButton';
+import { getUrlParam } from '@/lib/utils/urlParams';
 
 const SAMPLE_JWT =
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.' +
@@ -39,6 +41,7 @@ type JwtDictionary = {
     copyRaw: string;
     copyJson: string;
     copySignature: string;
+    share: string;
   };
   copySuccess: string;
   copyFailed: string;
@@ -59,6 +62,14 @@ export default function JwtDecoderPage() {
 
   const [token, setToken] = useState(SAMPLE_JWT);
   const [copyMessage, setCopyMessage] = useState('');
+
+  // URL 파라미터에서 초기값 로드
+  useEffect(() => {
+    const urlToken = getUrlParam('token');
+    if (urlToken) {
+      setToken(urlToken);
+    }
+  }, []);
 
   const result = useMemo(() => decodeJwt(token, { prettify: true }), [token]);
 
@@ -115,6 +126,13 @@ export default function JwtDecoderPage() {
               >
                 {text.copyToken}
               </button>
+              {token && token !== SAMPLE_JWT && (
+                <ShareButton
+                  data={{ token }}
+                  label={text.buttons?.share || '공유'}
+                  className="px-4 py-2 text-sm"
+                />
+              )}
             </div>
           </div>
 

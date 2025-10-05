@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import {
   validateJSON,
   formatJSON,
@@ -9,6 +9,8 @@ import {
   type JSONValidationResult,
 } from "@/lib/converters/json";
 import { useI18n, useTranslation } from "@/components/i18n/I18nProvider";
+import ShareButton from '@/components/tools/ShareButton';
+import { getUrlParam } from '@/lib/utils/urlParams';
 
 type AnalysisInfo = {
   keys: number;
@@ -71,6 +73,24 @@ export default function JSONFormatter() {
   const [analysis, setAnalysis] = useState<AnalysisInfo | null>(null);
   const [copyMessage, setCopyMessage] = useState("");
   const [indent, setIndent] = useState<number>(2);
+
+  // URL 파라미터에서 초기값 로드
+  useEffect(() => {
+    const urlInput = getUrlParam('input');
+    const urlIndent = getUrlParam('indent');
+
+    if (urlIndent) {
+      const indentValue = Number(urlIndent);
+      if ([2, 4, 8].includes(indentValue)) {
+        setIndent(indentValue);
+      }
+    }
+
+    if (urlInput) {
+      handleInputChange(urlInput);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleInputChange = (value: string) => {
     setInput(value);
@@ -245,12 +265,19 @@ export default function JSONFormatter() {
             <div className="flex items-center justify-between mb-2">
               <label className="block text-gray-900 dark:text-white font-semibold">{text.output.label}</label>
               {output && (
-                <button
-                  onClick={() => copyToClipboard(output)}
-                  className="px-4 py-2 bg-gradient-to-r from-blue-500/90 to-purple-500/90 hover:from-blue-600/90 hover:to-purple-600/90 text-gray-900 dark:text-white rounded-lg text-sm font-semibold transition-colors"
-                >
-                  {tButtons('copy')}
-                </button>
+                <div className="flex gap-2">
+                  <button
+                    onClick={() => copyToClipboard(output)}
+                    className="px-4 py-2 bg-gradient-to-r from-blue-500/90 to-purple-500/90 hover:from-blue-600/90 hover:to-purple-600/90 text-gray-900 dark:text-white rounded-lg text-sm font-semibold transition-colors"
+                  >
+                    {tButtons('copy')}
+                  </button>
+                  <ShareButton
+                    data={{ input, indent: indent.toString() }}
+                    label={tButtons("share")}
+                    className="px-4 py-2 text-sm"
+                  />
+                </div>
               )}
             </div>
             <textarea

@@ -8,6 +8,8 @@ import {
   HASH_ALGORITHMS,
 } from '@/lib/generators/hash';
 import { useI18n } from '@/components/i18n/I18nProvider';
+import ShareButton from '@/components/tools/ShareButton';
+import { getUrlParam } from '@/lib/utils/urlParams';
 
 type HashDictionary = {
   title: string;
@@ -23,7 +25,7 @@ type HashDictionary = {
   copySuccess: string;
   copyFailed: string;
   error: string;
-  buttons: { copy: string };
+  buttons: { copy: string; share: string };
   guide: { title: string; items: string[] };
 };
 
@@ -37,6 +39,20 @@ export default function HashGeneratorPage() {
   const [isGenerating, setIsGenerating] = useState(false);
   const [error, setError] = useState('');
   const [copyMessage, setCopyMessage] = useState('');
+
+  // URL 파라미터에서 초기값 로드
+  useEffect(() => {
+    const urlInput = getUrlParam('input');
+    const urlAlgorithm = getUrlParam('algorithm') as HashAlgorithm | null;
+
+    if (urlAlgorithm && HASH_ALGORITHMS.includes(urlAlgorithm)) {
+      setAlgorithm(urlAlgorithm);
+    }
+
+    if (urlInput) {
+      setInput(urlInput);
+    }
+  }, []);
 
   useEffect(() => {
     let canceled = false;
@@ -168,9 +184,18 @@ export default function HashGeneratorPage() {
         <section className="p-6 bg-white/80 dark:bg-gray-800/50 rounded-lg border border-gray-300 dark:border-gray-700 mb-10">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-2xl font-semibold text-gray-900 dark:text-white">{text.resultTitle}</h2>
-            {isGenerating && (
-              <span className="text-sm text-gray-600 dark:text-gray-400">{text.generating}</span>
-            )}
+            <div className="flex items-center gap-3">
+              {isGenerating && (
+                <span className="text-sm text-gray-600 dark:text-gray-400">{text.generating}</span>
+              )}
+              {result && (
+                <ShareButton
+                  data={{ input, algorithm }}
+                  label={text.buttons?.share || '공유'}
+                  className="px-4 py-2 text-sm"
+                />
+              )}
+            </div>
           </div>
 
           {result ? (

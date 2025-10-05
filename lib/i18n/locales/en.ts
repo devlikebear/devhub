@@ -12,6 +12,7 @@ export const en = {
       clear: 'Clear',
       copy: 'Copy',
       swap: 'Swap Input/Output',
+      share: 'Share',
     },
     messages: {
       copySuccess: 'Copied!',
@@ -551,6 +552,7 @@ Quickly draft your Markdown with DevHub!`,
       error: 'An error occurred while generating the hash',
       buttons: {
         copy: 'Copy',
+        share: 'Share',
       },
       guide: {
         title: 'Usage Guide',
@@ -594,6 +596,7 @@ Quickly draft your Markdown with DevHub!`,
         copyRaw: 'Copy Raw',
         copyJson: 'Copy JSON',
         copySignature: 'Copy Signature',
+        share: 'Share',
       },
       copySuccess: '{{label}} copied!',
       copyFailed: 'Failed to copy to clipboard',
