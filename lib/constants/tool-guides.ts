@@ -790,4 +790,74 @@ export const toolGuides: Record<string, ToolGuide> = {
       },
     ],
   },
+  image: {
+    id: 'image',
+    sections: [
+      {
+        title: '사용 방법',
+        content:
+          'Image Converter는 이미지 파일의 포맷을 변환하고 크기를 조정할 수 있는 도구입니다. PNG, JPEG, WebP 형식 간 변환을 지원하며, 품질 조정과 리사이징 기능을 제공합니다. 모든 변환은 브라우저에서 처리되어 서버로 전송되지 않습니다.',
+      },
+      {
+        title: '지원 포맷',
+        content:
+          '입력: PNG, JPEG, WebP, GIF\n출력: PNG (무손실), JPEG (손실 압축), WebP (효율적 압축)\n\nPNG: 투명도 지원, 무손실 압축\nJPEG: 사진에 최적화, 손실 압축\nWebP: 현대적 포맷, 우수한 압축률',
+      },
+    ],
+    examples: [
+      {
+        title: 'PNG → JPEG 변환',
+        input: 'screenshot.png (5MB)',
+        output: 'screenshot.jpeg (1.2MB, 품질 90%)',
+        description: '스크린샷이나 투명도가 필요없는 이미지를 JPEG로 변환하여 용량 절감',
+      },
+      {
+        title: 'JPEG → WebP 변환',
+        input: 'photo.jpg (3MB)',
+        output: 'photo.webp (800KB, 품질 90%)',
+        description: '웹 최적화를 위해 WebP로 변환하여 로딩 속도 개선',
+      },
+      {
+        title: '이미지 리사이징',
+        input: '4000×3000 (12MB)',
+        output: '1920×1440 (2MB)',
+        description: '최대 너비 1920px 설정으로 고해상도 이미지 축소',
+      },
+    ],
+    tips: [
+      '투명도가 필요한 이미지는 PNG 또는 WebP 포맷을 사용하세요',
+      'JPEG는 품질 80-90%가 최적의 크기/품질 균형을 제공합니다',
+      'WebP는 PNG, JPEG보다 25-35% 작은 파일 크기를 제공합니다',
+      '리사이징 시 가로/세로 비율은 자동으로 유지됩니다',
+      '드래그 앤 드롭으로 여러 이미지를 빠르게 변환할 수 있습니다',
+      '모든 변환은 브라우저에서 처리되어 개인정보가 보호됩니다',
+    ],
+    faqs: [
+      {
+        question: '어떤 이미지 포맷을 사용해야 하나요?',
+        answer:
+          '투명도가 필요하면 PNG/WebP, 사진은 JPEG/WebP를 추천합니다. 웹 최적화가 목표라면 WebP가 가장 효율적입니다.',
+      },
+      {
+        question: 'JPEG 품질은 몇 %로 설정해야 하나요?',
+        answer:
+          '일반적으로 85-90%가 적절합니다. 80% 이하는 눈에 띄는 품질 저하가 있을 수 있고, 95% 이상은 파일 크기가 크게 증가합니다.',
+      },
+      {
+        question: '투명 배경이 있는 PNG를 JPEG로 변환하면?',
+        answer:
+          'JPEG는 투명도를 지원하지 않아 투명 영역이 흰색 또는 검은색으로 변환됩니다. 투명도 유지가 필요하면 PNG나 WebP를 사용하세요.',
+      },
+      {
+        question: '이미지 크기 조정 시 비율이 변하나요?',
+        answer:
+          '아니요, 가로세로 비율은 자동으로 유지됩니다. 최대 너비나 높이만 지정하면 다른 쪽은 비율에 맞춰 자동 계산됩니다.',
+      },
+      {
+        question: '변환된 이미지는 서버에 저장되나요?',
+        answer:
+          '아니요, 모든 변환은 브라우저(Canvas API)에서 처리되며 서버로 전송되지 않습니다. 완전히 안전하게 사용할 수 있습니다.',
+      },
+    ],
+  },
 };
