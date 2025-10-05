@@ -1,9 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { encodeToBase64, decodeFromBase64, formatFileSize } from "@/lib/converters/base64";
 import { useI18n, useTranslation } from "@/components/i18n/I18nProvider";
 import { GlassCard, GlassButton, GlassTextarea } from '@/components/ui/glass';
+import ShareButton from '@/components/tools/ShareButton';
+import { getUrlParam } from '@/lib/utils/urlParams';
 
 type ConversionMode = "encode" | "decode";
 
@@ -82,6 +84,22 @@ export default function Base64EncoderDecoder() {
   const [output, setOutput] = useState("");
   const [error, setError] = useState("");
   const [copyMessage, setCopyMessage] = useState("");
+
+  // URL 파라미터에서 초기값 로드
+  useEffect(() => {
+    const urlMode = getUrlParam('mode') as ConversionMode | null;
+    const urlInput = getUrlParam('input');
+
+    if (urlMode && (urlMode === 'encode' || urlMode === 'decode')) {
+      setMode(urlMode);
+    }
+
+    if (urlInput) {
+      setInput(urlInput);
+      handleConvert(urlInput, urlMode || mode);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleConvert = (value: string, conversionMode: ConversionMode) => {
     setInput(value);
@@ -226,6 +244,11 @@ export default function Base64EncoderDecoder() {
                 >
                   {tButtons("copy")}
                 </GlassButton>
+                <ShareButton
+                  data={{ mode, input }}
+                  label={tButtons("share")}
+                  className="px-4 py-2 text-sm"
+                />
               </div>
             </div>
             <GlassTextarea

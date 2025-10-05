@@ -12,6 +12,7 @@ export const ko = {
       clear: '초기화',
       copy: '복사',
       swap: '입력 ↔ 출력 교체',
+      share: '공유',
     },
     messages: {
       copySuccess: '복사되었습니다!',
@@ -552,6 +553,7 @@ DevHub에서 빠르게 마크다운 초안을 작성해보세요!`,
       error: '해시 생성 중 오류가 발생했습니다',
       buttons: {
         copy: '복사',
+        share: '공유',
       },
       guide: {
         title: '사용 가이드',
@@ -595,6 +597,7 @@ DevHub에서 빠르게 마크다운 초안을 작성해보세요!`,
         copyRaw: '원본 복사',
         copyJson: 'JSON 복사',
         copySignature: '서명 복사',
+        share: '공유',
       },
       copySuccess: '{{label}}을(를) 복사했습니다',
       copyFailed: '클립보드 복사에 실패했습니다',
