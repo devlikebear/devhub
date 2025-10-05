@@ -127,7 +127,7 @@ devhub/
 - [x] QR Code Generator: QR 코드 생성 (우선순위: 높음) [#66](https://github.com/devlikebear/devhub/issues/66)
 - [x] Cron Expression Helper: Cron 표현식 생성/해석 (우선순위: 중간) [#68](https://github.com/devlikebear/devhub/issues/68)
 - [x] Image Converter: 이미지 포맷 변환 (우선순위: 중간) [#70](https://github.com/devlikebear/devhub/issues/70)
-- [ ] Lorem Ipsum Generator: 더미 텍스트 생성 (우선순위: 낮음)
+- [x] Lorem Ipsum Generator: 더미 텍스트 생성 (우선순위: 낮음)
 
 ## 🎨 디자인 시스템
 
