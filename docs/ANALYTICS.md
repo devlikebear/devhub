@@ -43,30 +43,34 @@ Cloudflare Web Analytics는 다음 정보를 자동으로 추적합니다:
 
 #### Step 1: Cloudflare 대시보드 접속
 1. [Cloudflare Dashboard](https://dash.cloudflare.com/) 로그인
-2. 좌측 메뉴에서 **Web Analytics** 선택
+2. 좌측 메뉴에서 **Analytics & Logs** > **Web Analytics** 선택
+3. 또는 직접 [Web Analytics](https://dash.cloudflare.com/?to=/:account/analytics/web-analytics) 페이지로 이동
 
 #### Step 2: 사이트 추가
 1. **Add a site** 버튼 클릭
 2. 사이트 정보 입력:
-   - **Hostname**: `devhub.example.com` (실제 도메인 입력)
-   - **Automatic Setup**: 체크
-3. **Register and get tracking code** 클릭
+   - **Hostname**: 실제 도메인 입력 (예: `devhub.example.com`)
+   - **Automatic Setup**: 체크 (권장)
+3. **Register site** 클릭
 
-#### Step 3: Tracking Token 복사
-생성된 스크립트에서 `token` 값을 복사합니다:
+#### Step 3: JS 코드에서 Beacon Token 추출
+사이트 등록 후 표시되는 JavaScript 코드 조각:
 
 \`\`\`html
 <!-- Cloudflare Web Analytics -->
-<script
-  defer
-  src='https://static.cloudflareinsights.com/beacon.min.js'
-  data-cf-beacon='{"token": "YOUR_TOKEN_HERE"}'
->
-</script>
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js'
+        data-cf-beacon='{"token": "abc123def456ghi789jkl"}'></script>
 <!-- End Cloudflare Web Analytics -->
 \`\`\`
 
-`YOUR_TOKEN_HERE` 부분의 토큰을 복사합니다.
+**중요**: `data-cf-beacon` 속성에서 **token 값만** 복사하세요!
+
+예시:
+- ✅ **올바른 값**: `abc123def456ghi789jkl` (token 값만)
+- ❌ **잘못된 값**: `{"token": "abc123def456ghi789jkl"}` (전체 JSON)
+- ❌ **잘못된 값**: `'{"token": "abc123def456ghi789jkl"}'` (따옴표 포함)
+
+**팁**: 코드 조각 우측의 "Copy snippet" 버튼을 클릭하면 전체 코드가 복사됩니다. 이 중에서 token 값만 추출하세요.
 
 ### 2. DevHub 프로젝트 설정
 
