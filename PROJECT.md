@@ -123,8 +123,8 @@ devhub/
 
 ### Phase 7: 추가 유틸리티 도구 확장 [#63](https://github.com/devlikebear/devhub/issues/63)
 
-- [ ] Diff Checker: 텍스트 비교 (우선순위: 높음)
-- [ ] QR Code Generator: QR 코드 생성 (우선순위: 높음)
+- [x] Diff Checker: 텍스트 비교 (우선순위: 높음) [#64](https://github.com/devlikebear/devhub/issues/64)
+- [x] QR Code Generator: QR 코드 생성 (우선순위: 높음) [#66](https://github.com/devlikebear/devhub/issues/66)
 - [ ] Cron Expression Helper: Cron 표현식 생성/해석 (우선순위: 중간)
 - [ ] Image Converter: 이미지 포맷 변환 (우선순위: 중간)
 - [ ] Lorem Ipsum Generator: 더미 텍스트 생성 (우선순위: 낮음)
