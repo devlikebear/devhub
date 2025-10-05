@@ -531,6 +531,70 @@ export const toolGuides: Record<string, ToolGuide> = {
     ],
   },
 
+  diff: {
+    id: 'diff',
+    sections: [
+      {
+        title: '사용 방법',
+        content:
+          '두 텍스트를 비교하여 추가, 삭제, 변경된 부분을 시각적으로 표시합니다. 코드 리뷰, 문서 변경 확인, 버전 비교 등에 유용합니다.',
+      },
+      {
+        title: '비교 모드',
+        content:
+          '라인별 비교: 전체 라인 단위로 변경사항을 감지합니다.\n단어별 비교: 단어 단위로 세밀한 차이를 표시합니다.',
+      },
+      {
+        title: '옵션 설명',
+        content:
+          '대소문자 무시: 대문자와 소문자를 구분하지 않고 비교합니다.\n공백 무시: 여러 공백을 하나로 취급하여 비교합니다.',
+      },
+    ],
+    examples: [
+      {
+        title: '코드 변경사항 비교',
+        input: 'Original: const name = "John";\nModified: const name = "Jane";',
+        output: '- const name = "John";\n+ const name = "Jane";',
+        description: '변수 값이 변경된 경우',
+      },
+      {
+        title: '라인 추가/삭제',
+        input: 'Original: Line 1\nLine 2\n\nModified: Line 1\nLine 2\nLine 3',
+        output: '  Line 1\n  Line 2\n+ Line 3',
+        description: '새로운 라인이 추가된 경우',
+      },
+      {
+        title: '단어별 세밀한 비교',
+        input: 'Mode: Word by Word\nOriginal: Hello World\nModified: Hello DevHub',
+        output: 'Hello - World + DevHub',
+        description: '단어 단위로 변경사항 표시',
+      },
+    ],
+    tips: [
+      '녹색 배경(+)은 추가된 내용, 빨간색 배경(-)은 삭제된 내용을 의미합니다',
+      '라인별 비교는 전체 코드 비교에, 단어별 비교는 문장 수정에 적합합니다',
+      '대소문자 무시 옵션은 변수명 변경 시 유용합니다',
+      '결과 복사 버튼으로 diff 결과를 클립보드에 복사할 수 있습니다',
+    ],
+    faqs: [
+      {
+        question: '어떤 경우에 Diff Checker를 사용하나요?',
+        answer:
+          '코드 리뷰, 문서 버전 비교, 설정 파일 변경사항 확인, Pull Request 검토 등에 사용합니다.',
+      },
+      {
+        question: '라인별과 단어별 비교의 차이는?',
+        answer:
+          '라인별은 전체 줄 단위로 비교하여 큰 변경사항을 파악하기 좋고, 단어별은 한 줄 내에서 정확히 어떤 단어가 바뀌었는지 확인할 수 있습니다.',
+      },
+      {
+        question: '공백이 너무 많아서 비교가 어려워요',
+        answer:
+          '"공백 무시" 옵션을 활성화하면 여러 공백이나 탭을 하나의 공백으로 취급하여 실질적인 내용 변경만 비교합니다.',
+      },
+    ],
+  },
+
   jwt: {
     id: 'jwt',
     sections: [
