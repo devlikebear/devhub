@@ -110,16 +110,16 @@ devhub/
   - [x] 전체 페이지 디자인 검증 및 테스트
 - [x] 다크모드 토글 [#37](https://github.com/devlikebear/devhub/issues/37)
 - [x] 애니메이션 효과 [#38](https://github.com/devlikebear/devhub/issues/38)
-- [ ] 성능 최적화 (이미지, 폰트) [#39](https://github.com/devlikebear/devhub/issues/39)
-- [ ] 즐겨찾기/최근 사용 도구 기능 [#40](https://github.com/devlikebear/devhub/issues/40)
+- [x] 성능 최적화 (이미지, 폰트) [#39](https://github.com/devlikebear/devhub/issues/39)
+- [x] 즐겨찾기/최근 사용 도구 기능 [#40](https://github.com/devlikebear/devhub/issues/40)
 - [ ] 도구별 사용 가이드 [#41](https://github.com/devlikebear/devhub/issues/41)
 
 ### Phase 6: 추가 기능
 - [x] 도구 검색 기능
-- [ ] 키보드 단축키 지원
-- [ ] 방문자 통계 (Cloudflare Analytics)
-- [ ] PWA 지원 (오프라인 사용)
-- [ ] 결과 공유 기능 (URL 파라미터)
+- [ ] 키보드 단축키 지원 [#52](https://github.com/devlikebear/devhub/issues/52)
+- [ ] 방문자 통계 (Cloudflare Analytics) [#53](https://github.com/devlikebear/devhub/issues/53)
+- [ ] PWA 지원 (오프라인 사용) [#54](https://github.com/devlikebear/devhub/issues/54)
+- [ ] 결과 공유 기능 (URL 파라미터) [#55](https://github.com/devlikebear/devhub/issues/55)
 
 ## 🎨 디자인 시스템
 
