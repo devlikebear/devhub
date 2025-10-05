@@ -11,6 +11,7 @@ import {
 import { useI18n, useTranslation } from "@/components/i18n/I18nProvider";
 import ShareButton from '@/components/tools/ShareButton';
 import { getUrlParam } from '@/lib/utils/urlParams';
+import { useKeyboardShortcut } from '@/hooks/useKeyboardShortcut';
 
 type AnalysisInfo = {
   keys: number;
@@ -175,6 +176,11 @@ export default function JSONFormatter() {
       .replace("{{keys}}", analysis.keys.toString())
       .replace("{{depth}}", analysis.depth.toString());
   }, [analysis, text.input.analysis.summary]);
+
+  // Keyboard shortcuts
+  useKeyboardShortcut({ key: 's', ctrl: true }, handleFormat);
+  useKeyboardShortcut({ key: 'm', ctrl: true }, handleMinify);
+  useKeyboardShortcut({ key: 'l', ctrl: true }, handleClear);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 pt-20">

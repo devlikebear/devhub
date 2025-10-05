@@ -4,6 +4,8 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import CloudflareAnalytics from "@/components/analytics/CloudflareAnalytics";
 import ServiceWorkerRegistration from "@/components/pwa/ServiceWorkerRegistration";
+import CommandPalette from "@/components/shortcuts/CommandPalette";
+import KeyboardShortcutsHelp from "@/components/shortcuts/KeyboardShortcutsHelp";
 import { DEFAULT_OG_IMAGE, SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/seo/meta";
 import { getCurrentLocale } from "@/lib/i18n/locale";
 import { getDictionary } from "@/lib/i18n/dictionaries";
@@ -71,6 +73,8 @@ export default function RootLayout({
           <Navbar />
           {children}
           <Footer />
+          <CommandPalette />
+          <KeyboardShortcutsHelp />
         </ClientProviders>
         <CloudflareAnalytics />
         <ServiceWorkerRegistration />
