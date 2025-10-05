@@ -92,11 +92,11 @@ devhub/
 - [x] **JWT Decoder**: JWT 토큰 디코딩 & 검증 [#27](https://github.com/devlikebear/devhub/issues/27)
 
 #### 추가 도구 (향후 확장)
-- [ ] Diff Checker: 텍스트 비교
-- [ ] QR Code Generator: QR 코드 생성
-- [ ] Cron Expression Helper: Cron 표현식 생성/해석
-- [ ] Lorem Ipsum Generator: 더미 텍스트 생성
-- [ ] Image Converter: 이미지 포맷 변환
+- [x] Diff Checker: 텍스트 비교
+- [x] QR Code Generator: QR 코드 생성
+- [x] Cron Expression Helper: Cron 표현식 생성/해석
+- [x] Lorem Ipsum Generator: 더미 텍스트 생성
+- [x] Image Converter: 이미지 포맷 변환
 
 ### Phase 5: 개선 & 최적화
 - [x] SEO 최적화 (메타 태그, sitemap) [#33](https://github.com/devlikebear/devhub/issues/33)
