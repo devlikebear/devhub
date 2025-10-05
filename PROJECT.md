@@ -112,7 +112,7 @@ devhub/
 - [x] 애니메이션 효과 [#38](https://github.com/devlikebear/devhub/issues/38)
 - [x] 성능 최적화 (이미지, 폰트) [#39](https://github.com/devlikebear/devhub/issues/39)
 - [x] 즐겨찾기/최근 사용 도구 기능 [#40](https://github.com/devlikebear/devhub/issues/40)
-- [ ] 도구별 사용 가이드 [#41](https://github.com/devlikebear/devhub/issues/41)
+- [x] 도구별 사용 가이드 [#41](https://github.com/devlikebear/devhub/issues/41)
 
 ### Phase 6: 추가 기능 ✅
 - [x] 도구 검색 기능
@@ -120,6 +120,14 @@ devhub/
 - [x] 방문자 통계 (Cloudflare Analytics) [#53](https://github.com/devlikebear/devhub/issues/53)
 - [x] PWA 지원 (오프라인 사용) [#54](https://github.com/devlikebear/devhub/issues/54)
 - [x] 결과 공유 기능 (URL 파라미터) [#55](https://github.com/devlikebear/devhub/issues/55)
+
+### Phase 7: 추가 유틸리티 도구 확장 [#63](https://github.com/devlikebear/devhub/issues/63)
+
+- [ ] Diff Checker: 텍스트 비교 (우선순위: 높음)
+- [ ] QR Code Generator: QR 코드 생성 (우선순위: 높음)
+- [ ] Cron Expression Helper: Cron 표현식 생성/해석 (우선순위: 중간)
+- [ ] Image Converter: 이미지 포맷 변환 (우선순위: 중간)
+- [ ] Lorem Ipsum Generator: 더미 텍스트 생성 (우선순위: 낮음)
 
 ## 🎨 디자인 시스템
 
@@ -324,4 +332,4 @@ chore: 빌드/설정 변경
 ---
 
 **마지막 업데이트**: 2025-10-05
-**프로젝트 상태**: Phase 6 완료 (모든 핵심 기능 구현 완료)
+**프로젝트 상태**: Phase 6 완료, Phase 7 준비 완료 (추가 도구 확장 예정)
