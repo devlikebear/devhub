@@ -89,7 +89,6 @@ export default function JSONFormatter() {
     if (urlInput) {
       handleInputChange(urlInput);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleInputChange = (value: string) => {
