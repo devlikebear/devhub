@@ -13,6 +13,7 @@ export const ko = {
       copy: '복사',
       swap: '입력 ↔ 출력 교체',
       share: '공유',
+      downloadText: '디코딩 텍스트 다운로드',
     },
     messages: {
       copySuccess: '복사되었습니다!',

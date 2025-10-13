@@ -7,6 +7,7 @@ import { GlassCard, GlassButton, GlassTextarea } from '@/components/ui/glass';
 import ShareButton from '@/components/tools/ShareButton';
 import { getUrlParam } from '@/lib/utils/urlParams';
 import ToolGuideModal from '@/components/tools/ToolGuideModal';
+import { downloadTextFile } from '@/lib/utils/download';
 
 type ConversionMode = "encode" | "decode";
 
@@ -143,6 +144,11 @@ export default function Base64EncoderDecoder() {
     handleConvert(output, newMode);
   };
 
+  const handleDownload = () => {
+    if (!output || mode !== "decode") return;
+    downloadTextFile(output, "decoded.txt");
+  };
+
   const copyToClipboard = async (textToCopy: string) => {
     try {
       await navigator.clipboard.writeText(textToCopy);
@@ -250,6 +256,15 @@ export default function Base64EncoderDecoder() {
                 >
                   {tButtons("copy")}
                 </GlassButton>
+                {mode === "decode" && (
+                  <GlassButton
+                    onClick={handleDownload}
+                    variant="secondary"
+                    className="px-4 py-2 text-sm"
+                  >
+                    {tButtons("downloadText")}
+                  </GlassButton>
+                )}
                 <ShareButton
                   data={{ mode, input }}
                   label={tButtons("share")}

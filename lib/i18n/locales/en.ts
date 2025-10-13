@@ -13,6 +13,7 @@ export const en = {
       copy: 'Copy',
       swap: 'Swap Input/Output',
       share: 'Share',
+      downloadText: 'Download decoded text',
     },
     messages: {
       copySuccess: 'Copied!',
